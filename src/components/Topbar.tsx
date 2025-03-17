@@ -18,7 +18,7 @@ const Topbar = () => {
           />
         </Link>
 
-        <div className="hidden lg:flex-center gap-6">
+        <div className="hidden lg:flex justify-center items-center  gap-6">
           {NavLinks.map((link, idx) => (
             <Link
               href={link.path}
@@ -26,15 +26,15 @@ const Topbar = () => {
               className="text-base text-primary-100 flex-center gap-1"
             >
               {link.label}
-              {(link.path.endsWith("services") ||
-                link.path.endsWith("menu")) && (
+              {(link.path.endsWith("sell") ||
+                link.path.endsWith("abundish")) && (
                 <IoCaretDown size={16} color="white" />
               )}
             </Link>
           ))}
         </div>
 
-        <div className="hidden lg:flex-center gap-2">
+        <div className="hidden lg:flex justify-center items-center gap-2">
           <div className="size-10 flex-center rounded-full bg-secondary-100">
             <Image src="/assets/user.png" alt="user" width={26} height={26} />
           </div>

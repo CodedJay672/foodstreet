@@ -13,7 +13,7 @@ const MobileMenu = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="lg:hidden relative">
       {showMenu ? (
         <RiCloseLine
           size={32}

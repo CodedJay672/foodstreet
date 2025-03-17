@@ -52,7 +52,9 @@ const Menubar: React.FC<SidebarProps> = ({ tabs = defaultTabs }) => {
 
       {/* Tab Content */}
       <div className="flex-1 flex-center h-80 rounded-lg">
-        {activeTabContent[0].content}
+        <span className="text-sm text-gray-300">
+          {activeTabContent[0].content}
+        </span>
       </div>
     </aside>
   );
