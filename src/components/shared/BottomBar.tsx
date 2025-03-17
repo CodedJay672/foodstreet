@@ -14,16 +14,16 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="fixed left-0 bottom-0 w-full bg-white flex-between z-50 p-6 px-10">
+    <div className="fixed left-0 bottom-0 w-full bg-white flex-between z-50 p-6">
       {NavLinks.map((link, idx) => (
         <Link
           href={link.path}
           key={idx}
-          className={`text-sm flex-center flex-col gap-1 ${
+          className={`text-xs flex-center flex-col gap-1 ${
             isActive(link.path) && "font-bold"
           }`}
         >
-          <Image src={link.icon} alt={link.label} height={32} width={32} />
+          <Image src={link.icon} alt={link.label} height={20} width={20} />
           {link.label}
         </Link>
       ))}
