@@ -3,7 +3,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="full min-h-screen lg:max-h-[650px] header-gradient overflow-hidden">
+    <section className="w-full min-h-screen lg:max-h-[650px] header-gradient overflow-hidden">
       <div className="w-full lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
         <div className="flex flex-col gap-4 p-10 lg:p-24 pr-0">
           <div className="w-max py-1 px-3 rounded-full flex-center bg-secondary-100">
