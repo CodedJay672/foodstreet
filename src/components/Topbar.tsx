@@ -1,13 +1,22 @@
+"use client";
+
 import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { IoCaretDown } from "react-icons/io5";
 import MobileMenu from "./shared/MobileMenu";
+import FoodContext from "@/context/GlobalContext";
 
 const Topbar = () => {
+  const { foodType, setFoodType } = useContext(FoodContext);
+
   return (
-    <section className="w-full header-gradient sticky top-0 left-0 z-50">
+    <section
+      className={`w-full ${
+        foodType === "cookedFood" ? "header-gradient" : "raw-header-gradient"
+      } sticky top-0 left-0 z-50`}
+    >
       <nav className="px-2 lg:px-16 py-4 flex-between">
         <Link href="/">
           <Image
@@ -47,12 +56,20 @@ const Topbar = () => {
             />
           </div>
 
-          <Link
-            href="/sign-in"
-            className="py-2 px-10 bg-highlight-300 rounded-full shadow-md text-secondary-100 ml-2"
+          <button
+            className={`py-2 px-3 ${
+              foodType === "cookedFood" ? "bg-raw-300" : "bg-highlight-300"
+            } rounded-full animate-pulse duration-75 hover:animate-none shadow-md text-secondary-100 ml-2`}
+            onClick={() => {
+              if (foodType === "cookedFood") {
+                setFoodType("rawFood");
+              } else {
+                setFoodType("cookedFood");
+              }
+            }}
           >
-            Sign in
-          </Link>
+            Raw Food
+          </button>
         </div>
 
         {/* Mobile hamburger */}

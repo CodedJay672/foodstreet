@@ -1,11 +1,25 @@
+"use client";
+
+import FoodContext from "@/context/GlobalContext";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 
 const Delicacies = () => {
+  const { foodType, setFoodType } = useContext(FoodContext);
   return (
-    <section className="banner-gradient py-24 px-4">
+    <section
+      className={`${
+        foodType === "cookedFood" ? "banner-gradient" : "raw-banner-gradient"
+      } py-24 px-4`}
+    >
       <div className="w-full max-w-screen-md flex-between lg:flex-center flex-col lg:flex-row flex-wrap gap-4 mx-auto space-y-6 lg:space-y-0">
-        <article className="features-card group hover:bg-secondary-300 transition-all">
+        <article
+          className={`features-card group ${
+            foodType === "cookedFood"
+              ? "hover:bg-secondary-300"
+              : "hover:bg-raw-200"
+          } transition-all`}
+        >
           <div className="w-[105px] h-[109px] flex-between flex-col gap-3 pr-2">
             <h1 className="text-sm font-bold uppercase group-hover:text-primary-100 transition-all">
               refuel<span className="text-xl block leading-2">package</span>
@@ -29,7 +43,13 @@ const Delicacies = () => {
           </div>
         </article>
 
-        <article className="features-card group hover:bg-secondary-300 transition-all">
+        <article
+          className={`features-card group ${
+            foodType === "cookedFood"
+              ? "hover:bg-secondary-300"
+              : "hover:bg-raw-200"
+          } transition-all`}
+        >
           <div className="w-[105px] h-[109px] flex-between flex-col gap-3 pr-2">
             <h1 className="text-sm font-bold uppercase group-hover:text-primary-100 transition-all">
               special chef
@@ -54,7 +74,13 @@ const Delicacies = () => {
           </div>
         </article>
 
-        <article className="features-card group hover:bg-secondary-300 transition-all">
+        <article
+          className={`features-card group ${
+            foodType === "cookedFood"
+              ? "hover:bg-secondary-300"
+              : "hover:bg-raw-200"
+          } transition-all`}
+        >
           <div className="w-[105px] h-[109px] flex-between flex-col gap-3 pr-2">
             <h1 className="text-sm font-bold uppercase group-hover:text-primary-100 transition-all">
               health check
@@ -79,7 +105,13 @@ const Delicacies = () => {
           </div>
         </article>
 
-        <article className="features-card group hover:bg-secondary-300 transition-all">
+        <article
+          className={`features-card group ${
+            foodType === "cookedFood"
+              ? "hover:bg-secondary-300"
+              : "hover:bg-raw-200"
+          } transition-all`}
+        >
           <div className="h-[109px] flex-center flex-col gap-3 pr-2">
             <h1 className="text-sm font-bold uppercase group-hover:text-primary-100 transition-all">
               chefpot's
@@ -101,7 +133,13 @@ const Delicacies = () => {
           </div>
         </article>
 
-        <article className="features-card group hover:bg-secondary-300 transition-all">
+        <article
+          className={`features-card group ${
+            foodType === "cookedFood"
+              ? "hover:bg-secondary-300"
+              : "hover:bg-raw-200"
+          } transition-all`}
+        >
           <div className="h-[109px] flex-center flex-col gap-3 pr-2">
             <h1 className="text-xl font-bold uppercase group-hover:text-primary-100 transition-all">
               locator

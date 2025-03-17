@@ -1,8 +1,13 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 import { RiArrowLeftCircleLine, RiArrowRightCircleLine } from "react-icons/ri";
 import Menubar from "./shared/Menubar";
+import FoodContext from "@/context/GlobalContext";
 
 const OurMenu = () => {
+  const { foodType, setFoodType } = useContext(FoodContext);
+
   return (
     <section className="w-full py-24">
       <div className="w-full max-w-screen-md mx-auto">
@@ -20,13 +25,21 @@ const OurMenu = () => {
             <div className="w-max rounded-full hover:bg-secondary-200 group flex-center transition-all">
               <RiArrowLeftCircleLine
                 size={44}
-                className="size-9 lg:size-10 group-hover:fill-white text-secondary-300 transition-all cursor-pointer"
+                className={`size-9 lg:size-10 group-hover:fill-white ${
+                  foodType === "cookedFood"
+                    ? "fill-secondary-300"
+                    : "fill-raw-300"
+                } transition-all cursor-pointer`}
               />
             </div>
             <div className="w-max rounded-full hover:bg-secondary-200 group flex-center transition-all">
               <RiArrowRightCircleLine
                 size={44}
-                className="size-9 lg:size-10 group-hover:fill-white text-secondary-300 transition-all cursor-pointer"
+                className={`size-9 lg:size-10 group-hover:fill-white ${
+                  foodType === "cookedFood"
+                    ? "fill-secondary-300"
+                    : "fill-raw-300"
+                } transition-all cursor-pointer`}
               />
             </div>
           </div>

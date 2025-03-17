@@ -15,6 +15,10 @@
   --color-highlight-100: #ffcf00;
   --color-highlight-200: #ffb234;
   --color-highlight-300: #f24e1e;
+
+  --color-raw-100: #f1f9f7;
+  --color-raw-200: #0d806d;
+  --color-raw-300: #007965;
 }
 
 /* Hide radio inputs */
@@ -43,6 +47,10 @@ input[type="radio"]:checked + label {
     @apply bg-gradient-to-r from-[#F26046] from-20% to-[#F94626] to-50% to-[#E20D0F];
   }
 
+  .raw-header-gradient {
+    @apply bg-gradient-to-r from-raw-200 from-20% to-raw-300;
+  }
+
   .flex-between {
     @apply flex justify-between items-center;
   }
@@ -55,8 +63,12 @@ input[type="radio"]:checked + label {
     @apply bg-gradient-to-r from-[#fff9ed] from-20% to-[#ffdfd6] to-100%;
   }
 
+  .raw-banner-gradient {
+    @apply bg-gradient-to-r from-raw-100 from-20% to-raw-100 to-100%;
+  }
+
   .features-card {
-    @apply w-full lg:w-max rounded-xl shadow-md shadow-secondary-200 p-6 flex justify-between items-center border border-secondary-200 gap-2;
+    @apply w-full lg:w-max rounded-xl shadow-md bg-gray-50 shadow-secondary-200 p-6 flex justify-between items-center gap-2;
   }
 
   .explore-button {

@@ -12,7 +12,7 @@ const Operations = () => {
           Anything delivered
         </p>
         <div className="mt-10 flex justify-between flex-col lg:flex-row gap-16">
-          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
+          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2 mx-auto">
             <Image src="/assets/home.png" alt="home" width={140} height={82} />
             <div className="flex-center flex-col gap-1">
               <h1 className="text-base lg:text-lg font-bold font-inter text-highlight-300 text-center">
@@ -25,7 +25,7 @@ const Operations = () => {
               <button className="explore-button flex-center">Explore</button>
             </div>
           </div>
-          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
+          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2 mx-auto">
             <div className="size-25 oveflow-hidden relative">
               <Image
                 src="/assets/deliver.png"
@@ -45,7 +45,7 @@ const Operations = () => {
               <button className="explore-button flex-center">Explore</button>
             </div>
           </div>
-          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
+          <div className="w-[232px] h-[270px] flex-between flex-col space-y-2 mx-auto">
             <Image src="/assets/cart.png" alt="home" width={89} height={104} />
             <div className="flex-center flex-col gap-1">
               <h1 className="text-lg font-bold font-inter text-highlight-300 text-center uppercase">

@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import React, { useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { defaultTabs } from "@/constants";
 import { SidebarProps } from "../../../types";
+import FoodContext from "@/context/GlobalContext";
 
 const Menubar: React.FC<SidebarProps> = ({ tabs = defaultTabs }) => {
   const [activeTab, setActiveTab] = useState<string>(tabs[0].id);
+  const { foodType, setFoodType } = useContext(FoodContext);
 
   const activeTabContent = useMemo(
     () => tabs.filter((tab) => tab.id === activeTab),
@@ -23,8 +25,12 @@ const Menubar: React.FC<SidebarProps> = ({ tabs = defaultTabs }) => {
             htmlFor={tab.id}
             className={`p-2 lg:p-4 flex flex-col lg:flex-row items-center gap-2 w-32 lg:w-52 rounded-lg lg:rounded-full  ${
               activeTab === tab.id
-                ? "bg-secondary-200 text-primary-100"
-                : "hover:bg-secondary-100 hover:text-secondary-200"
+                ? foodType === "cookedFood"
+                  ? "bg-secondary-200 text-primary-100"
+                  : "bg-raw-300 text-primary-100"
+                : foodType === "cookedFood"
+                ? "hover:bg-secondary-100 hover:text-secondary-200"
+                : "hover:bg-raw-100 hover:text-raw-200"
             }`}
           >
             <Image

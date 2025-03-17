@@ -1,9 +1,18 @@
+"use client";
+
+import FoodContext from "@/context/GlobalContext";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 
 const HeroSection = () => {
+  const { foodType, setFoodType } = useContext(FoodContext);
+
   return (
-    <section className="w-full header-gradient overflow-hidden">
+    <section
+      className={`w-full ${
+        foodType === "cookedFood" ? "header-gradient" : "raw-header-gradient"
+      } overflow-hidden`}
+    >
       <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
         <div className="flex justify-center min-w-max flex-1 flex-col gap-4 p-10 lg:p-24 pr-0">
           <div className="w-max py-1 px-3 rounded-full flex-center bg-secondary-100">
