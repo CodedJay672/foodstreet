@@ -16,7 +16,7 @@ const Menubar: React.FC<SidebarProps> = ({ tabs = defaultTabs }) => {
   return (
     <aside className="w-full p-1 flex flex-col lg:flex-row gap-24 lg:gap-6 mt-10">
       {/* Tab Navigation */}
-      <div className="w-full flex-between flex-row lg:flex-col flex-wrap lg:w-max space-y-2">
+      <div className="w-full flex-center flex-row lg:flex-col flex-wrap lg:w-max space-y-2">
         {tabs.map((tab) => (
           <label
             key={tab.id}

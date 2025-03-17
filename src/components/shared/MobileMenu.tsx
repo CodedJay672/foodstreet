@@ -31,13 +31,19 @@ const MobileMenu = () => {
       )}
 
       {showMenu && (
-        <div className="absolute top-10 right-0 w-80 p-6 flex-center flex-col gap-2 bg-secondary-100 rounded-xl">
+        <div className="absolute top-10 right-0 w-80 p-6 flex-center flex-col gap-2 bg-secondary-100 rounded-xl z-50">
           <Link
             href="#"
             className="w-full rounded-lg flex-center p-2 gap-2 hover:bg-secondary-400"
           >
-            <div className="size-10 flex-center rounded-full border border-secondary-200">
-              <Image src="/assets/user.png" alt="user" width={26} height={26} />
+            <div className="size-8 lg:size-10 flex-center rounded-full border border-secondary-200">
+              <Image
+                src="/assets/user.png"
+                alt="user"
+                width={26}
+                height={26}
+                className="size-5 lg:size-6"
+              />
             </div>
             <span className="text-base font-medium">User Profile</span>
           </Link>
@@ -46,12 +52,13 @@ const MobileMenu = () => {
             href="#"
             className="w-full rounded-lg flex-center p-2 gap-2 hover:bg-secondary-400"
           >
-            <div className="size-10 flex-center rounded-full border border-secondary-300">
+            <div className="size-8 lg:size-10 flex-center rounded-full border border-secondary-300">
               <Image
                 src="/assets/shopping-bag.png"
                 alt="user"
                 width={26}
                 height={26}
+                className="size-5 lg:size-6"
               />
             </div>
             <span className="text-base font-medium">My Orders</span>

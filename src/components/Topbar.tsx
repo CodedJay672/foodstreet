@@ -8,10 +8,10 @@ import MobileMenu from "./shared/MobileMenu";
 const Topbar = () => {
   return (
     <section className="w-full header-gradient sticky top-0 left-0 z-50">
-      <nav className="px-8 lg:px-16 py-4 flex-between">
+      <nav className="px-2 lg:px-16 py-4 flex-between">
         <Link href="/">
           <Image
-            src="/assets/logo.png"
+            src="/assets/Logo.png"
             alt="food-street"
             width={132}
             height={32}

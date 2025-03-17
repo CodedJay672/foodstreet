@@ -35,7 +35,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex-center flex-col p-8 pb-0 lg:p-0">
+        <div className="flex-center flex-col mt-10">
           <Image
             src="/assets/Container.png"
             alt="foodstreet"

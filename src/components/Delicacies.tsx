@@ -3,7 +3,7 @@ import React from "react";
 
 const Delicacies = () => {
   return (
-    <section className="banner-gradient p-24">
+    <section className="banner-gradient py-24 px-4">
       <div className="w-full max-w-screen-md flex-between lg:flex-center flex-col lg:flex-row flex-wrap gap-4 mx-auto space-y-6 lg:space-y-0">
         <article className="features-card group hover:bg-secondary-300 transition-all">
           <div className="w-[105px] h-[109px] flex-between flex-col gap-3 pr-2">
@@ -86,7 +86,7 @@ const Delicacies = () => {
               <span className="text-xl block leading-4">discount weekend</span>
             </h1>
 
-            <p className="p-1 text-[11px] text-center font-normal bg-secondary-300 group-hover:bg-highlight-100 group-hover:text-highlight-300 w-32 rounded-full transition-all text-primary-100 text-pretty">
+            <p className="p-1 text-[11px] text-center font-normal bg-secondary-300 w-full group-hover:bg-highlight-100 group-hover:text-highlight-300 rounded-full transition-all text-primary-100 text-pretty">
               20% disc. weekly for lucky winners
             </p>
           </div>

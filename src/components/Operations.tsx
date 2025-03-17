@@ -13,13 +13,7 @@ const Operations = () => {
         </p>
         <div className="mt-10 flex-center flex-col lg:flex-row gap-16">
           <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
-            <Image
-              src="/assets/home.png"
-              alt="home"
-              width={161}
-              height={82}
-              className="size-32 lg:size-40"
-            />
+            <Image src="/assets/home.png" alt="home" width={140} height={82} />
             <div className="flex-center flex-col gap-1">
               <h1 className="text-base lg:text-lg font-bold font-inter text-highlight-300 text-center">
                 WE RUN ALL ERRANDS
@@ -38,7 +32,6 @@ const Operations = () => {
                 alt="home"
                 width={147}
                 height={147}
-                className="size-32 lg:size-40 object-cover"
               />
             </div>
             <div className="flex-center flex-col gap-1">
@@ -53,13 +46,7 @@ const Operations = () => {
             </div>
           </div>
           <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
-            <Image
-              src="/assets/cart.png"
-              alt="home"
-              width={89}
-              height={104}
-              className="size-32 lg:size-40"
-            />
+            <Image src="/assets/cart.png" alt="home" width={89} height={104} />
             <div className="flex-center flex-col gap-1">
               <h1 className="text-lg font-bold font-inter text-highlight-300 text-center">
                 Groceries & More

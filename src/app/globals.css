@@ -56,10 +56,10 @@ input[type="radio"]:checked + label {
   }
 
   .features-card {
-    @apply w-full lg:w-max rounded-xl shadow-md shadow-secondary-200 p-6 flex justify-center items-center border border-secondary-200 gap-2;
+    @apply w-full rounded-xl shadow-md shadow-secondary-200 p-6 flex justify-between items-center border border-secondary-200 gap-2;
   }
 
   .explore-button {
-    @apply w-24 h-6 rounded-full bg-highlight-100 text-[10px] font-bold;
+    @apply w-24 rounded-full bg-highlight-100 text-base py-1 px-3 mt-2 font-bold;
   }
 }
