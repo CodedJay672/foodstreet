@@ -21,8 +21,10 @@ const Menubar: React.FC<SidebarProps> = ({ tabs = defaultTabs }) => {
           <label
             key={tab.id}
             htmlFor={tab.id}
-            className={`p-4 flex items-center gap-2 w-52 rounded-full hover:bg-secondary-200 hover:text-primary-100 ${
-              activeTab === tab.id ? "bg-secondary-200 text-primary-100" : ""
+            className={`p-4 flex items-center gap-2 w-52 rounded-full  ${
+              activeTab === tab.id
+                ? "bg-secondary-200 text-primary-100"
+                : "hover:bg-secondary-100 hover:text-secondary-200"
             }`}
           >
             <Image
