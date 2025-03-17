@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: Inter;
+
+  --color-primary-100: #ffffff;
+  --color-primary-200: #d9d9d9;
+  --color-primary-300: #000;
+
+  --color-secondary-100: #fcdcd2;
+  --color-secondary-200: #f95731;
+  --color-secondary-300: #f24e1e;
+  --color-secondary-400: #ffece7;
+
+  --color-highlight-100: #ffcf00;
+  --color-highlight-200: #ffb234;
+  --color-highlight-300: #f24e1e;
+}
+
+/* Hide radio inputs */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style the labels (tabs) */
+label {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Style active tab */
+input[type="radio"]:checked + span {
+  color: var(--primary-100);
+}
+
+/* Optional: Add visual feedback for active state */
+input[type="radio"]:checked + label {
+  background-color: var(--secondary-200);
+}
+
+@layer utilities {
+  .header-gradient {
+    @apply bg-gradient-to-r from-[#F26046] from-20% to-[#F94626] to-50% to-[#E20D0F];
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .banner-gradient {
+    @apply bg-gradient-to-r from-[#fff9ed] from-20% to-[#ffdfd6] to-100%;
+  }
+
+  .features-card {
+    @apply rounded-xl shadow-md shadow-secondary-200 p-6 flex justify-center items-center border border-secondary-200 gap-2;
+  }
+
+  .explore-button {
+    @apply w-24 h-6 rounded-full bg-highlight-100 text-[10px] font-bold;
+  }
+}
