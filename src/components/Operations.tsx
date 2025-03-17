@@ -5,20 +5,26 @@ const Operations = () => {
   return (
     <section className="pt-24 pb-10 w-full">
       <div className="w-full max-w-screen-md mx-auto">
-        <h1 className="text-lg font-bold font-inter text-highlight-300 text-center">
+        <h1 className="text-base lg:text-lg font-bold font-inter text-highlight-300 text-center">
           WE RUN ALL ERRANDS
         </h1>
-        <p className="text-5xl font-bold font-inter text-center">
+        <p className="text-3xl lg:text-5xl font-bold font-inter text-center">
           Anything delivered
         </p>
-        <div className="mt-10 flex-center gap-16">
+        <div className="mt-10 flex-center flex-col lg:flex-row gap-16">
           <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
-            <Image src="/assets/home.png" alt="home" width={161} height={82} />
+            <Image
+              src="/assets/home.png"
+              alt="home"
+              width={161}
+              height={82}
+              className="size-32 lg:size-40"
+            />
             <div className="flex-center flex-col gap-1">
-              <h1 className="text-lg font-bold font-inter text-highlight-300 text-center">
+              <h1 className="text-base lg:text-lg font-bold font-inter text-highlight-300 text-center">
                 WE RUN ALL ERRANDS
               </h1>
-              <p className="text-sm font-regular font-inter text-center">
+              <p className="text-sm lg:text-base font-regular font-inter text-center">
                 You can order your favorite restaurant through us. We would
                 deliver swiftly to your doorstep
               </p>
@@ -32,14 +38,14 @@ const Operations = () => {
                 alt="home"
                 width={147}
                 height={147}
-                className="object-cover"
+                className="size-32 lg:size-40 object-cover"
               />
             </div>
             <div className="flex-center flex-col gap-1">
-              <h1 className="text-lg font-bold font-inter text-highlight-300 text-center">
+              <h1 className="text-base lg:text-lg font-bold font-inter text-highlight-300 text-center">
                 Swift Delivery
               </h1>
-              <p className="text-sm font-regular font-inter text-center text-pretty">
+              <p className="text-sm lg:text-base font-regular font-inter text-center text-pretty">
                 Faster than you think. Order and we deliver to wherever in
                 minutes
               </p>
@@ -47,7 +53,13 @@ const Operations = () => {
             </div>
           </div>
           <div className="w-[232px] h-[270px] flex-between flex-col space-y-2">
-            <Image src="/assets/cart.png" alt="home" width={89} height={104} />
+            <Image
+              src="/assets/cart.png"
+              alt="home"
+              width={89}
+              height={104}
+              className="size-32 lg:size-40"
+            />
             <div className="flex-center flex-col gap-1">
               <h1 className="text-lg font-bold font-inter text-highlight-300 text-center">
                 Groceries & More

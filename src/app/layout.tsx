@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import Topbar from "@/components/Topbar";
+import BottomBar from "@/components/shared/BottomBar";
 
 const inter = localFont({
   src: [
@@ -70,6 +71,9 @@ export default function RootLayout({
       <body className={`${robotoSans.className} ${inter.variable}`}>
         <Topbar />
         {children}
+        <div className="lg:hidden">
+          <BottomBar />
+        </div>
       </body>
     </html>
   );

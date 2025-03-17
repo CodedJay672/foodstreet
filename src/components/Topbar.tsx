@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IoCaretDown } from "react-icons/io5";
+import MobileMenu from "./shared/MobileMenu";
 
 const Topbar = () => {
   return (
-    <section className="w-full header-gradient">
-      <nav className="px-16 py-4 flex-between">
+    <section className="w-full header-gradient sticky top-0 left-0 z-50">
+      <nav className="px-8 lg:px-16 py-4 flex-between">
         <Link href="/">
           <Image
             src="/assets/logo.png"
@@ -17,7 +18,7 @@ const Topbar = () => {
           />
         </Link>
 
-        <div className="flex-center gap-6">
+        <div className="hidden lg:flex-center gap-6">
           {NavLinks.map((link, idx) => (
             <Link
               href={link.path}
@@ -33,7 +34,7 @@ const Topbar = () => {
           ))}
         </div>
 
-        <div className="flex-center gap-2">
+        <div className="hidden lg:flex-center gap-2">
           <div className="size-10 flex-center rounded-full bg-secondary-100">
             <Image src="/assets/user.png" alt="user" width={26} height={26} />
           </div>
@@ -53,6 +54,9 @@ const Topbar = () => {
             Sign in
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <MobileMenu />
       </nav>
     </section>
   );

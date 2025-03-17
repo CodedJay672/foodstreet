@@ -6,15 +6,15 @@ const Vendor = () => {
     <section className="w-full py-24 flex-center">
       <div className="w-full max-w-screen-md flex-center gap-10 flex-col">
         <div className="w-full flex-col flex-center gap-4">
-          <h1 className="text-base font-bold text-center text-secondary-300">
+          <h1 className="text-sm lg:text-base font-bold text-center text-secondary-300">
             VENDOR EXTRAORDINAIRRE
           </h1>
-          <p className="text-5xl font-bold text-center w-[419px]">
+          <p className="text-3xl lg:text-5xl font-bold text-center w-80 lg:w-[419px]">
             The Best Food Deal In Town
           </p>
         </div>
 
-        <div className=" w-full flex-between">
+        <div className=" w-full flex-between flex-col lg:flex-row space-y-8">
           <div className="w-52 h-56 flex-between flex-col">
             <div className="flex-1 flex-center">
               <Image

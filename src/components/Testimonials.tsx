@@ -5,7 +5,7 @@ import { IoStar } from "react-icons/io5";
 const Testimonials = () => {
   return (
     <section className="w-full">
-      <div className="w-max  flex mx-auto">
+      <div className="w-full lg:w-max flex flex-col lg:flex-row mx-auto">
         <Image
           src="/assets/agent.png"
           alt="agent"
@@ -13,12 +13,12 @@ const Testimonials = () => {
           height={296}
           className="object-cover"
         />
-        <div className="w-[460px] p-2 pl-8 bg-highlight-200 flex flex-col gap-2">
-          <h1 className="font-inter text-lg text-primary-100 uppercase">
+        <div className="w-full lg:w-[460px] p-6 lg:p-2 pl-8 bg-highlight-200 flex flex-col gap-2">
+          <h1 className="font-inter text-base lg:text-lg text-primary-100 uppercase">
             what they say
           </h1>
 
-          <p className="text-3xl font-bold capitalize text-pretty max-w-[285px]">
+          <p className="text-2xl lg:text-3xl font-bold capitalize text-pretty max-w-[285px]">
             what our customers say about us
           </p>
 
@@ -36,8 +36,10 @@ const Testimonials = () => {
               height={54}
             />
             <div className="flex flex-col">
-              <h1 className="text-base font-bold">Adeyemi Folusho</h1>
-              <p className="leading-2">Food Enthusiast</p>
+              <h1 className="text-sm lg:text-base font-bold">
+                Adeyemi Folusho
+              </h1>
+              <p className="text-xs lg:text-sm leading-2">Food Enthusiast</p>
               <div className="flex gap-1 mt-[3px]">
                 <IoStar size={16} className="fill-white" />{" "}
                 <IoStar size={16} className="fill-white" />{" "}

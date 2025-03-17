@@ -3,14 +3,14 @@ import React from "react";
 
 const CTA = () => {
   return (
-    <section className="w-full relative h-98">
+    <section className="w-full relative h-98 overflow-hidden">
       <Image
         src="/assets/cta-banner.png"
         alt="foodstreet download"
         fill
         className="object-cover"
       />
-      <div className="absolute bottom-4 left-72 z-10 w-77 p-4 flex flex-col gap-3">
+      <div className="absolute bottom-8 left-10 lg:left-72 z-10 w-77 p-4 flex flex-col gap-3">
         <h1 className="text-sm font-normal text-highlight-300">DOWNLOAD APP</h1>
         <p className="text-2xl font-bold">Get Started With FoodStreet Today!</p>
         <p className="text-xs font-bold text-pretty pr-12">

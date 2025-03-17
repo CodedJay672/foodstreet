@@ -2,20 +2,24 @@ import { TabContent } from "../../types";
 
 export const NavLinks = [
   {
-    path: "/why-us",
-    label: "Why Foodstreet",
+    path: "/foodstuffs",
+    label: "Foodstuffs",
+    icon: "/assets/foodstuff-fill.png",
   },
   {
-    path: "/services",
-    label: "Services",
+    path: "/myshop",
+    label: "my Shop",
+    icon: "/assets/shop.png",
   },
   {
-    path: "/menu",
-    label: "Menu",
+    path: "/sell",
+    label: "Sell",
+    icon: "/assets/sell.png",
   },
   {
-    path: "/contact-us",
-    label: "Contact",
+    path: "/abundish",
+    label: "Abundish",
+    icon: "/assets/partnership.png",
   },
 ];
 
