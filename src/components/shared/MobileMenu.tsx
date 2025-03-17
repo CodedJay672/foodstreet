@@ -16,14 +16,14 @@ const MobileMenu = () => {
     <div className="relative">
       {showMenu ? (
         <RiCloseLine
-          size={42}
+          size={32}
           color="white"
           className="cursor-pointer"
           onClick={handleShowMenu}
         />
       ) : (
         <RiMenu3Line
-          size={42}
+          size={32}
           color="white"
           className="cursor-pointer"
           onClick={handleShowMenu}

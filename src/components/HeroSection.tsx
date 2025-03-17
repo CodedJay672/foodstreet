@@ -3,9 +3,9 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="w-full min-h-screen lg:max-h-[650px] header-gradient overflow-hidden">
-      <div className="w-full lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
-        <div className="flex flex-col gap-4 p-10 lg:p-24 pr-0">
+    <section className="w-full header-gradient overflow-hidden">
+      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
+        <div className="flex justify-center min-w-max flex-1 flex-col gap-4 p-10 lg:p-24 pr-0">
           <div className="w-max py-1 px-3 rounded-full flex-center bg-secondary-100">
             <span className="text-secondary-200 text-xs lg:text-sm font-normal mr-2">
               More than Fast
@@ -35,13 +35,13 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex-center flex-col mt-10">
+        <div className="w-full flex-center pl-4 flex-col mt-10">
           <Image
             src="/assets/Container.png"
             alt="foodstreet"
             height={900}
             width={700}
-            className="object-contain"
+            className="object-contain grow-0 shink-0"
           />
         </div>
       </div>
