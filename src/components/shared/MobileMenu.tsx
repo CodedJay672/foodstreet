@@ -84,7 +84,7 @@ const MobileMenu = () => {
               handleShowMenu();
             }}
           >
-            {type === "cookedFood" ? "Raw Food" : "Cooked Food"}
+            {foodType === "cookedFood" ? "Raw Food" : "Cooked Food"}
           </button>
         </div>
       )}
