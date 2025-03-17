@@ -80,6 +80,8 @@ const MobileMenu = () => {
               } else {
                 setFoodType("cookedFood");
               }
+
+              handleShowMenu();
             }}
           >
             Raw Food

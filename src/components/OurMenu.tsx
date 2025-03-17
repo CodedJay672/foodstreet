@@ -22,7 +22,13 @@ const OurMenu = () => {
           </div>
 
           <div className="flex-center gap-6">
-            <div className="w-max rounded-full hover:bg-secondary-200 group flex-center transition-all">
+            <div
+              className={`w-max rounded-full ${
+                foodType === "cookedFood"
+                  ? "hover:bg-secondary-200"
+                  : "hover:bg-raw-200"
+              } group flex-center transition-all`}
+            >
               <RiArrowLeftCircleLine
                 size={44}
                 className={`size-9 lg:size-10 group-hover:fill-white ${
@@ -32,7 +38,13 @@ const OurMenu = () => {
                 } transition-all cursor-pointer`}
               />
             </div>
-            <div className="w-max rounded-full hover:bg-secondary-200 group flex-center transition-all">
+            <div
+              className={`w-max rounded-full ${
+                foodType === "cookedFood"
+                  ? "hover:bg-secondary-200"
+                  : "hover:bg-raw-200"
+              } group flex-center transition-all`}
+            >
               <RiArrowRightCircleLine
                 size={44}
                 className={`size-9 lg:size-10 group-hover:fill-white ${
