@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const AbundishHero = () => {
   return (
@@ -15,6 +16,13 @@ const AbundishHero = () => {
           <p className="text-2xl lg:text-4xl font-bold text-secondary-100 text-pretty">
             Earn money from the comfort of your home
           </p>
+
+          <Link
+            href="#"
+            className="border hover:bg-raw-100 hover:text-raw-200 transition-all border-raw-100 rounded-lg w-max py-2 px-6 text-raw-100"
+          >
+            Learn more
+          </Link>
         </div>
 
         <div className="w-full flex-center flex-col">
