@@ -3,7 +3,7 @@ import ProductCard from "./shared/ProductCard";
 
 const Products = () => {
   return (
-    <section className="w-full p-6 my-24">
+    <section className="w-full p-1 my-24">
       <div className="flex-center flex-col gap-2">
         <h1 className="text-3xl lg:text-5xl font-bold text-raw-300">
           Products

@@ -9,10 +9,8 @@ const AbundishOffers = () => {
   return (
     <section className="w-full py-24 flex-center flex-col bg-raw-100">
       <DescWithImg
-        img="/assets/food-vendor.jpg"
         heading="subscribe"
         desc="Abundish is all about providing freshly cut vegetables and other foodstuff for individuals. Subscribe to get our Premium Card NOW!!"
-        order
       />
 
       <div className="w-full max-w-screen-md mx-auto px-6 py-24">

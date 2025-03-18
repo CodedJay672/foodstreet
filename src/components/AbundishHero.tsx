@@ -5,8 +5,8 @@ import Link from "next/link";
 const AbundishHero = () => {
   return (
     <section className={`w-full overflow-hidden bg-raw-300`}>
-      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
-        <div className="flex justify-center flex-1 flex-col gap-4 p-10 lg:p-24 pr-0">
+      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16 p-3">
+        <div className="flex justify-center flex-1 flex-col gap-4 p-6 lg:p-24 pr-0">
           <h1 className="text-5xl lg:text-6xl font-extrabold text-secondary-100 ">
             Become an{" "}
             <span className="text-highlight-100 tracking-widest block">
@@ -27,7 +27,7 @@ const AbundishHero = () => {
 
         <div className="w-full flex-center flex-col">
           <Image
-            src="/assets/abundish-hero.jpg"
+            src="/assets/abundish-hero.png"
             alt="foodstreet"
             height={700}
             width={400}
