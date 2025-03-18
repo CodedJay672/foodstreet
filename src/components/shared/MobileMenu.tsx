@@ -1,14 +1,14 @@
 "use client";
 
-import FoodContext from "@/context/GlobalContext";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 import { RiCloseLine, RiMenu3Line } from "react-icons/ri";
 
 const MobileMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { foodType, setFoodType } = useContext(FoodContext);
+  const pathname = usePathname();
 
   const handleShowMenu = () => {
     setShowMenu((prev) => !prev);
@@ -35,7 +35,7 @@ const MobileMenu = () => {
       {showMenu && (
         <div
           className={`absolute top-10 right-0 w-80 p-6 flex-center flex-col gap-2 ${
-            foodType === "cookedFood" ? "bg-secondary-100" : "bg-raw-100"
+            pathname === "/" ? "bg-secondary-100" : "bg-raw-100"
           } rounded-xl z-50`}
         >
           <Link
@@ -70,22 +70,14 @@ const MobileMenu = () => {
             <span className="text-base font-medium">My Orders</span>
           </Link>
 
-          <button
+          <Link
+            href={pathname === "/" ? "/abundish" : "/"}
             className={`py-2 px-3 ${
-              foodType === "cookedFood" ? "bg-raw-300" : "bg-highlight-300"
+              pathname === "/" ? "bg-raw-300" : "bg-highlight-300"
             } rounded-full animate-pulse duration-75 hover:animate-none shadow-md text-secondary-100 ml-2`}
-            onClick={() => {
-              if (foodType === "cookedFood") {
-                setFoodType("rawFood");
-              } else {
-                setFoodType("cookedFood");
-              }
-
-              handleShowMenu();
-            }}
           >
-            {foodType === "cookedFood" ? "Raw Food" : "Cooked Food"}
-          </button>
+            {pathname === "/" ? "Raw Food" : "Cooked Food"}
+          </Link>
         </div>
       )}
     </div>

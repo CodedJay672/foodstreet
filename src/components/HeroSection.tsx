@@ -1,16 +1,16 @@
 "use client";
 
-import FoodContext from "@/context/GlobalContext";
 import Image from "next/image";
-import React, { useContext } from "react";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 const HeroSection = () => {
-  const { foodType, setFoodType } = useContext(FoodContext);
+  const pathname = usePathname();
 
   return (
     <section
       className={`w-full ${
-        foodType === "cookedFood" ? "header-gradient" : "raw-header-gradient"
+        pathname === "/" ? "header-gradient" : "raw-header-gradient"
       } overflow-hidden`}
     >
       <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">

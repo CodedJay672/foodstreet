@@ -70,16 +70,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ContextProvider>
-        <body className={`${robotoSans.className} ${inter.variable}`}>
-          <Topbar />
-          {children}
-          <Footer />
-          <div className="lg:hidden">
-            <BottomBar />
-          </div>
-        </body>
-      </ContextProvider>
+      <body className={`${robotoSans.className} ${inter.variable}`}>
+        <Topbar />
+        {children}
+        <Footer />
+        <div className="lg:hidden">
+          <BottomBar />
+        </div>
+      </body>
     </html>
   );
 }

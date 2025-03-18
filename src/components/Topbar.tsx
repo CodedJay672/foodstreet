@@ -3,18 +3,18 @@
 import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React from "react";
 import { IoCaretDown } from "react-icons/io5";
 import MobileMenu from "./shared/MobileMenu";
-import FoodContext from "@/context/GlobalContext";
+import { usePathname } from "next/navigation";
 
 const Topbar = () => {
-  const { foodType, setFoodType } = useContext(FoodContext);
+  const pathname = usePathname();
 
   return (
     <section
       className={`w-full ${
-        foodType === "cookedFood" ? "header-gradient" : "raw-header-gradient"
+        pathname === "/" ? "header-gradient" : "raw-header-gradient"
       } sticky top-0 left-0 z-50`}
     >
       <nav className="px-2 lg:px-16 py-4 flex-between">
@@ -56,20 +56,14 @@ const Topbar = () => {
             />
           </div>
 
-          <button
+          <Link
+            href={pathname === "/" ? "/abundish" : "/"}
             className={`py-2 px-3 ${
-              foodType === "cookedFood" ? "bg-raw-300" : "bg-highlight-300"
+              pathname === "/" ? "bg-raw-300" : "bg-highlight-300"
             } rounded-full animate-pulse duration-75 hover:animate-none shadow-md text-secondary-100 ml-2`}
-            onClick={() => {
-              if (foodType === "cookedFood") {
-                setFoodType("rawFood");
-              } else {
-                setFoodType("cookedFood");
-              }
-            }}
           >
-            {foodType === "cookedFood" ? "Raw Food" : "Cooked Food"}
-          </button>
+            {pathname === "/" ? "Raw Food" : "Cooked Food"}
+          </Link>
 
           {/* Mobile hamburger */}
           <MobileMenu />
