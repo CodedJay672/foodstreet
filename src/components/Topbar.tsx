@@ -43,11 +43,11 @@ const Topbar = () => {
           ))}
         </div>
 
-        <div className="hidden lg:flex justify-center items-center gap-2">
-          <div className="size-10 flex-center rounded-full bg-secondary-100">
+        <div className="flex justify-center items-center gap-2">
+          <div className="size-10 hidden lg:flex items-center justify-center rounded-full bg-secondary-100">
             <Image src="/assets/user.png" alt="user" width={26} height={26} />
           </div>
-          <div className="size-10 flex-center rounded-full bg-secondary-100">
+          <div className="size-10 hidden lg:flex items-center justify-center rounded-full bg-secondary-100">
             <Image
               src="/assets/shopping-bag.png"
               alt="user"
@@ -68,12 +68,12 @@ const Topbar = () => {
               }
             }}
           >
-            Raw Food
+            {foodType === "cookedFood" ? "Raw Food" : "Cooked Food"}
           </button>
-        </div>
 
-        {/* Mobile hamburger */}
-        <MobileMenu />
+          {/* Mobile hamburger */}
+          <MobileMenu />
+        </div>
       </nav>
     </section>
   );

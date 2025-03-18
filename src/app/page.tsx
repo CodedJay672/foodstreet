@@ -1,6 +1,5 @@
 import CTA from "@/components/CTA";
 import Delicacies from "@/components/Delicacies";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import Operations from "@/components/Operations";
 import OurMenu from "@/components/OurMenu";
@@ -17,7 +16,6 @@ export default function Home() {
       <Testimonials />
       <Operations />
       <CTA />
-      <Footer />
     </>
   );
 }
