@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { HiCheckCircle } from "react-icons/hi2";
 import { IoMdCash } from "react-icons/io";
-import { Md12Mp, MdBusiness, MdHome, MdShop2, MdWallet } from "react-icons/md";
+import { MdBusiness, MdShop2, MdWallet } from "react-icons/md";
 
 const LearnMore = () => {
   return (
