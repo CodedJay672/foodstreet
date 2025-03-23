@@ -11,7 +11,7 @@ import { IoMail } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <section className="w-full py-24 px-10 ">
+    <section className="w-full pt-24 px-10 ">
       <div className="w-full max-w-screen-md flex justify-between flex-col lg:flex-row mx-auto space-y-10 lg:space-y-0">
         <div className="w-51 flex flex-col gap-6">
           <Image
@@ -105,6 +105,12 @@ const Footer = () => {
             <IoMail size={10} className="fill-highlight-300" />
           </Link>
         </div>
+      </div>
+      <div className="w-full border-t border-gray-300 flex-center p-5 mt-10 mb-24 lg:mb-0">
+        <span className="text-gray-600 text-xs">
+          Created by Wakocoding, since {new Date().getFullYear()}. All rights
+          reserved
+        </span>
       </div>
     </section>
   );

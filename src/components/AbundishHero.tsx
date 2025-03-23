@@ -18,7 +18,7 @@ const AbundishHero = () => {
           </p>
 
           <Link
-            href="#"
+            href="/learn-more"
             className="border hover:bg-raw-100 hover:text-raw-200 transition-all border-raw-100 rounded-lg w-max py-2 px-6 text-raw-100"
           >
             Learn more
