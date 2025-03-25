@@ -19,7 +19,7 @@ const VerifyEmail = async ({
         <Image
           src="/assets/complete.svg"
           alt="completed"
-          width={300}
+          width={200}
           height={260}
         />
         <h1 className="text-xl lg:text-3xl text-center font-semibold">

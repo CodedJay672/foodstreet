@@ -104,7 +104,7 @@ export const userEmailVerified = async (userId: string, secret: string) => {
     const { account } = await createSessionClient();
 
     // verify user from Appwrite
-    const response = account.updateVerification(userId, secret);
+    const response = await account.updateVerification(userId, secret);
 
     if (!response) {
       throw new Error("User verification failed.");
