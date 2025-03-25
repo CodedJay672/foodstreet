@@ -47,7 +47,7 @@ input[type="radio"]:checked + label {
 
 @layer utilities {
   .header-gradient {
-    @apply bg-gradient-to-r from-[#F26046] from-20% to-[#F94626] to-50% to-[#E20D0F];
+    @apply bg-gradient-to-r from-[#F26046] from-20% to-[#F94626] to-100%;
   }
 
   .raw-header-gradient {

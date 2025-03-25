@@ -16,3 +16,16 @@ export const authSchema = (type: string) =>
     email: z.string().email(),
     password: z.string(),
   });
+
+export const shopSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  location: z.string(),
+  description: z.string(),
+  age: z.number(),
+  phone: z.string(),
+  occupation: z.string(),
+  workAddress: z.string(),
+  imageUrl: z.string(),
+  bannerUrl: z.string(),
+});

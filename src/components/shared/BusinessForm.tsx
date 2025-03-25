@@ -1,0 +1,138 @@
+"use client";
+
+import { shopSchema } from "@/validation/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
+
+interface Props {
+  creator: string;
+}
+
+const BusinessForm = ({ creator }: Props) => {
+  const form = useForm<z.infer<typeof shopSchema>>({
+    resolver: zodResolver(shopSchema),
+  });
+
+  async function onSubmit(values: z.infer<typeof shopSchema>) {
+    console.log(values);
+  }
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 mt-10 w-full"
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Business name</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  className="w-full h-10 text-base border-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="w-full flex items-center gap-5 lg:gap-10">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Business email</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="w-full h-10 text-base border-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Business location</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="w-full h-10 text-base border-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <FormField
+          control={form.control}
+          name="workAddress"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Work address</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  className="w-full h-10 text-base border-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Business description</FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  className="h-44 resize-none border-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          className="text-white text-base lg:text-lg font-medium w-full rounded-full bg-raw-300 mt-6"
+        >
+          Create
+        </Button>
+        <p className="text-xs italic text-center w-full -mt-5">
+          By clicking <strong>Create</strong> you agree to our{" "}
+          <span className="text-raw-300 underline">policies</span>
+        </p>
+      </form>
+    </Form>
+  );
+};
+
+export default BusinessForm;
