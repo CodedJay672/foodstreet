@@ -1,3 +1,4 @@
+import { getShops } from "@/lib/actions/shop.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,11 +32,28 @@ const MyShop = async () => {
     );
   }
 
+  const businesses = await getShops(user.$id);
   return (
-    <section className="m-full min-h-screen">
-      <div className="w-full h-64 lg:h-60 flex-center">
-        <h1 className="text-center">Shop banner</h1>
-      </div>
+    <section className="m-full min-h-screen flex-center flex-col">
+      {businesses?.documents && businesses.total ? (
+        <div className="w-full h-64 lg:h-60 flex-center">
+          <h1 className="text-center">
+            You have {businesses.total} active shops
+          </h1>
+        </div>
+      ) : (
+        <div className="w-full max-w-screen-md flex-center flex-col p-6">
+          <h1 className="text-center">
+            You have {businesses.total} active shops
+          </h1>
+          <Link
+            href="/create-business"
+            className="text-white bg-raw-300 px-16 py-2 rounded-full"
+          >
+            Create business
+          </Link>
+        </div>
+      )}
     </section>
   );
 };
