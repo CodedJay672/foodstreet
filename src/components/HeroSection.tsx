@@ -9,11 +9,11 @@ const HeroSection = () => {
 
   return (
     <section
-      className={`w-full ${
+      className={`w-full flex-center ${
         pathname === "/" ? "header-gradient" : "raw-header-gradient"
       } overflow-hidden`}
     >
-      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row lg:mt-16">
+      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row">
         <div className="flex justify-center min-w-max flex-1 flex-col gap-4 p-10 lg:p-24 pr-0">
           <div className="w-max py-1 px-3 rounded-full flex-center bg-secondary-100">
             <span className="text-secondary-200 text-xs lg:text-sm font-normal mr-2">
