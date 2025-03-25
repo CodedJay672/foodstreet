@@ -9,12 +9,6 @@ const AuthFormSchema = authSchema("SIGN_UP");
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
-    const parsedData = AuthFormSchema.safeParse(values);
-
-    if (parsedData.error) {
-      return parsedData.error.errors[0].message;
-    }
-
     const { account } = await createAdminClient();
 
     const session = await account.createEmailPasswordSession(
@@ -23,7 +17,7 @@ export const SignIn = async (values: { email: string; password: string }) => {
     );
 
     if (!session) {
-      throw new Error("SignIn failed");
+      throw new Error("Sign in failed.");
     }
 
     (await cookies()).set("appwrite-session", session.secret, {
@@ -34,8 +28,8 @@ export const SignIn = async (values: { email: string; password: string }) => {
     });
 
     return session;
-  } catch (error) {
-    throw new Error();
+  } catch (error: any) {
+    throw new Error(error.message as string);
   }
 };
 
@@ -67,10 +61,11 @@ export const SignUp = async (values: {
 
     const session = await SignIn(values);
 
+    // save the new user info to the Database
     await saveToDB({ name, email });
     return session;
-  } catch (error) {
-    throw new Error(error as string);
+  } catch (error: any) {
+    throw new Error(error.message as string);
   }
 };
 
@@ -92,6 +87,32 @@ const saveToDB = async (values: { name: string; email: string }) => {
     return newUser;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const verifyUserEmail = async () => {
+  try {
+    const { account } = await createSessionClient();
+    await account.createVerification("http://localhost:3000/verify-email");
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const userEmailVerified = async (userId: string, secret: string) => {
+  try {
+    const { account } = await createSessionClient();
+
+    // verify user from Appwrite
+    const response = account.updateVerification(userId, secret);
+
+    if (!response) {
+      throw new Error("User verification failed.");
+    }
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 

@@ -11,10 +11,12 @@ import CustomInput from "./CustomInput";
 import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
-import { SignIn, SignUp } from "@/lib/actions/user.actions";
+import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
+import { useRouter } from "next/navigation";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof authFormSchema>>({
     resolver: zodResolver(authFormSchema),
@@ -26,14 +28,13 @@ const AuthForm = ({ type }: { type: string }) => {
         const response = await SignIn(values);
 
         if (!response) {
-          toast.error("Error", {
-            description: "Signin failed.",
-          });
-
-          return false;
+          return toast.error("SignIn failed");
         }
 
-        toast.success("Signed in Successful!");
+        toast.success("Signed in successfully!");
+
+        //redirect to home on signin
+        router.push("/");
       } else {
         const response = await SignUp({
           ...values,
@@ -41,19 +42,20 @@ const AuthForm = ({ type }: { type: string }) => {
         });
 
         if (!response) {
-          toast.error("Error", {
-            description: "Signup failed.",
-          });
-
+          toast.error("Sign up failed");
           return false;
         }
 
         toast.success("Signed Up Successful!");
+
+        // verify user email
+        await verifyUserEmail();
+
+        //redirect to email sent page
+        router.push("/verify");
       }
     } catch (error: any) {
-      toast.error("Error", {
-        description: error.message,
-      });
+      toast.error(error.message);
     }
   }
 
