@@ -7,21 +7,42 @@ import { authSchema } from "@/validation/schema";
 
 const AuthFormSchema = authSchema("SIGN_UP");
 
-// export const SignIn = async (email: string, password: string) => {
-//   const session = await createEmailPasswordSession(email, password);
+export const SignIn = async (values: { email: string; password: string }) => {
+  try {
+    const parsedData = AuthFormSchema.safeParse(values);
 
-//   (await cookies()).set("my-custom-session", session.secret, {
-//     path: "/",
-//     httpOnly: true,
-//     sameSite: "strict",
-//     secure: true,
-//   });
-// }
+    if (parsedData.error) {
+      return parsedData.error.errors[0].message;
+    }
+
+    const { account } = await createAdminClient();
+
+    const session = await account.createEmailPasswordSession(
+      values.email,
+      values.password
+    );
+
+    if (!session) {
+      throw new Error("SignIn failed");
+    }
+
+    (await cookies()).set("appwrite-session", session.secret, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: true,
+    });
+
+    return session;
+  } catch (error) {
+    throw new Error();
+  }
+};
 
 export const SignUp = async (values: {
   email: string;
   password: string;
-  fullname?: string;
+  fullname: string;
 }) => {
   const { email, password, fullname: name } = values;
   try {
@@ -44,16 +65,9 @@ export const SignUp = async (values: {
       throw new Error("User already exists. Please login to continue");
     }
 
-    const session = await account.createEmailPasswordSession(email, password);
+    const session = await SignIn(values);
 
-    (await cookies()).set("appwrite-session", session.secret, {
-      path: "/",
-      httpOnly: true,
-      sameSite: "strict",
-      secure: true,
-    });
-
-    // const newUser = await saveToDB({name, email});
+    await saveToDB({ name, email });
     return session;
   } catch (error) {
     throw new Error(error as string);
@@ -70,6 +84,12 @@ const saveToDB = async (values: { name: string; email: string }) => {
       ID.unique(),
       values
     );
+
+    if (!newUser) {
+      throw new Error();
+    }
+
+    return newUser;
   } catch (error) {
     console.log(error);
   }

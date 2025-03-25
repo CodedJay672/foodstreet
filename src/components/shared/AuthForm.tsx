@@ -11,7 +11,7 @@ import CustomInput from "./CustomInput";
 import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
-import { SignUp } from "@/lib/actions/user.actions";
+import { SignIn, SignUp } from "@/lib/actions/user.actions";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -23,17 +23,32 @@ const AuthForm = ({ type }: { type: string }) => {
   async function onSubmit(values: z.infer<typeof authFormSchema>) {
     try {
       if (type === "SIGN_IN") {
-        console.log(values);
+        const response = await SignIn(values);
+
+        if (!response) {
+          toast.error("Error", {
+            description: "Signin failed.",
+          });
+
+          return false;
+        }
+
+        toast.success("Signed in Successful!");
       } else {
-        const response = await SignUp(values);
+        const response = await SignUp({
+          ...values,
+          fullname: values.fullname || "",
+        });
 
         if (!response) {
           toast.error("Error", {
             description: "Signup failed.",
           });
+
+          return false;
         }
 
-        toast.success("Sign Up Successful!");
+        toast.success("Signed Up Successful!");
       }
     } catch (error: any) {
       toast.error("Error", {
