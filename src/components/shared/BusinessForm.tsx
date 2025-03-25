@@ -16,18 +16,37 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { createShop } from "@/lib/actions/shop.actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { FaSpinner } from "react-icons/fa6";
 
-interface Props {
-  creator: string;
-}
+const BusinessForm = ({ creator }: { creator: string }) => {
+  const router = useRouter();
 
-const BusinessForm = ({ creator }: Props) => {
   const form = useForm<z.infer<typeof shopSchema>>({
     resolver: zodResolver(shopSchema),
   });
 
   async function onSubmit(values: z.infer<typeof shopSchema>) {
-    console.log(values);
+    try {
+      //construct the data for the database
+      const data = {
+        ...values,
+        creator,
+      };
+
+      const shop = await createShop(data);
+
+      if (!shop) {
+        return toast.error("Process failed. Retry");
+      }
+
+      toast.success("Shop created!!");
+      router.push("/myshop");
+    } catch (error: any) {
+      toast.error(error.message);
+    }
   }
 
   return (
@@ -87,9 +106,45 @@ const BusinessForm = ({ creator }: Props) => {
             )}
           />
         </div>
+
+        <div className="w-full flex items-center gap-5 lg:gap-10">
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Business phone</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="w-full h-10 text-base border-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="occupation"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Occupation</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="w-full h-10 text-base border-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
         <FormField
           control={form.control}
-          name="workAddress"
+          name="work-address"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Work address</FormLabel>
@@ -120,10 +175,15 @@ const BusinessForm = ({ creator }: Props) => {
             </FormItem>
           )}
         />
+
         <Button
           type="submit"
-          className="text-white text-base lg:text-lg font-medium w-full rounded-full bg-raw-300 mt-6"
+          className="text-white text-base lg:text-lg font-medium w-full rounded-full bg-raw-300 mt-6 cursor-pointer"
+          disabled={form.formState.isSubmitting}
         >
+          {form.formState.isSubmitting && (
+            <FaSpinner size={24} className="animate-spin" />
+          )}
           Create
         </Button>
         <p className="text-xs italic text-center w-full -mt-5">

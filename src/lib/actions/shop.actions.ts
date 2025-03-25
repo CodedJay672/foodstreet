@@ -1,6 +1,6 @@
 "use server";
 
-import { Query } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { cache } from "react";
 
@@ -37,3 +37,24 @@ export const getShops = cache(async (creator: string | undefined) => {
     throw new Error("Error: Fetch failed.");
   }
 });
+
+export const createShop = async (values: ShopType) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const response = await database.createDocument(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_SHOPS_COLLECTION_ID!,
+      ID.unique(),
+      values
+    );
+
+    if (!response) {
+      throw new Error("Shop creation failed.");
+    }
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};

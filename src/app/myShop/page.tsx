@@ -33,6 +33,7 @@ const MyShop = async () => {
   }
 
   const businesses = await getShops(user.$id);
+
   return (
     <section className="m-full min-h-screen flex-center flex-col">
       {businesses?.documents && businesses.total ? (
