@@ -19,7 +19,7 @@ const LearnMore = () => {
           business and secure your future.
         </p>
 
-        <h2 className="text-base lg:text-lg font-semibold px-3 py-1 bg-raw-300 text-raw-100 text-center w-max rounded-full mx-auto mt-24 mb-1">
+        <h2 className="text-base lg:text-lg px-3 py-1 bg-raw-300 text-raw-100 text-center w-max rounded-full mx-auto mt-24 mb-1">
           Why join
         </h2>
 
@@ -117,7 +117,7 @@ const LearnMore = () => {
           </p>
 
           <Link
-            href="/sign-up"
+            href="/sign-in"
             className="bg-raw-300 text-white px-4 py-2 rounded-full flex-center"
           >
             Register now

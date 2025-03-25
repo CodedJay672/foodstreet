@@ -5,6 +5,7 @@ import Topbar from "@/components/Topbar";
 import BottomBar from "@/components/shared/BottomBar";
 import ContextProvider from "@/context/ContextProvider";
 import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = localFont({
   src: [
@@ -77,6 +78,7 @@ export default function RootLayout({
         <div className="lg:hidden">
           <BottomBar />
         </div>
+        <Toaster />
       </body>
     </html>
   );

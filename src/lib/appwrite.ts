@@ -5,10 +5,10 @@ import { cookies } from "next/headers";
 
 export async function createSessionClient() {
   const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!);
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!)
+    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
 
-  const session = (await cookies()).get("food-street-session");
+  const session = (await cookies()).get("appwrite-session");
 
   //check if session already exists
   if (!session || !session.value) {
@@ -26,8 +26,8 @@ export async function createSessionClient() {
 
 export async function createAdminClient() {
   const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!)
+    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!)
     .setKey(process.env.APPPWRITE_SECRET!);
 
   return {
