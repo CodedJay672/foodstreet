@@ -1,6 +1,7 @@
-import { userEmailVerified } from "@/lib/actions/user.actions";
-import Image from "next/image";
 import React from "react";
+import { userEmailVerified } from "@/lib/actions/user.actions";
+import Link from "next/link";
+import Image from "next/image";
 
 const VerifyEmail = async ({
   searchParams,
@@ -26,6 +27,13 @@ const VerifyEmail = async ({
           Verification Successful
         </h1>
         <p className="text-center">You can close this window.</p>
+
+        <Link
+          href="/myShop"
+          className="text-raw-300 font-medium text-base lg:text-lg mt-10 py-1 px-10 border border-raw-300 rounded-full hover:bg-raw-300 hover:text-white transition-all"
+        >
+          Create e-Shop
+        </Link>
       </div>
     </section>
   );
