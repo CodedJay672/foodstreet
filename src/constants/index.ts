@@ -7,8 +7,8 @@ export const NavLinks = [
     icon: "/assets/foodstuff-fill.png",
   },
   {
-    path: "/myshop",
-    label: "my Shop",
+    path: "/my-shop",
+    label: "myShop",
     icon: "/assets/shop.png",
   },
   {
