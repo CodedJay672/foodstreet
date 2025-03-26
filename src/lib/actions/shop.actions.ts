@@ -3,7 +3,6 @@
 import { ID, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { cache } from "react";
-import { ShopType } from "@/types";
 
 export const getShops = cache(async (creator: string | undefined) => {
   try {

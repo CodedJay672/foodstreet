@@ -1,5 +1,3 @@
-import { URL } from "url";
-
 type ShopType = {
   creator: string;
   name: string;

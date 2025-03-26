@@ -1,11 +1,19 @@
-import { runInCleanSnapshot } from "next/dist/server/app-render/clean-async-snapshot-instance";
+"use client";
+
 import Image from "next/image";
 import { Models } from "node-appwrite";
-import React from "react";
+import React, { useState } from "react";
 import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
   const [vendor] = shopInfo;
+  const [seeMore, setSeeMore] = useState(false);
+
+  const handleSeeMe = () => {
+    setSeeMore((prev) => !prev);
+  };
 
   return (
     <div className="w-full max-w-screen-md ml-0 lg:ml-64 bg-white min-h-screen">
@@ -14,11 +22,14 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
           <Image src={vendor.bannerUrl} alt={vendor.name} fill />
         )}
       </div>
-      <div className="flex items-center gap-10 px-10 relative">
-        <div className="w-40 h-40 rounded-full overflow-hidden flex-center border-2 border-white bg-gray-300 absolute -top-20 left-40 lg:left-10">
-          <Image src={vendor.imageUrl} alt="profile" fill />
+
+      <div className="flex items-center gap-10 px-6 lg:px-10 relative w-full">
+        <div className="w-40 h-40 rounded-full overflow-hidden flex-center border-2 border-white bg-gray-300 absolute -top-20 left-1/2 lg:left-10">
+          {vendor.imageUrl && (
+            <Image src={vendor.imageUrl} alt="profile" fill />
+          )}
         </div>
-        <div className="w-full pt-24 lg:py-6 px-4 lg:px-44 ">
+        <div className="w-full pt-24 lg:py-6 lg:px-44 ">
           <h1 className="text-2xl lg:text-4xl font-bold text-center lg:text-left">
             {vendor.name}
           </h1>
@@ -48,9 +59,14 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
           </div>
         </div>
       </div>
+
       <div className="mt-6 lg:mt-10 border-t border-gray-300 p-6 lg:p-10">
         <h2 className="text-xl lg:text-2xl font-semibold">About</h2>
-        <div className="mt-4">
+        <div
+          className={cn(`mt-4 h-24 overflow-hidden transition-[height]`, {
+            "h-auto": seeMore,
+          })}
+        >
           {vendor.description.split("\n").map((item: string, idx: number) => (
             <p
               key={idx}
@@ -60,10 +76,19 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
             </p>
           ))}
         </div>
+        <div className="w-full flex-center mt-2">
+          <Button
+            variant="outline"
+            onClick={handleSeeMe}
+            className="border-0 text-raw-300 cursor-pointer"
+          >
+            see more
+          </Button>
+        </div>
       </div>
 
-      <div className="mt-6 lg:mt-10 p-6 lg:p-10 flex flex-col gap-4 min-h-60px w-full">
-        <h2 className="text-base font-semibold">All Products</h2>
+      <div className="mt-4 lg:mt-10 p-6 lg:p-10 flex flex-col gap-4 min-h-60px w-full">
+        <h2 className="text-xl lg:text-2xl font-semibold">All Products</h2>
         <div className="flex-center">
           {vendor.products && vendor.products?.length > 0 ? (
             <></>
