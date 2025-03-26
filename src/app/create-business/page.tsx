@@ -1,13 +1,11 @@
 import BusinessForm from "@/components/shared/BusinessForm";
-import { getCurrentUser, getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const CreateBusiness = async () => {
   const user = await getCurrentUser();
-
-  console.log(user?.documents?.[0].$id);
 
   if (!user) {
     redirect("/sign-in");

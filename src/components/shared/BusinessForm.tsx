@@ -43,7 +43,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
       }
 
       toast.success("Shop created!!");
-      router.push("/myshop");
+      router.push("/my-shop");
     } catch (error: any) {
       toast.error(error.message);
     }

@@ -20,7 +20,6 @@ import {
 import { useRouter } from "next/navigation";
 
 const AuthForm = ({ type }: { type: string }) => {
-  const user = use(getCurrentUser());
   const authFormSchema = authSchema(type);
   const router = useRouter();
 
@@ -47,7 +46,6 @@ const AuthForm = ({ type }: { type: string }) => {
           name: values.fullname || "",
           occupation: values.occupation || "",
           dob: new Date(values.dob!),
-          accountId: user?.documents?.[0]?.accountId,
         });
 
         if (!response) {
@@ -89,7 +87,7 @@ const AuthForm = ({ type }: { type: string }) => {
               name="dob"
               label="Date of birth"
               control={form.control}
-              placeholder="yyyy-mm-dd"
+              placeholder="YYYY-MM-DD"
             />
           </>
         )}

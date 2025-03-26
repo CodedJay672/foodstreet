@@ -1,10 +1,11 @@
 import AuthForm from "@/components/shared/AuthForm";
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const SignUp = async () => {
-  const user = await getLoggedInUser();
+  const user = await getCurrentUser();
+
   if (user) redirect("/");
 
   return (

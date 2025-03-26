@@ -39,7 +39,6 @@ export const SignUp = async (values: {
   name: string;
   occupation: string;
   dob: Date;
-  accountId: string;
 }) => {
   const { email, password, name, occupation, dob } = values;
   try {
@@ -73,13 +72,14 @@ const saveToDB = async (values: {
   dob: Date;
 }) => {
   const { database } = await createAdminClient();
+  const user = await getLoggedInUser();
 
   try {
     const newUser = await database.createDocument(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_USERS_COLLECTION_ID!,
       ID.unique(),
-      values
+      { ...values, accountId: user?.$id }
     );
 
     if (!newUser) {
