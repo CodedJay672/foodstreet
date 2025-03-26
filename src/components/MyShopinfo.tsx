@@ -23,8 +23,8 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
         )}
       </div>
 
-      <div className="flex items-center gap-10 px-6 lg:px-10 relative w-full">
-        <div className="w-40 h-40 rounded-full overflow-hidden flex-center border-2 border-white bg-gray-300 absolute -top-20 left-1/2 lg:left-10">
+      <div className="flex justify-center lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
+        <div className="w-40 h-40 rounded-full overflow-hidden flex-center border-2 border-white bg-gray-300 absolute -top-20 lg:left-10">
           {vendor.imageUrl && (
             <Image src={vendor.imageUrl} alt="profile" fill />
           )}
