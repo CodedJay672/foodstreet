@@ -1,10 +1,11 @@
 "use client";
 
+import React, { useState } from "react";
 import Image from "next/image";
 import { Models } from "node-appwrite";
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
-import { Button } from "./ui/button";
+
 import { cn } from "@/lib/utils";
 
 const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
@@ -82,7 +83,7 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
             onClick={handleSeeMe}
             className="border-0 text-raw-300 cursor-pointer"
           >
-            see more
+            see {seeMore ? "less" : "more"}
           </Button>
         </div>
       </div>

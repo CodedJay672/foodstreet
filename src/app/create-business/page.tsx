@@ -1,11 +1,13 @@
 import BusinessForm from "@/components/shared/BusinessForm";
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser, getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const CreateBusiness = async () => {
-  const user = await getLoggedInUser();
+  const user = await getCurrentUser();
+
+  console.log(user?.documents?.[0].$id);
 
   if (!user) {
     redirect("/sign-in");
@@ -30,7 +32,7 @@ const CreateBusiness = async () => {
           <p className="text-base font-medium text-center">
             Please fill out form below.
           </p>
-          <BusinessForm creator={user.$id} />
+          <BusinessForm creator={user?.documents?.[0].$id} />
         </div>
       </div>
     </section>

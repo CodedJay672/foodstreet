@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { string, z } from "zod";
 
 export const authSchema = (type: string) =>
   z.object({
@@ -19,4 +19,12 @@ export const shopSchema = z.object({
   "work-address": z.string(),
   imageUrl: z.string().optional(),
   bannerUrl: z.string().optional(),
+});
+
+export const productSchema = z.object({
+  name: z.string(),
+  measure: z.string(),
+  initPrice: z.coerce.number(),
+  discPrice: z.coerce.number(),
+  description: z.string(),
 });

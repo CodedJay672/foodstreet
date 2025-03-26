@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,10 +11,16 @@ import CustomInput from "./CustomInput";
 import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
-import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
+import {
+  getCurrentUser,
+  SignIn,
+  SignUp,
+  verifyUserEmail,
+} from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 
 const AuthForm = ({ type }: { type: string }) => {
+  const user = use(getCurrentUser());
   const authFormSchema = authSchema(type);
   const router = useRouter();
 
@@ -41,6 +47,7 @@ const AuthForm = ({ type }: { type: string }) => {
           name: values.fullname || "",
           occupation: values.occupation || "",
           dob: new Date(values.dob!),
+          accountId: user?.documents?.[0]?.accountId,
         });
 
         if (!response) {

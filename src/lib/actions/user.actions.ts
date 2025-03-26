@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
-import { ID } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 import { authSchema } from "@/validation/schema";
 
 const AuthFormSchema = authSchema("SIGN_UP");
@@ -39,6 +39,7 @@ export const SignUp = async (values: {
   name: string;
   occupation: string;
   dob: Date;
+  accountId: string;
 }) => {
   const { email, password, name, occupation, dob } = values;
   try {
@@ -130,6 +131,31 @@ export const getLoggedInUser = async () => {
   try {
     const { account } = await createSessionClient();
     return await account.get();
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getCurrentUser = async () => {
+  try {
+    const signedInUser = await getLoggedInUser();
+    const { database } = await createAdminClient();
+
+    if (!signedInUser) {
+      throw new Error("No session found");
+    }
+
+    const currentUser = await database.listDocuments(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_USERS_COLLECTION_ID!,
+      [Query.equal("accountId", signedInUser.$id)]
+    );
+
+    if (!currentUser) {
+      throw Error;
+    }
+
+    return currentUser;
   } catch (error) {
     return null;
   }

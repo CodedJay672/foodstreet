@@ -8,3 +8,12 @@ type ShopType = {
   occupation: string;
   "work-address": string;
 };
+
+type ProductType = {
+  shop: string;
+  name: string;
+  measure: string;
+  initPrice: number;
+  discPrice: number;
+  description: string;
+};
