@@ -1,3 +1,4 @@
+import MyShopinfo from "@/components/MyShopinfo";
 import { getShops } from "@/lib/actions/shop.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
@@ -35,13 +36,9 @@ const MyShop = async () => {
   const businesses = await getShops(user.$id);
 
   return (
-    <section className="m-full min-h-screen flex-center flex-col">
+    <section className="m-full min-h-screen bg-raw-100">
       {businesses?.documents && businesses.total ? (
-        <div className="w-full h-64 lg:h-60 flex-center">
-          <h1 className="text-center">
-            You have {businesses.total} active shops
-          </h1>
-        </div>
+        <MyShopinfo shopInfo={businesses.documents} />
       ) : (
         <div className="w-full max-w-screen-md flex-center flex-col p-6">
           <h1 className="text-center">

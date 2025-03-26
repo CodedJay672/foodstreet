@@ -94,9 +94,7 @@ const saveToDB = async (values: {
 export const verifyUserEmail = async () => {
   try {
     const { account } = await createSessionClient();
-    await account.createVerification(
-      "https://foodstreet-theta.vercel.app/verify-email"
-    );
+    await account.createVerification("http://localhost:3000/verify-email");
   } catch (error: any) {
     throw new Error(error.message);
   }
