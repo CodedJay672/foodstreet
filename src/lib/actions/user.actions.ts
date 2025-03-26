@@ -36,16 +36,12 @@ export const SignIn = async (values: { email: string; password: string }) => {
 export const SignUp = async (values: {
   email: string;
   password: string;
-  fullname: string;
+  name: string;
+  occupation: string;
+  dob: Date;
 }) => {
-  const { email, password, fullname: name } = values;
+  const { email, password, name, occupation, dob } = values;
   try {
-    const parsedData = AuthFormSchema.safeParse(values);
-
-    if (parsedData.error) {
-      return parsedData.error.errors[0].message;
-    }
-
     const { account } = await createAdminClient();
 
     const newUserAccount = await account.create(
@@ -62,14 +58,19 @@ export const SignUp = async (values: {
     const session = await SignIn(values);
 
     // save the new user info to the Database
-    await saveToDB({ name, email });
+    await saveToDB({ name, email, occupation, dob });
     return session;
   } catch (error: any) {
     throw new Error(error.message as string);
   }
 };
 
-const saveToDB = async (values: { name: string; email: string }) => {
+const saveToDB = async (values: {
+  name: string;
+  email: string;
+  occupation: string;
+  dob: Date;
+}) => {
   const { database } = await createAdminClient();
 
   try {

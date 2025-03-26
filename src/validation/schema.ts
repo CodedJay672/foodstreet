@@ -2,28 +2,8 @@ import { z } from "zod";
 
 export const authSchema = (type: string) =>
   z.object({
-    fullname:
-      type === "SIGN_IN"
-        ? z
-            .string()
-            .min(2, {
-              message: "fullname must be at least 2 characters.",
-            })
-            .optional()
-        : z.string().min(2, {
-            message: "fullname must be at least 2 characters.",
-          }),
-    age:
-      type === "SIGN_IN"
-        ? z
-            .number()
-            .min(18, {
-              message: "must be at least 18 years.",
-            })
-            .optional()
-        : z.string().min(2, {
-            message: "must be at least 18 years",
-          }),
+    fullname: type === "SIGN_IN" ? z.string().optional() : z.string(),
+    dob: type === "SIGN_IN" ? z.string().date().optional() : z.string().date(),
     occupation: type === "SIGN_IN" ? z.string().optional() : z.string(),
     email: z.string().email(),
     password: z.string(),

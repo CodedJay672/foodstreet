@@ -38,7 +38,9 @@ const AuthForm = ({ type }: { type: string }) => {
       } else {
         const response = await SignUp({
           ...values,
-          fullname: values.fullname || "",
+          name: values.fullname || "",
+          occupation: values.occupation || "",
+          dob: new Date(values.dob!),
         });
 
         if (!response) {
@@ -63,11 +65,26 @@ const AuthForm = ({ type }: { type: string }) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         {type === "SIGN_UP" && (
-          <CustomInput
-            name="fullname"
-            label="Full Name"
-            control={form.control}
-          />
+          <>
+            <CustomInput
+              name="fullname"
+              label="Full Name"
+              control={form.control}
+            />
+
+            <CustomInput
+              name="occupation"
+              label="Occupation"
+              control={form.control}
+            />
+
+            <CustomInput
+              name="dob"
+              label="Date of birth"
+              control={form.control}
+              placeholder="yyyy-mm-dd"
+            />
+          </>
         )}
 
         <CustomInput name="email" label="Email" control={form.control} />

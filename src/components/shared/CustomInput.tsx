@@ -20,12 +20,14 @@ interface Props<T extends ZodType<T>> {
   control: Control<z.infer<typeof authFormSchema>>;
   name: FieldPath<z.infer<typeof authFormSchema>>;
   label: string;
+  placeholder?: string;
 }
 
 const CustomInput = <T extends ZodType<T>>({
   name,
   control,
   label,
+  placeholder,
 }: Props<T>) => {
   return (
     <FormField
@@ -38,7 +40,8 @@ const CustomInput = <T extends ZodType<T>>({
             <Input
               type={name === "password" ? "password" : "text"}
               {...field}
-              className="w-full bg-gray-50 p-2 text-base "
+              placeholder={placeholder ?? placeholder}
+              className="w-full bg-gray-50 p-2 text-base placeholder:text-gray-300"
             />
           </FormControl>
           <FormMessage />
