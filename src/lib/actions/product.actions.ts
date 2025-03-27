@@ -2,14 +2,14 @@
 
 import { cache } from "react";
 import { createAdminClient } from "../appwrite";
-import { ID } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 
 export const createProduct = cache(async (data: ProductType) => {
   try {
     const { database } = await createAdminClient();
 
     const response = await database.createDocument(
-      process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
+      process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
       ID.unique(),
       data
@@ -24,3 +24,32 @@ export const createProduct = cache(async (data: ProductType) => {
     throw new Error(error.message);
   }
 });
+
+export const getAllProducts = async (shopId?: string) => {
+  try {
+    const { database } = await createAdminClient();
+
+    if (shopId) {
+      const response = await database.listDocuments(
+        process.env.APPWRITE_DATABASE_ID!,
+        process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
+        [Query.equal("shops", shopId)]
+      );
+
+      if (!response) throw new Error("Cannot fetch products");
+
+      return response;
+    }
+
+    const response = await database.listDocuments(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_PRODUCTS_COLLECTION_ID!
+    );
+
+    if (!response) throw new Error("Fetch failed.");
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};

@@ -10,7 +10,7 @@ type ShopType = {
 };
 
 type ProductType = {
-  shop: string;
+  shop: any;
   name: string;
   measure: string;
   initPrice: number;

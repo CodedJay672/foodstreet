@@ -18,8 +18,12 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { createProduct } from "@/lib/actions/product.actions";
+import { FaSpinner } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
-const ProductForm = ({ user }: { user: string }) => {
+const ProductForm = ({ shop }: { shop: string }) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof productSchema>>({
     resolver: zodResolver(productSchema),
   });
@@ -28,14 +32,22 @@ const ProductForm = ({ user }: { user: string }) => {
     try {
       const data = {
         ...values,
-        shop: user,
+        shop,
       };
 
-      // const response = await createProduct(data);
+      const response = await createProduct(data);
+
+      if (!response) {
+        return toast.error("Something went wrong!");
+      }
+
+      toast.success("Product created.");
+      router.push("/foodstuffs");
     } catch (error: any) {
       toast.error(error.message as string);
     }
   };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full">
@@ -131,7 +143,11 @@ const ProductForm = ({ user }: { user: string }) => {
         <Button
           type="submit"
           className="w-full bg-raw-300 text-white p-2 rounded-full cursor-pointer"
+          disabled={form.formState.isSubmitting}
         >
+          {form.formState.isSubmitting && (
+            <FaSpinner size={24} className="animate-spin" />
+          )}
           Upload
         </Button>
       </form>

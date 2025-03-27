@@ -7,6 +7,7 @@ import React from "react";
 import { IoCaretDown } from "react-icons/io5";
 import MobileMenu from "./shared/MobileMenu";
 import { usePathname } from "next/navigation";
+import { signOut } from "@/lib/actions/user.actions";
 
 const Topbar = () => {
   const pathname = usePathname();
@@ -44,7 +45,10 @@ const Topbar = () => {
         </div>
 
         <div className="flex justify-center items-center gap-2">
-          <div className="size-10 hidden lg:flex items-center justify-center rounded-full bg-secondary-100">
+          <div
+            className="size-10 hidden lg:flex items-center justify-center rounded-full bg-secondary-100"
+            onClick={async () => await signOut()}
+          >
             <Image src="/assets/user.png" alt="user" width={26} height={26} />
           </div>
           <div className="size-10 hidden lg:flex items-center justify-center rounded-full bg-secondary-100">

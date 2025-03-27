@@ -78,7 +78,7 @@ export default function RootLayout({
         <div className="lg:hidden">
           <BottomBar />
         </div>
-        <Toaster />
+        <Toaster invert mobileOffset={100} />
       </body>
     </html>
   );

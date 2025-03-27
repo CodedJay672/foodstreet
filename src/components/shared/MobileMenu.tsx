@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -38,9 +39,9 @@ const MobileMenu = () => {
             pathname === "/" ? "bg-secondary-100" : "bg-raw-100"
           } rounded-xl z-50`}
         >
-          <Link
-            href="#"
+          <div
             className="w-full rounded-lg flex-center p-2 gap-2 hover:bg-secondary-400"
+            onClick={async () => await signOut()}
           >
             <div className="size-8 lg:size-10 flex-center rounded-full border border-secondary-200">
               <Image
@@ -52,7 +53,7 @@ const MobileMenu = () => {
               />
             </div>
             <span className="text-base font-medium">User Profile</span>
-          </Link>
+          </div>
 
           <Link
             href="#"

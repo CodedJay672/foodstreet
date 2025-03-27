@@ -6,7 +6,7 @@ import React from "react";
 const Sell = async () => {
   const user = await getCurrentUser();
 
-  if (!user || !user) redirect("/sign-in");
+  if (!user || !user?.documents?.[0].shops) redirect("/create-business");
 
   return (
     <section className="w-full min-h-screen px-6 lg:px-10 py-10 lg:py-16">
@@ -18,7 +18,7 @@ const Sell = async () => {
       </p>
 
       <div className="w-full max-w-screen-md flex-center mx-auto mt-6 lg:mt-10 p-1 lg:p-10">
-        <ProductForm user={user?.documents?.[0]?.shop} />
+        <ProductForm shop={user?.documents?.[0]?.shops?.[0].$id} />
       </div>
     </section>
   );
