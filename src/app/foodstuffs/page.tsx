@@ -17,15 +17,13 @@ const FoodStuffs = async () => {
           Premium Card Holder. Join Abundish Premium today and streamline your
           grocery shopping!
         </p>
-        <div className="flex items-center gap-4 lg:gap-6">
-          <div className="w-max h-40 rounded-xl p-4 mx-auto flex-center flex-col">
-            <p className="text-xl leading-6">
-              Enjoy 20% discount on all Foodstuffs purchase
-            </p>
-            <p className="text-xl leading-6">
-              Convenient delivery of groceries when needed
-            </p>
-          </div>
+        <div className="w-full lg:w-max mx-auto flex-center flex-col p-4">
+          <p className="text-lg lg:text-xl leading-6">
+            Enjoy 20% discount on all Foodstuffs purchase
+          </p>
+          <p className="text-lg lg:text-xl leading-6">
+            Convenient delivery of groceries when needed
+          </p>
         </div>
 
         <Link
