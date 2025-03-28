@@ -4,8 +4,9 @@ import { cache } from "react";
 import { createAdminClient } from "../appwrite";
 import { ID, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
+import { revalidatePath } from "next/cache";
 
-export const createProduct = cache(async (data: ProductType) => {
+export const createProduct = async (data: ProductType) => {
   try {
     const { database } = await createAdminClient();
 
@@ -40,11 +41,12 @@ export const createProduct = cache(async (data: ProductType) => {
       throw new Error("upload Failed");
     }
 
+    revalidatePath("/foodstuffs");
     return response;
   } catch (error: any) {
     throw new Error(error.message);
   }
-});
+};
 
 export const uploadFile = async (file: File) => {
   try {
@@ -85,7 +87,7 @@ export const deleteFile = async (fileId: string) => {
   }
 };
 
-export const getAllProducts = async (shopId?: string) => {
+export const getAllProducts = cache(async (shopId?: string) => {
   try {
     const { database } = await createAdminClient();
 
@@ -112,4 +114,4 @@ export const getAllProducts = async (shopId?: string) => {
   } catch (error: any) {
     throw new Error(error.message);
   }
-};
+});
