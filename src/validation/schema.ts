@@ -27,4 +27,5 @@ export const productSchema = z.object({
   initPrice: z.coerce.number(),
   discPrice: z.coerce.number(),
   description: z.string(),
+  image: z.custom<File[]>(),
 });

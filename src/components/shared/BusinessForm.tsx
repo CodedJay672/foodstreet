@@ -89,6 +89,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="location"
@@ -124,6 +125,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="occupation"

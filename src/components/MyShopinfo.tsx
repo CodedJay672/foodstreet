@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
 
 import { cn } from "@/lib/utils";
+import ProductCard from "./shared/ProductCard";
 
 const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
   const [vendor] = shopInfo;
@@ -90,14 +91,17 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
 
       <div className="mt-4 lg:mt-10 p-6 lg:p-10 flex flex-col gap-4 min-h-60px w-full">
         <h2 className="text-xl lg:text-2xl font-semibold">All Products</h2>
-        <div className="flex-center">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 lg:gap-2">
           {vendor.products && vendor.products?.length > 0 ? (
-            <></>
+            vendor.products?.map((product: Models.Document) => (
+              <ProductCard key={product.$id} {...product} />
+            ))
           ) : (
-            // <ProductGallery {...vendor.products} />
-            <p className="text-sm text-gray-300 text-center">
-              No products yet!
-            </p>
+            <div className="col-span-4 flex-center flex-col p-4">
+              <p className="text-sm text-gray-300 text-center">
+                No products yet!
+              </p>
+            </div>
           )}
         </div>
       </div>

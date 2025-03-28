@@ -37,7 +37,7 @@ const MyShop = async () => {
   const businesses = await getShops(currentUser?.documents?.[0].$id);
 
   return (
-    <section className="m-full min-h-screen bg-raw-100 pb-10">
+    <section className="m-full min-h-screen pb-10">
       {businesses?.documents && businesses.total ? (
         <MyShopinfo shopInfo={businesses.documents} />
       ) : (

@@ -16,4 +16,5 @@ type ProductType = {
   initPrice: number;
   discPrice: number;
   description: string;
+  image: File[];
 };

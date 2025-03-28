@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import { createProduct } from "@/lib/actions/product.actions";
 import { FaSpinner } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import FileUploader from "./shared/FileUploader";
 
 const ProductForm = ({ shop }: { shop: string }) => {
   const router = useRouter();
@@ -117,6 +118,20 @@ const ProductForm = ({ shop }: { shop: string }) => {
                   {...field}
                   className="w-full bg-gray-50 p-2 text-base placeholder:text-gray-300 border-gray-300"
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="image"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product image</FormLabel>
+              <FormControl>
+                <FileUploader onChange={field.onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>
