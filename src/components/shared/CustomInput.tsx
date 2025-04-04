@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { z, ZodType } from "zod";
 import { Control, FieldPath } from "react-hook-form";
 import { authSchema } from "@/validation/schema";
+import DatePopover from "../DatePopover";
 
 const authFormSchema = authSchema("SIGN_UP");
 
@@ -40,6 +41,11 @@ const CustomInput = <T extends ZodType<T>>({
             <Input
               type={name === "password" ? "password" : "text"}
               {...field}
+              value={
+                field.value instanceof Date
+                  ? field.value.toISOString()
+                  : field.value
+              }
               placeholder={placeholder ?? placeholder}
               className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
             />
