@@ -7,6 +7,8 @@ const FoodContext = createContext({
   setFoodType: (t: string) => {},
   showUserDropdown: false,
   toggleUserDropdown: () => {},
+  editProfile: false,
+  toggleEditProfile: () => {},
 });
 
 export default FoodContext;

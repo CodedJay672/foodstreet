@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { ID, Query } from "node-appwrite";
+import { deleteFile, uploadFile } from "./product.actions";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -132,7 +133,7 @@ export const getLoggedInUser = async () => {
   }
 };
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = async (userId: string | "") => {
   try {
     const signedInUser = await getLoggedInUser();
     const { database } = await createAdminClient();
@@ -144,15 +145,72 @@ export const getCurrentUser = async () => {
     const currentUser = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_USERS_COLLECTION_ID!,
-      [Query.equal("accountId", signedInUser.$id)]
+      [Query.equal("accountId", userId ? userId : signedInUser.$id)]
     );
 
     if (!currentUser) {
       throw Error;
     }
 
-    return currentUser;
+    return currentUser.documents[0];
   } catch (error) {
     return null;
+  }
+};
+
+export const updateUserInfo = async (
+  id: string,
+  file: File,
+  data: FormData
+) => {
+  try {
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
+    const email = data.get("email");
+    const state = data.get("state");
+    const deliveryArea = data.get("deliveryArea");
+    const streetAddress = data.get("streetAddress");
+    const phone = data.get("phone");
+
+    const { database } = await createAdminClient();
+
+    //first upload the image and get the imageUrl
+
+    const uploadImg = await uploadFile(file);
+
+    if (!uploadImg) {
+      throw new Error();
+    }
+
+    const imgUrl = `${process.env
+      .NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!}/storage/buckets/${
+      uploadImg.bucketId
+    }/files/${uploadImg?.$id}/preview?project=${[
+      process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
+    ]}`;
+
+    // update the user information with the new data
+    const response = await database.updateDocument(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_USERS_COLLECTION_ID!,
+      id,
+      {
+        name: `${firstName} ${lastName}`,
+        email,
+        state,
+        deliveryArea,
+        streetAddress,
+        phone,
+        imageUrl: imgUrl,
+      }
+    );
+
+    if (!response) {
+      throw new Error();
+    }
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };

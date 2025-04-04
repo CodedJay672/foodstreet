@@ -1,5 +1,7 @@
 import NavLink from "@/components/shared/NavLink";
 import SignOut from "@/components/shared/SignOut";
+import UserProfileDetails from "@/components/UserProfileDetails";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 
 import Link from "next/link";
 import React from "react";
@@ -20,9 +22,11 @@ import {
 const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
+  const user = await getCurrentUser(id);
+
   return (
-    <section className="p-6 lg:p-24 min-h-screen w-full flex gap-4">
-      <ul className="hidden lg:block w-52 space-y-6 mt-10 mb-24">
+    <section className="p-6 lg:p-24 min-h-screen w-full flex gap-4 py-10">
+      <ul className="hidden lg:block w-52 space-y-6">
         <li className="w-full p-1">
           <NavLink
             label="My profile"
@@ -112,6 +116,7 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
           <SignOut />
         </li>
       </ul>
+      <UserProfileDetails user={user!} />
     </section>
   );
 };

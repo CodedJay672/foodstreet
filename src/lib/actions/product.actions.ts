@@ -52,6 +52,8 @@ export const uploadFile = async (file: File) => {
   try {
     const { storage } = await createAdminClient();
 
+    if (!file.name) return;
+
     const response = await storage.createFile(
       process.env.APPWRITE_STORAGE_ID!,
       ID.unique(),

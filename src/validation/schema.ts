@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 
 export const authSchema = (type: string) =>
   z.object({
@@ -19,6 +19,16 @@ export const authSchema = (type: string) =>
       message: "Password should be at least 8 characters long.",
     }),
   });
+
+export const profileSchema = z.object({
+  firstname: z.string(),
+  lastname: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  state: z.string(),
+  deliveryArea: z.string(),
+  streetAddress: z.string(),
+});
 
 export const shopSchema = z.object({
   name: z.string(),

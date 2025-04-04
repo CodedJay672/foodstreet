@@ -6,6 +6,7 @@ import FoodContext from "./GlobalContext";
 const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [foodType, setFoodType] = useState("");
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [editProfile, setEditProfile] = useState(false);
 
   useEffect(() => {
     const storedType = localStorage.getItem("foodType")
@@ -22,7 +23,10 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
 
   const handleDropdownToggle = () => {
     setShowUserDropdown((prev) => !prev);
-    console.log("Dropdown toggled:", !showUserDropdown);
+  };
+
+  const handleEditProfileToggle = () => {
+    setEditProfile((prev) => !prev);
   };
 
   return (
@@ -32,6 +36,8 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
         setFoodType: handleTypeChange,
         showUserDropdown,
         toggleUserDropdown: handleDropdownToggle,
+        editProfile,
+        toggleEditProfile: handleEditProfileToggle,
       }}
     >
       {children}
