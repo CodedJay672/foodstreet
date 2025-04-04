@@ -1,59 +1,60 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
   --font-inter: Inter;
 
-  --color-primary-100: #ffffff;
-  --color-primary-200: #d9d9d9;
-  --color-primary-300: #000;
+  --color-light: #ffffff;
+  --color-dark: #000000;
+  --color-subtle-light: #fafafa;
 
-  --color-secondary-100: #fcdcd2;
-  --color-secondary-200: #f95731;
-  --color-secondary-300: #f24e1e;
-  --color-secondary-400: #ffece7;
+  --color-primary: #f8492a;
+  --color-primary-light: #ffefec;
 
-  --color-highlight-100: #ffcf00;
-  --color-highlight-200: #ffb234;
-  --color-highlight-300: #f24e1e;
+  --color-accent: #ffcf02;
+  --color-accent-2: #323232;
 
-  --color-raw-100: #f1f9f7;
-  --color-raw-200: #0d806d;
-  --color-raw-300: #007965;
+  --color-raw-primary: #007965;
+  --color-raw-primary-light: #0079651a;
+
+  --color-raw-accent: #ffcc01;
+  --color-raw-accent-light: #ffcf54;
 }
 
-/* Hide radio inputs */
-input[type="radio"] {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Style the labels (tabs) */
-label {
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.no-scrollbar {
+  scrollbar-width: none;
 }
 
-/* Style active tab */
-input[type="radio"]:checked + span {
-  color: var(--primary-100);
+.custom-scrollbar::-webkit-scrollbar {
+  scrollbar-width: thin;
+  width: 10px;
+  border-radius: 2px;
 }
 
-/* Optional: Add visual feedback for active state */
-input[type="radio"]:checked + label {
-  background-color: var(--secondary-200);
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--color-primary-light);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-primary-light);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
 @layer utilities {
-  .header-gradient {
-    @apply bg-gradient-to-r from-[#F26046] from-20% to-[#F94626] to-100%;
-  }
-
-  .raw-header-gradient {
-    @apply bg-gradient-to-r from-raw-200 from-20% to-raw-300;
-  }
-
   .flex-between {
     @apply flex justify-between items-center;
   }
@@ -61,20 +62,7 @@ input[type="radio"]:checked + label {
   .flex-center {
     @apply flex justify-center items-center;
   }
-
-  .banner-gradient {
-    @apply bg-gradient-to-r from-[#fff9ed] from-20% to-[#ffdfd6] to-100%;
-  }
-
-  .raw-banner-gradient {
-    @apply bg-gradient-to-r from-raw-100 from-20% to-raw-100 to-100%;
-  }
-
-  .features-card {
-    @apply w-full lg:w-max rounded-xl shadow-md bg-gray-50 shadow-secondary-200 p-6 flex justify-between items-center gap-2;
-  }
-
-  .explore-button {
-    @apply w-24 rounded-full bg-highlight-100 text-base py-1 px-3 mt-2 font-bold;
+  .wrapper {
+    @apply w-full max-w-screen-md mx-auto my-24;
   }
 }

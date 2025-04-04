@@ -97,7 +97,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
         <Button
           type="submit"
-          className="w-full bg-raw-300 text-white rounded-full mt-3 cursor-pointer flex-center"
+          className="w-full text-white rounded-full mt-3 cursor-pointer flex-center"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting && (
@@ -113,7 +113,7 @@ const AuthForm = ({ type }: { type: string }) => {
           </p>
           <Link
             href={type === "SIGN_IN" ? "/sign-up" : "/sign-in"}
-            className="text-raw-300 font-bold"
+            className="text-primary font-bold"
           >
             {type === "SIGN_IN" ? "create account" : "login"}
           </Link>

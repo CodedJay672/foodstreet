@@ -2,6 +2,11 @@ import { TabContent } from "../../types";
 
 export const NavLinks = [
   {
+    path: "/restraunts",
+    label: "Restraunts",
+    icon: "/assets/shop.png",
+  },
+  {
     path: "/foodstuffs",
     label: "Foodstuffs",
     icon: "/assets/foodstuff-fill.png",
@@ -59,5 +64,56 @@ export const defaultTabs: TabContent[] = [
     title: "Rice Delicacy",
     icon: "/assets/beans.png",
     content: "Rice Delicacy content not available",
+  },
+];
+
+export const testimonies = [
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
+  },
+  {
+    name: "Adeyemi Folorunsho",
+    position: "Food enthusiast",
+    testimony:
+      "FoodStreet is the best. Besides the many and deliciousmeals, the service is also very good. Especially the very fast delivery. I highly recommend FoodStreet to all.",
   },
 ];

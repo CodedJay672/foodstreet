@@ -1,8 +1,9 @@
 import CTA from "@/components/CTA";
-import Delicacies from "@/components/Delicacies";
 import HeroSection from "@/components/HeroSection";
-import Operations from "@/components/Operations";
-import OurMenu from "@/components/OurMenu";
+import HowToOrder from "@/components/HowToOrder";
+import PartnerWithUs from "@/components/PartnerWithUs";
+import QuoteSection from "@/components/QuoteSection";
+import Restaurants from "@/components/Restaurants";
 import Testimonials from "@/components/Testimonials";
 import Vendor from "@/components/Vendor";
 
@@ -11,10 +12,11 @@ export default function Home() {
     <>
       <HeroSection />
       <Vendor />
-      <Delicacies />
-      <OurMenu />
+      <QuoteSection />
+      <HowToOrder />
+      <Restaurants />
+      <PartnerWithUs />
       <Testimonials />
-      <Operations />
       <CTA />
     </>
   );

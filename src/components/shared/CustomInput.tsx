@@ -41,7 +41,7 @@ const CustomInput = <T extends ZodType<T>>({
               type={name === "password" ? "password" : "text"}
               {...field}
               placeholder={placeholder ?? placeholder}
-              className="w-full bg-gray-50 p-2 text-base placeholder:text-gray-300"
+              className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
             />
           </FormControl>
           <FormMessage />

@@ -1,33 +1,19 @@
-import Image from "next/image";
 import React from "react";
+import SubscribeForm from "./SubscribeForm";
 
 const CTA = () => {
   return (
-    <section className="w-full relative h-98 overflow-hidden">
-      <Image
-        src="/assets/cta-banner.png"
-        alt="foodstreet download"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute bottom-8 left-10 lg:left-72 z-10 w-77 p-4 flex flex-col gap-3">
-        <h1 className="text-sm font-normal text-highlight-300">DOWNLOAD APP</h1>
-        <p className="text-2xl font-bold">Get Started With FoodStreet Today!</p>
-        <p className="text-xs font-bold text-pretty pr-12">
-          Discover food wherever and whenever and get your food delivered
-          quickly.
+    <section className="w-full flex-center flex-col lg:flex-row bg-primary-light gap-2 lg:gap-10 px-6 lg:px-24 py-24">
+      <div className="space-y-1 p-6">
+        <h3 className="text-2xl lg:text-3xl font-semibold">
+          Subscribe to out newsletter
+        </h3>
+        <p className="text-base font-normal">
+          Browse local restaurants and businesses for delivery by entering your
+          address below.
         </p>
-        <button className="w-34 p-2 text-sm rounded-full bg-highlight-300 text-primary-100 uppercase">
-          get the app
-        </button>
-
-        <Image
-          src="/assets/app-download.png"
-          alt="download foodstreet"
-          width={185}
-          height={29}
-        />
       </div>
+      <SubscribeForm />
     </section>
   );
 };

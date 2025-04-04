@@ -1,58 +1,27 @@
-"use client";
-
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import React from "react";
+import LocationForm from "./shared/LocationForm";
 
 const HeroSection = () => {
-  const pathname = usePathname();
-
   return (
-    <section
-      className={`w-full flex-center ${
-        pathname === "/" ? "header-gradient" : "raw-header-gradient"
-      } overflow-hidden`}
-    >
-      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row">
-        <div className="flex justify-center min-w-max flex-1 flex-col gap-4 p-10 lg:p-24 pr-0">
-          <div className="w-max py-1 px-3 rounded-full flex-center bg-secondary-100">
-            <span className="text-secondary-200 text-xs lg:text-sm font-normal mr-2">
-              More than Fast
-            </span>
-            <Image
-              src="/assets/food-icon.png"
-              alt="food street icon"
-              width={20}
-              height={20}
-              className="size-4 lg:size-5"
-            />
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-extrabold text-secondary-100 ">
-            Your{" "}
-            <span className="text-highlight-100 tracking-widest block">
-              Best Plug
-            </span>
-          </h1>
-          <p className="text-3xl lg:text-4xl font-bold text-secondary-100">
-            For Your Local Food
-          </p>
-          <div className="flex-center w-max gap-1">
-            <div className="size-2 rounded-full bg-secondary-100" />
-            <div className="w-10 h-2 rounded-full bg-secondary-100" />
-            <div className="size-2 rounded-full bg-secondary-100" />
-            <div className="size-2 rounded-full bg-secondary-100" />
-          </div>
-        </div>
-
-        <div className="w-full flex-center pl-4 flex-col mt-10">
-          <Image
-            src="/assets/Container.png"
-            alt="foodstreet"
-            height={900}
-            width={700}
-            className="object-contain grow-0 shink-0"
-          />
-        </div>
+    <section className="w-full max-w-screen-lg mx-auto p-6 flex-between flex-col lg:flex-row lg:gap-32">
+      <div className="w-full lg:w-1/2 pt-10 lg:pt-0">
+        <h1 className="text-4xl lg:text-6xl font-inter font-semibold text-pretty">
+          Your Best Plug For Your Local Food
+        </h1>
+        <p className="text-lg my-4">
+          Foodstreets at your doorstep. Why starve when you have us. Your hunger
+          partner. Straight out of the oven to your doorstep.{" "}
+        </p>
+        <LocationForm />
+      </div>
+      <div className="w-full lg:w-1/2 h-118 p-1 relative">
+        <Image
+          src="/hero-food.png"
+          alt="hero"
+          fill
+          className="object-contain"
+        />
       </div>
     </section>
   );

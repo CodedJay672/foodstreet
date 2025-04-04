@@ -14,7 +14,7 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="fixed left-0 bottom-0 w-full bg-white flex-between z-50 p-6">
+    <div className="fixed left-0 bottom-0 w-full bg-white flex justify-between items-center z-50 p-6 lg:hidden">
       {NavLinks.map((link, idx) => (
         <Link
           href={link.path}

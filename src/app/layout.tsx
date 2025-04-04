@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import localFont from "next/font/local";
-import Topbar from "@/components/Topbar";
-import BottomBar from "@/components/shared/BottomBar";
-import ContextProvider from "@/context/ContextProvider";
-import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import "./globals.css";
 
 const inter = localFont({
   src: [
@@ -72,12 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSans.className} ${inter.variable}`}>
-        <Topbar />
         {children}
-        <Footer />
-        <div className="lg:hidden">
-          <BottomBar />
-        </div>
         <Toaster invert mobileOffset={100} />
       </body>
     </html>

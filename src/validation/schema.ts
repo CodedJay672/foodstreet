@@ -3,7 +3,16 @@ import { string, z } from "zod";
 export const authSchema = (type: string) =>
   z.object({
     fullname: type === "SIGN_IN" ? z.string().optional() : z.string(),
-    dob: type === "SIGN_IN" ? z.string().date().optional() : z.string().date(),
+    dob:
+      type === "SIGN_IN"
+        ? z
+            .date({
+              required_error: "Date of birth is required",
+            })
+            .optional()
+        : z.date({
+            required_error: "Date of birth is required",
+          }),
     occupation: type === "SIGN_IN" ? z.string().optional() : z.string(),
     email: z.string().email(),
     password: z.string(),
