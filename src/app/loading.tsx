@@ -6,7 +6,7 @@ const Loading = () => {
     <section className="w-full min-h-screen flex-center flex-col">
       <div className="w-full max-w-screen-md flex-center flex-col gap-2">
         <Image
-          src="/assets/Logo.png"
+          src="/Logo.png"
           alt="logo image"
           width={200}
           height={30}

@@ -12,12 +12,7 @@ const Topbar = async () => {
   return (
     <header className="w-full px-3 py-1 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-light">
       <Link href="/" className="hidden lg:block flex-center">
-        <Image
-          src="/assets/Logo.png"
-          alt="foodstreet"
-          width={100}
-          height={50}
-        />
+        <Image src="/Logo.png" alt="foodstreet" width={100} height={50} />
       </Link>
 
       <nav className="hidden lg:flex justify-center items-center gap-6">
