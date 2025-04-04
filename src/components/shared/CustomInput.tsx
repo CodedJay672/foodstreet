@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { z, ZodType } from "zod";
 import { Control, FieldPath } from "react-hook-form";
 import { authSchema } from "@/validation/schema";
-import DatePopover from "../DatePopover";
 
 const authFormSchema = authSchema("SIGN_UP");
 
