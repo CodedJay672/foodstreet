@@ -26,7 +26,6 @@ import {
 } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
-import DatePopover from "../DatePopover";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -116,19 +115,6 @@ const AuthForm = ({ type }: { type: string }) => {
                       className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                     />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="dob"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                    Date of birth
-                  </FormLabel>
-                  <DatePopover field={{ ...field }} />
                   <FormMessage />
                 </FormItem>
               )}
