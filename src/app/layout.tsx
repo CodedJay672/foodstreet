@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import ContextProvider from "@/context/ContextProvider";
 
 const inter = localFont({
   src: [
@@ -68,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSans.className} ${inter.variable}`}>
-        {children}
+        <ContextProvider>{children}</ContextProvider>
         <Toaster invert mobileOffset={100} />
       </body>
     </html>

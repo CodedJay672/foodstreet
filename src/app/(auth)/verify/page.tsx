@@ -6,16 +6,16 @@ const Verify = () => {
   const user = getLoggedInUser();
 
   return (
-    <section className="w-full min-h-screen flex-center flex-col">
+    <section className="w-full flex-1 flex-center flex-col gap-6">
+      <Image
+        src="/assets/mailbox.svg"
+        alt="completed"
+        width={100}
+        height={160}
+        className="object-contain"
+      />
       <div className="flex-center flex-col w-full max-w-screen-md">
-        <Image
-          src="/assets/mailbox.svg"
-          alt="completed"
-          width={200}
-          height={260}
-          className="object-contain"
-        />
-        <h1 className="text-xl lg:text-3xl text-center font-semibold mt-16">
+        <h1 className="text-base lg:text-lg text-center font-semibold">
           An email has been sent!
         </h1>
         <p className="text-center">

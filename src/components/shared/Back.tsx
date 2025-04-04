@@ -11,7 +11,7 @@ const Back = () => {
   return (
     <Button
       variant="link"
-      className="text-sm font-medium text-primary hover:underline"
+      className="w-16 text-sm font-medium text-primary hover:underline"
       onClick={() => router.back()}
     >
       <HiOutlineChevronLeft className="mr-2 h-4 w-4" />

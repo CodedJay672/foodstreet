@@ -23,9 +23,10 @@ const ErrorPage = ({
         />
         <h2 className="text-lg font-semibold">Something went wrong</h2>
         <p className="text-base font-light text-center">{error.digest}</p>
+
         <Button
           variant="outline"
-          className="px-5 py-2 rounded-xl bg-raw-300 text-white cursor-pointer"
+          className="px-5 py-2 rounded-lg bg-raw-300 text-primary border border-primary cursor-pointer mt-6 hover:bg-subtle-light"
           onClick={() => reset()}
         >
           Refresh

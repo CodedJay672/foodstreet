@@ -3,9 +3,6 @@
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { ID, Query } from "node-appwrite";
-import { authSchema } from "@/validation/schema";
-
-const AuthFormSchema = authSchema("SIGN_UP");
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -95,9 +92,8 @@ const saveToDB = async (values: {
 export const verifyUserEmail = async () => {
   try {
     const { account } = await createSessionClient();
-    await account.createVerification(
-      "https://foodstreet-theta.vercel.app/verify-email"
-    );
+
+    await account.createVerification("http://localhost:3000/verify-email");
   } catch (error: any) {
     throw new Error(error.message);
   }

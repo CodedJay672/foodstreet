@@ -15,21 +15,21 @@ const VerifyEmail = async ({
   await userEmailVerified(userId, secret);
 
   return (
-    <section className="w-full min-h-screen flex-center flex-col">
-      <div className="flex-center flex-col gap-4 w-full max-w-screen-md">
-        <Image
-          src="/assets/complete.svg"
-          alt="completed"
-          width={200}
-          height={260}
-        />
-        <h1 className="text-xl lg:text-3xl text-center font-semibold">
+    <section className="w-full min-h-screen flex-center flex-col gap-10">
+      <Image
+        src="/assets/complete.svg"
+        alt="completed"
+        width={200}
+        height={260}
+      />
+      <div className="flex-center flex-col w-full max-w-screen-md">
+        <h1 className="text-lg lg:text-xl text-center font-semibold">
           Verification Successful
         </h1>
         <p className="text-center">You can close this window.</p>
 
         <Link
-          href="/myShop"
+          href="/my-shop"
           className="text-raw-300 font-medium text-base lg:text-lg mt-10 py-1 px-10 border border-raw-300 rounded-full hover:bg-raw-300 hover:text-white transition-all"
         >
           Create e-Shop

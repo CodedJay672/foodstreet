@@ -15,7 +15,9 @@ export const authSchema = (type: string) =>
           }),
     occupation: type === "SIGN_IN" ? z.string().optional() : z.string(),
     email: z.string().email(),
-    password: z.string(),
+    password: z.string().min(8, {
+      message: "Password should be at least 8 characters long.",
+    }),
   });
 
 export const shopSchema = z.object({

@@ -4,7 +4,14 @@ import React, { use } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import CustomInput from "./CustomInput";
@@ -18,6 +25,8 @@ import {
   verifyUserEmail,
 } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
+import { Input } from "../ui/input";
+import DatePopover from "../DatePopover";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -71,29 +80,99 @@ const AuthForm = ({ type }: { type: string }) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         {type === "SIGN_UP" && (
           <>
-            <CustomInput
+            <FormField
+              control={form.control}
               name="fullname"
-              label="Full Name"
-              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                    Fullname
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      {...field}
+                      placeholder="Enter fullname"
+                      className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-
-            <CustomInput
+            <FormField
+              control={form.control}
               name="occupation"
-              label="Occupation"
-              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                    Occupation
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      {...field}
+                      placeholder="Enter fullname"
+                      className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-
-            <CustomInput
-              name="dob"
-              label="Date of birth"
+            <FormField
               control={form.control}
-              placeholder="YYYY-MM-DD"
+              name="dob"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                    Date of birth
+                  </FormLabel>
+                  <DatePopover field={{ ...field }} />
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </>
         )}
 
-        <CustomInput name="email" label="Email" control={form.control} />
-        <CustomInput name="password" label="Password" control={form.control} />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address</FormLabel>
+              <FormControl>
+                <Input
+                  type="email"
+                  {...field}
+                  placeholder="Enter a valid email address"
+                  className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                Password
+              </FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  {...field}
+                  className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <Button
           type="submit"

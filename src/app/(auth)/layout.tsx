@@ -14,11 +14,10 @@ export default function AuthLayout({
 }) {
   return (
     <main className="w-full flex gap-4 bg-light">
-      <div className="w-1/2 space-y-4 p-10">
+      <div className="w-full h-screen lg:w-1/2 space-y-4 p-4 lg:p-10 flex flex-col">
         <Back />
         {children}
       </div>
-      <div className="w-1/2 h-screen sticky top-0 right-0 bg-primary-light"></div>
     </main>
   );
 }
