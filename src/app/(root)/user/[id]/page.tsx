@@ -2,8 +2,6 @@ import NavLink from "@/components/shared/NavLink";
 import SignOut from "@/components/shared/SignOut";
 import UserProfileDetails from "@/components/UserProfileDetails";
 import { getCurrentUser } from "@/lib/actions/user.actions";
-
-import Link from "next/link";
 import React from "react";
 
 import {
