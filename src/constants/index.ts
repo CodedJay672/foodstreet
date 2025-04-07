@@ -28,6 +28,34 @@ export const NavLinks = [
   },
 ];
 
+export const AbundishLinks = [
+  {
+    path: "/foodstuffs",
+    label: "Home",
+    icon: "/assets/foodstuff-fill.png",
+  },
+  {
+    path: "/my-shop",
+    label: "Store",
+    icon: "/assets/shop.png",
+  },
+  {
+    path: "/updates",
+    label: "Updates",
+    icon: "/assets/shop.png",
+  },
+  {
+    path: "/contact",
+    label: "Contact",
+    icon: "/assets/sell.png",
+  },
+  {
+    path: "/cart",
+    label: "Cart",
+    icon: "/assets/partnership.png",
+  },
+];
+
 export const defaultTabs: TabContent[] = [
   {
     id: "appetizer",

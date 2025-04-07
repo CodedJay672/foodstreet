@@ -5,12 +5,12 @@ export const authSchema = (type: string) =>
     fullname: type === "SIGN_IN" ? z.string().optional() : z.string(),
     dob:
       type === "SIGN_IN"
-        ? z
+        ? z.coerce
             .date({
               required_error: "Date of birth is required",
             })
             .optional()
-        : z.date({
+        : z.coerce.date({
             required_error: "Date of birth is required",
           }),
     occupation: type === "SIGN_IN" ? z.string().optional() : z.string(),

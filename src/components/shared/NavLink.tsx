@@ -28,12 +28,11 @@ const NavLink = ({
     <Link
       href={path}
       className={cn(
-        `text-sm leading-7 font-normal font-inter space-y-1 py-1 px-4 hover:text-primary/60 transition-all ${
+        `text-sm leading-7 font-normal font-inter text-light space-y-1 py-1 px-4  transition-all ${
           linkIcon ? "text-left flex items-center gap-2" : "text-center"
         } gap-2`,
         {
-          "text-primary border-b border-primary font-semibold hover:text-primary":
-            isActive(path),
+          "text-light border-b border-light font-semibold": isActive(path),
         }
       )}
     >

@@ -89,7 +89,7 @@ export const deleteFile = async (fileId: string) => {
   }
 };
 
-export const getAllProducts = cache(async (shopId?: string) => {
+export const getAllProducts = cache(async (shopId?: string, query?: string) => {
   try {
     const { database } = await createAdminClient();
 
@@ -97,7 +97,7 @@ export const getAllProducts = cache(async (shopId?: string) => {
       const response = await database.listDocuments(
         process.env.APPWRITE_DATABASE_ID!,
         process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
-        [Query.equal("shops", shopId)]
+        [Query.equal("shops", shopId), Query.search("name", query || "")]
       );
 
       if (!response) throw new Error("Cannot fetch products");
@@ -107,7 +107,8 @@ export const getAllProducts = cache(async (shopId?: string) => {
 
     const response = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_PRODUCTS_COLLECTION_ID!
+      process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
+      [Query.search("name", query || "")]
     );
 
     if (!response) throw new Error("Fetch failed.");

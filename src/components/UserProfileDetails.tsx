@@ -90,7 +90,7 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
         }}
         className="space-y-6 mt-10"
       >
-        <div className="size-40 bg-primary-light rounded-full p-2 border border-gray-300 flex-center relative">
+        <div className="size-24 bg-primary-light rounded-full p-2 border border-gray-300 flex-center relative">
           {imageUrl ? (
             <Image
               src={imageUrl}

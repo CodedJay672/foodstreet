@@ -1,8 +1,9 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
 import { Models } from "node-appwrite";
 import React from "react";
+import { Button } from "../ui/button";
 
 const ProductCard = (product: Models.Document) => {
   return (
@@ -16,36 +17,19 @@ const ProductCard = (product: Models.Document) => {
           className="group-hover:scale-105 transition-all"
         />
       </div>
-      <Link
-        href={`/my-shop/${product.$id}`}
-        className="w-max text-2xl font-bold text-raw-300 px-2 lg:px-4 py-1"
-      >
-        {/* <h1 className="text-lg">{product.shop.name}</h1> */}
-      </Link>
       <div className="w-full px-2 lg:px-4 py-2">
-        <div className="flex items-center gap-1">
-          <h1 className="text-lg font-bold">{product.name}</h1>
-          <p className="text-sm font-medium">({product.measure})</p>
-        </div>
-
-        <div className="mt-1 flex-between">
-          <div className="flex items-center gap-2">
-            <p className="text-sm line-through text-gray-400">
-              N{product.initPrice}
-            </p>
-            <p className="text-base font-semibold">N{product.discPrice}</p>
+        <div className="flex-between">
+          <div className="space-y-1">
+            <h1 className="text-lg font-bold">{product.name}</h1>
+            <p className="text-sm font-medium">({product.measure})</p>
           </div>
-          <span
-            className={cn(
-              `text-[10px] lg:text-sm block text-raw-300 bg-raw-100 py-1 px-2 rounded-full`,
-              {
-                "bg-rose-100 text-red-500": product.status === "outOfStock",
-              }
-            )}
-          >
-            {product.status}
-          </span>
+
+          <p className="text-sm">N{product.initPrice}</p>
         </div>
+        <p className="w-full">{product.shop?.name}</p>
+        <Button variant="default" className="w-full rounded-md text-light">
+          Add to cart
+        </Button>
       </div>
     </article>
   );

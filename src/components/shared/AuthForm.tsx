@@ -26,6 +26,7 @@ import {
 } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
+import SelectDate from "./SelectDate";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -75,116 +76,138 @@ const AuthForm = ({ type }: { type: string }) => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-        {type === "SIGN_UP" && (
-          <>
-            <FormField
-              control={form.control}
-              name="fullname"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                    Fullname
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      {...field}
-                      placeholder="Enter fullname"
-                      className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="occupation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                    Occupation
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      {...field}
-                      placeholder="Enter fullname"
-                      className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email Address</FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  {...field}
-                  placeholder="Enter a valid email address"
-                  className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                Password
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  {...field}
-                  className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button
-          type="submit"
-          className="w-full text-white rounded-full mt-3 cursor-pointer flex-center"
-          disabled={form.formState.isSubmitting}
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          id="external-form"
+          className="space-y-8 w-full"
         >
-          {form.formState.isSubmitting && (
-            <FaSpinner size={24} className="animate-spin" />
+          {type === "SIGN_UP" && (
+            <>
+              <FormField
+                control={form.control}
+                name="fullname"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                      Fullname
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        {...field}
+                        placeholder="Enter fullname"
+                        className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="dob"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                      Birth date
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="date" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="occupation"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                      Occupation
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        {...field}
+                        placeholder="Enter fullname"
+                        className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
           )}
-          {type === "SIGN_IN" ? "Sign in" : "Register"}
-        </Button>
-        <div className="flex-center gap-2">
-          <p className="text-center">
-            {type === "SIGN_IN"
-              ? "Don't have an account? "
-              : "Already registered? "}
-          </p>
-          <Link
-            href={type === "SIGN_IN" ? "/sign-up" : "/sign-in"}
-            className="text-primary font-bold"
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...field}
+                    placeholder="Enter a valid email address"
+                    className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
+                  Password
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    {...field}
+                    className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button
+            type="submit"
+            className="w-full text-white rounded-full mt-3 cursor-pointer flex-center"
+            disabled={form.formState.isSubmitting}
           >
-            {type === "SIGN_IN" ? "create account" : "login"}
-          </Link>
-        </div>
-      </form>
-    </Form>
+            {form.formState.isSubmitting && (
+              <FaSpinner size={24} className="animate-spin" />
+            )}
+            {type === "SIGN_IN" ? "Sign in" : "Register"}
+          </Button>
+          <div className="flex-center gap-2">
+            <p className="text-center">
+              {type === "SIGN_IN"
+                ? "Don't have an account? "
+                : "Already registered? "}
+            </p>
+            <Link
+              href={type === "SIGN_IN" ? "/sign-up" : "/sign-in"}
+              className="text-primary font-bold"
+            >
+              {type === "SIGN_IN" ? "create account" : "login"}
+            </Link>
+          </div>
+        </form>
+      </Form>
+    </>
   );
 };
 

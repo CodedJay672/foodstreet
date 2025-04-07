@@ -70,7 +70,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${robotoSans.className} ${inter.variable}`}>
         <ContextProvider>{children}</ContextProvider>
-        <Toaster richColors mobileOffset={100} />
+        <Toaster richColors />
       </body>
     </html>
   );

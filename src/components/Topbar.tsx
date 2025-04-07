@@ -10,7 +10,7 @@ const Topbar = async () => {
   const user = await getLoggedInUser();
 
   return (
-    <header className="w-full px-3 py-1 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-light">
+    <header className="w-full px-3 py-1 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-primary">
       <Link href="/" className="hidden lg:block flex-center">
         <Image src="/Logo.png" alt="foodstreet" width={100} height={50} />
       </Link>
@@ -36,7 +36,7 @@ const Topbar = async () => {
             <div className="size-10 rounded-full bg-primary-light text-primary p-1 flex-center">
               {user?.name[0].toUpperCase()}
             </div>
-            <span className="text-sm text-gray-400 font-light">
+            <span className="text-sm text-subtle-light font-light">
               {user?.name}
             </span>
           </Link>
