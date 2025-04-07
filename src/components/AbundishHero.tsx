@@ -4,30 +4,29 @@ import Link from "next/link";
 
 const AbundishHero = () => {
   return (
-    <section className={`w-full overflow-hidden bg-raw-300 flex-center`}>
-      <div className="w-full h-screen lg:max-h-[650px] lg:w-[1200px] mx-auto flex justify-between flex-col lg:flex-row p-3">
-        <div className="flex justify-center flex-1 flex-col gap-4 p-6 lg:p-24 pr-0">
-          <h1 className="text-5xl lg:text-6xl font-extrabold text-secondary-100 ">
-            Become an{" "}
-            <span className="text-highlight-100 tracking-widest block">
-              Abundish Agent
-            </span>
+    <section className={`w-full flex-center`}>
+      <div className="w-full max-w-6xl mx-auto flex justify-between flex-col lg:flex-row">
+        <div className="flex justify-center flex-1 flex-col gap-4 p-6 lg:p-24">
+          <h1 className="text-3xl lg:text-5xl font-bold text-raw-primary">
+            Your Fresh Farm Produce Subscription Service.
           </h1>
-          <p className="text-2xl lg:text-4xl font-bold text-secondary-100 text-pretty">
-            Earn money from the comfort of your home
+          <p className="text-base lg:text-lg font-normal text-pretty">
+            Transform your kitchen with the finest locally sourced agricultural
+            produce, delivered directly to your doorstep at a pocket-friendly
+            rate.
           </p>
 
           <Link
             href="/learn-more"
-            className="border hover:bg-raw-100 hover:text-raw-200 transition-all border-raw-100 rounded-lg w-max py-2 px-6 text-raw-100"
+            className="text-base bg-raw-primary text-light rounded-lg w-max py-2 px-6"
           >
             Learn more
           </Link>
         </div>
 
-        <div className="w-full flex-center flex-col">
+        <div className="w-max">
           <Image
-            src="/assets/abundish-hero.png"
+            src="/hero-abundish.png"
             alt="foodstreet"
             height={700}
             width={400}

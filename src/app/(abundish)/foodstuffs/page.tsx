@@ -48,7 +48,7 @@ const FoodStuffs = async ({
         />
       </div>
 
-      <div className="flex-center flex-col lg:flex-row gap-5 w-full max-w-6xl mx-auto my-10">
+      <div className="flex-center flex-col lg:flex-row gap-7 w-full max-w-6xl mx-auto my-10">
         <div className="w-64 h-72 rouded-lg shadow-md">
           <Image
             src="/abundish-special.png"

@@ -24,7 +24,7 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <section className="p-6 lg:p-24 min-h-screen w-full flex gap-4 py-10">
-      <ul className="hidden lg:block w-52 space-y-6">
+      <ul className="hidden lg:block w-72 space-y-6">
         <li className="w-full p-1">
           <NavLink
             label="My profile"

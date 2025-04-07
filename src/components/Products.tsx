@@ -8,7 +8,7 @@ const Products = async () => {
   return (
     <section className="w-full p-1 my-24">
       <div className="flex-center flex-col gap-2">
-        <h1 className="text-2xl lg:text-4xl font-bold text-raw-300">
+        <h1 className="text-xl lg:text-2xl font-bold text-raw-primary">
           Products
         </h1>
         <p className="text-center text-base font-medium">

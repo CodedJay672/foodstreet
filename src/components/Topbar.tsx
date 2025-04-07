@@ -36,9 +36,7 @@ const Topbar = async () => {
             <div className="size-10 rounded-full bg-primary-light text-primary p-1 flex-center">
               {user?.name[0].toUpperCase()}
             </div>
-            <span className="text-sm text-subtle-light font-light">
-              {user?.name}
-            </span>
+            <span className="text-sm text-light font-light">{user?.name}</span>
           </Link>
         </>
       ) : (
