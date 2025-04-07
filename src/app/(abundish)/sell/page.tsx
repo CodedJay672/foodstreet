@@ -10,7 +10,7 @@ const Sell = async () => {
 
   return (
     <section className="w-full min-h-screen px-6 lg:px-10 py-10 lg:py-16">
-      <h1 className="text-xl lg:text-3xl text-raw-300 font-bold text-center">
+      <h1 className="text-xl lg:text-3xl text-raw-primary font-bold text-center">
         Enter product details
       </h1>
       <p className="text-base font-normal text-center">

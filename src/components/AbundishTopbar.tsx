@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
-import { AbundishLinks } from "@/constants";
+import { NavLinks } from "@/constants";
 
 const AbundishTopbar = () => {
   return (
@@ -12,7 +12,7 @@ const AbundishTopbar = () => {
       </Link>
 
       <nav className="hidden lg:flex justify-center items-center gap-6">
-        {AbundishLinks.map((link, idx) => (
+        {NavLinks.map((link, idx) => (
           <NavLink
             key={idx}
             label={link.label}

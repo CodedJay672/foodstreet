@@ -64,6 +64,8 @@ export const uploadFile = async (file: File) => {
       throw new Error("Something went wrong");
     }
 
+    revalidatePath("/my-shop");
+    revalidatePath("/foodstuffs");
     return response;
   } catch (error: any) {
     throw new Error(error.message);

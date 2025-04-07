@@ -180,7 +180,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
 
         <Button
           type="submit"
-          className="text-white text-base lg:text-lg font-medium w-full rounded-full bg-raw-300 mt-6 cursor-pointer"
+          className="text-light text-base lg:text-lg font-medium w-full rounded-full bg-raw-primary hover:bg-raw-primary mt-6 cursor-pointer"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting && (

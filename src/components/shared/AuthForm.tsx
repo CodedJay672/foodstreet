@@ -68,6 +68,7 @@ const AuthForm = ({ type }: { type: string }) => {
         await verifyUserEmail();
 
         //redirect to email sent page
+
         router.push("/verify");
       }
     } catch (error: any) {
@@ -115,6 +116,7 @@ const AuthForm = ({ type }: { type: string }) => {
                       Birth date
                     </FormLabel>
                     <FormControl>
+                      {/* @ts-ignore */}
                       <Input type="date" {...field} />
                     </FormControl>
                     <FormMessage />

@@ -2,7 +2,7 @@ import { TabContent } from "../../types";
 
 export const NavLinks = [
   {
-    path: "/restraunts",
+    path: "/",
     label: "Restraunts",
     icon: "/assets/shop.png",
   },
@@ -24,34 +24,6 @@ export const NavLinks = [
   {
     path: "/abundish",
     label: "Abundish",
-    icon: "/assets/partnership.png",
-  },
-];
-
-export const AbundishLinks = [
-  {
-    path: "/foodstuffs",
-    label: "Foodstuffs",
-    icon: "/assets/foodstuff-fill.png",
-  },
-  {
-    path: "/my-shop",
-    label: "myShop",
-    icon: "/assets/shop.png",
-  },
-  {
-    path: "/updates",
-    label: "Updates",
-    icon: "/assets/shop.png",
-  },
-  {
-    path: "/contact",
-    label: "Contact",
-    icon: "/assets/sell.png",
-  },
-  {
-    path: "/cart",
-    label: "Cart",
     icon: "/assets/partnership.png",
   },
 ];

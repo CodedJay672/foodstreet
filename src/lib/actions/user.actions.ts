@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { ID, Query } from "node-appwrite";
-import { deleteFile, uploadFile } from "./product.actions";
+import { uploadFile } from "./product.actions";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {

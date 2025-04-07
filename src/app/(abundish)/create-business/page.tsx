@@ -18,7 +18,7 @@ const CreateBusiness = async () => {
           <Image
             src="/assets/access-account.svg"
             alt="business form"
-            width={600}
+            width={500}
             height={300}
             className="object-center"
           />
