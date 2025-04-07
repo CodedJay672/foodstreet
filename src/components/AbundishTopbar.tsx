@@ -18,7 +18,6 @@ const AbundishTopbar = () => {
             label={link.label}
             path={link.path}
             icon={link.icon}
-            classname={{ color: "white" }}
           />
         ))}
       </nav>

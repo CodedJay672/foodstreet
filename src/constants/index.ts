@@ -31,12 +31,12 @@ export const NavLinks = [
 export const AbundishLinks = [
   {
     path: "/foodstuffs",
-    label: "Home",
+    label: "Foodstuffs",
     icon: "/assets/foodstuff-fill.png",
   },
   {
     path: "/my-shop",
-    label: "Store",
+    label: "myShop",
     icon: "/assets/shop.png",
   },
   {
