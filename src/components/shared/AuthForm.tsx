@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,16 +14,10 @@ import {
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import CustomInput from "./CustomInput";
 import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
-import {
-  getCurrentUser,
-  SignIn,
-  SignUp,
-  verifyUserEmail,
-} from "@/lib/actions/user.actions";
+import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import SelectDate from "./SelectDate";

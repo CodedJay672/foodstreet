@@ -27,7 +27,7 @@ export const SignIn = async (values: { email: string; password: string }) => {
 
     return session;
   } catch (error: any) {
-    throw new Error(error.message as string);
+    throw new Error(error.message);
   }
 };
 
@@ -59,7 +59,7 @@ export const SignUp = async (values: {
     await saveToDB({ name, email, occupation, dob });
     return session;
   } catch (error: any) {
-    throw new Error(error.message as string);
+    throw new Error(error.message);
   }
 };
 
@@ -94,9 +94,7 @@ export const verifyUserEmail = async () => {
   try {
     const { account } = await createSessionClient();
 
-    await account.createVerification(
-      "https://foodstreet-theta.vercel.app/verify-email"
-    );
+    await account.createVerification("http://localhost:3000/verify-email");
   } catch (error: any) {
     throw new Error(error.message);
   }
