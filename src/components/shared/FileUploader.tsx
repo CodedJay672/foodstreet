@@ -1,11 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import React, { useCallback, useState } from "react";
+import React, { Ref, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { MdFileUpload } from "react-icons/md";
 
-const FileUploader = ({ onChange }: { onChange: (file: File[]) => void }) => {
+const FileUploader = ({
+  onChange,
+  ref,
+}: {
+  onChange: (file: File[]) => void;
+  ref?: Ref<HTMLInputElement>;
+}) => {
   const [filePath, setFilePath] = useState("");
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -24,7 +30,7 @@ const FileUploader = ({ onChange }: { onChange: (file: File[]) => void }) => {
 
   return (
     <div {...getRootProps()}>
-      <input {...getInputProps()} />
+      <input {...getInputProps()} ref={ref} />
       {filePath ? (
         <div className="relative p-3 rounded-md border border-gray-300 w-full flex-center flex-col gap-2 cursor-pointer">
           <Image src={filePath} alt="imgUrl" width={210} height={82} />

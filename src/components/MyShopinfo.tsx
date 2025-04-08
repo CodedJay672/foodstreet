@@ -25,7 +25,7 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
       </div>
 
       <div className="flex justify-center flex-col lg:flex-row lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
-        <div className="size-28 lg:size-40 rounded-full flex-center flex-shrink-0 border-2 border-white bg-raw-primary-light backdrop-blur-3xl -mt-10 overflow-hidden lg:-mt-40 relative">
+        <div className="space-y-2 flex-center flex-col lg:flex-row -mt-10 lg:-mt-20">
           <ShopImage
             vendorID={vendor.$id}
             name={vendor.name}
