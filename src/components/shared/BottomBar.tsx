@@ -10,7 +10,7 @@ const BottomBar = () => {
   const pathname = usePathname();
 
   const isActive = (label: string) => {
-    return label.startsWith(pathname);
+    return label.endsWith(pathname);
   };
 
   return (
