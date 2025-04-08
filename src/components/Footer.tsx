@@ -8,8 +8,8 @@ const Footer = async () => {
   const user = await getCurrentUser();
 
   return (
-    <section className="w-full bg-black py-24 px-10">
-      <div className="w-full max-w-screen-md flex justify-between flex-col lg:flex-row mx-auto space-y-10 lg:space-y-0 text-white">
+    <section className="w-full bg-black pt-24">
+      <div className="w-full max-w-screen-md flex justify-between flex-col lg:flex-row mx-auto space-y-10 lg:space-y-0 text-white px-6">
         <div className="w-51 flex py-4 gap-6">
           <Link href="#">
             <Image
@@ -28,6 +28,7 @@ const Footer = async () => {
             />
           </Link>
         </div>
+
         <div className="flex flex-col gap-4">
           <h1 className="text-base font-bold">About</h1>
           <Link href="#" className="text-sm text-gray-300">
@@ -43,6 +44,7 @@ const Footer = async () => {
             Menu
           </Link>
         </div>
+
         <div className="flex flex-col gap-4">
           <h1 className="text-base font-bold">Company</h1>
           <Link href="#" className="text-sm text-gray-300">
@@ -58,6 +60,7 @@ const Footer = async () => {
             Blog
           </Link>
         </div>
+
         <div className="flex flex-col gap-4">
           <h1 className="text-base font-bold">Support</h1>
           <Link
@@ -79,6 +82,7 @@ const Footer = async () => {
             Contact us
           </Link>
         </div>
+
         <div className="flex flex-col gap-4 mb-10">
           <h1 className="text-base font-bold">Get in Touch</h1>
           <p className="text-sm w-44 lg:w-32 text-gray-300">
@@ -93,7 +97,8 @@ const Footer = async () => {
           </Link>
         </div>
       </div>
-      <div className="w-full border-t border-gray-300 flex-center p-5 mt-10 mb-24 lg:mb-0">
+
+      <div className="w-full border-t border-gray-300 flex-center p-5 mt-24 mb-20 lg:mb-0">
         <span className="text-gray-300 text-xs text-center">
           Created by Wakocoding &copy; {new Date().getFullYear()}. All rights
           reserved
