@@ -56,7 +56,7 @@ const Vendor = () => {
             from our restaurant partners.
           </h1>
           <Image
-            src="/illustrations.png"
+            src="/Illustrations.png"
             alt="order"
             width={92.13}
             height={16.77}
