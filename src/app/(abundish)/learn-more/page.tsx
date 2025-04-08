@@ -8,7 +8,7 @@ const LearnMore = () => {
   return (
     <section className="min-h-screen bg-raw-100 py-10">
       <div className="w-full max-w-screen-md mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-raw-300 text-center px-6">
+        <h1 className="text-3xl lg:text-4xl font-bold text-raw-primary text-center px-6">
           Unlock Financial Freedom with Our Agency Model
         </h1>
 
@@ -19,7 +19,7 @@ const LearnMore = () => {
           business and secure your future.
         </p>
 
-        <h2 className="text-base lg:text-lg px-3 py-1 bg-raw-300 text-raw-100 text-center w-max rounded-full mx-auto mt-24 mb-1">
+        <h2 className="text-base lg:text-lg px-3 py-1 bg-raw-primary-light text-raw-primary text-center w-max rounded-full mx-auto mt-24 mb-1">
           Why join
         </h2>
 
@@ -67,7 +67,9 @@ const LearnMore = () => {
         </ul>
 
         <div className="w-full flex-center flex-col gap-3 my-24">
-          <h1 className="text-xl lg:text-2xl font-bold ">Why Register?</h1>
+          <h1 className="text-xl lg:text-2xl text-raw-primary font-bold ">
+            Why Register?
+          </h1>
           <p className="text-base font-normal text-center">
             Limited-Time Offer: ₦25,000 (Regular price: ₦65,000). <br />
             Your registration fee includes:
@@ -117,8 +119,8 @@ const LearnMore = () => {
           </p>
 
           <Link
-            href="/sign-in"
-            className="bg-raw-300 text-white px-4 py-2 rounded-full flex-center"
+            href="/agent-registration"
+            className="bg-raw-300 text-light bg-raw-primary px-4 py-2 rounded-full flex-center"
           >
             Register now
           </Link>
