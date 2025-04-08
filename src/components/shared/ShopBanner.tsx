@@ -36,7 +36,7 @@ const ShopBanner = ({ bannerUrl, id }: { bannerUrl: string; id: string }) => {
       {bannerPath && (
         <Image src={bannerPath} alt="profile" fill className="object-cover" />
       )}
-      <div className="size-10 rounded-full absolute top-5 right-5 p-1 bg-raw-primary-light z-50 overflow-hidden">
+      <div className="size-10 rounded-full absolute top-5 right-5 p-1 bg-raw-primary-light overflow-hidden">
         <FileUploader onChange={setFile} />
       </div>
     </>

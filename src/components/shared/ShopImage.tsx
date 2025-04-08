@@ -48,7 +48,7 @@ const ShopImage = ({
           {name[0]}
         </h1>
       )}
-      <div className="size-10 rounded-full absolute bottom-0 left-0 p-1 bg-raw-primary-light z-50 overflow-hidden">
+      <div className="size-10 rounded-full absolute bottom-0 left-0 p-1 bg-raw-primary-light overflow-hidden">
         <FileUploader onChange={setFile} />
       </div>
     </>
