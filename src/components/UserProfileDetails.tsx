@@ -9,7 +9,7 @@ import Image from "next/image";
 import FileUploader from "./shared/FileUploader";
 import { updateUserInfo } from "@/lib/actions/user.actions";
 import { toast } from "sonner";
-import { FaSpinner } from "react-icons/fa6";
+import { FaSpinner, FaUpload } from "react-icons/fa6";
 
 const UserProfileDetails = ({ user }: { user: Models.Document }) => {
   const { editProfile, toggleEditProfile } = useContext(FoodContext);
@@ -29,6 +29,7 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
   const [imageUrl, setImageUrl] = React.useState(user.imageUrl || "");
   const [file, setFile] = React.useState<File[] | null>(null);
   const [isUpdating, setIsUpdating] = React.useState(false);
+  const uploaderRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!file) return;
@@ -108,7 +109,15 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
               editProfile ? "block" : "hidden"
             }`}
           >
-            <FileUploader onChange={setFile} />
+            <div
+              className="w-full rounded-full flex-center"
+              onClick={() => uploaderRef.current?.click()}
+            >
+              <FaUpload size={16} className="text-primary" />
+            </div>
+            <div className="hidden">
+              <FileUploader onChange={setFile} ref={uploaderRef} />
+            </div>
           </div>
         </div>
 
