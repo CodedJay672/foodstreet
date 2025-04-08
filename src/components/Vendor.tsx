@@ -14,39 +14,39 @@ const Vendor = () => {
       </div>
 
       <div className=" w-full flex-between flex-col lg:flex-row lg:gap-4 space-y-8 lg:space-y-0">
-        <div className="w-32 h-42 flex-center flex-col  bg-subtle-light px-1 py-4 rounded-lg">
+        <div className="w-full lg:w-32 lg:h-42 flex-center flex-col  bg-subtle-light px-1 py-4 rounded-lg">
           <Image
             src="/okra-soup.png"
             alt="order"
             width={108}
             height={108}
-            className="object-cover flex-center"
+            className="w-72 lg:w-47 object-cover flex-center"
           />
           <h1 className="text-base font-medium">Okro Soup</h1>
         </div>
 
-        <div className="w-32 h-42 flex-center flex-col  bg-subtle-light px-1 py-4 rounded-lg">
+        <div className="w-full lg:w-32 lg:h-42 flex-center flex-col  bg-subtle-light px-1 py-4 rounded-lg">
           <Image
             src="/moi-moi.png"
             alt="order"
             width={108}
             height={108}
-            className="object-cover flex-center"
+            className="w-72 lg:w-47 object-cover flex-center"
           />
 
           <h1 className="text-base font-medium">Moi Moi</h1>
         </div>
 
-        <div className="w-32 h-42 flex-between gap-3 flex-col  bg-subtle-light px-1 py-6 rounded-lg">
+        <div className="w-full lg:w-32 lg:h-42 flex-between gap-3 flex-col  bg-subtle-light px-1 py-6 rounded-lg">
           <Image
             src="/fried-rice.png"
             alt="order"
             width={70}
             height={70}
-            className="object-cover flex-center"
+            className="w-44 lg:w-20 object-cover flex-center"
           />
 
-          <h1 className="text-base font-medium">Friedrice</h1>
+          <h1 className="text-base font-medium mt-4">Friedrice</h1>
         </div>
 
         <div className="flex-1 h-42 bg-subtle-light p-6 rounded-lg">

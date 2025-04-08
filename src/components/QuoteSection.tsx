@@ -12,9 +12,11 @@ const QuoteSection = () => {
           The <span className="text-primary">Best</span> Food Deal in Town
         </h1>
       </div>
-      <IconCard icon="/shopping-bag.png" text="Easy to order" />
-      <IconCard icon="/food-truck.png" text="Easy to order" />
-      <IconCard icon="/people-hold.png" text="Easy to order" />
+      <div className="flex-center gap-4 lg:gap-6">
+        <IconCard icon="/shopping-bag.png" text="Easy to order" />
+        <IconCard icon="/food-truck.png" text="Easy to order" />
+        <IconCard icon="/people-hold.png" text="Easy to order" />
+      </div>
     </section>
   );
 };

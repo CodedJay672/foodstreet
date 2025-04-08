@@ -5,7 +5,7 @@ const HowToOrder = () => {
   return (
     <section className="wrapper flex-center flex-col">
       <h1 className="text-4xl font-semibold">How To Order?</h1>
-      <div className="flex-between flex-col lg:flex-row gap-24 mt-10">
+      <div className="flex-center flex-row flex-wrap gap-24 lg:gap-6 mt-10">
         <div className="flex-center flex-col">
           <h1 className="text-lg text-primary font-semibold">01</h1>
           <IconCard icon="/lolipop.png" text="Choose your location" />
