@@ -21,11 +21,13 @@ import FoodContext from "@/context/GlobalContext";
 import { Models } from "node-appwrite";
 
 const DropdownMenu = ({ user }: { user: Models.User<Models.Preferences> }) => {
-  const { toggleUserDropdown } = useContext(FoodContext);
+  const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
-    <div className="w-full overflow-y-scroll px-4 py-6 bg-white absolute inset-0">
-      <div className="min-h-10 w-full flex-between ">
+    <div
+      className={`w-full px-4 py-6 bg-white absolute top-0 right-0 z-50 lg:hidden space-y-4`}
+    >
+      <div className="min-h-10 w-full flex-between sticky top-0 left-0 border-b border-primary">
         <p className="text-base font-thin">Profile details</p>
         <HiXMark
           size={24}
@@ -34,20 +36,20 @@ const DropdownMenu = ({ user }: { user: Models.User<Models.Preferences> }) => {
         />
       </div>
       <div className="w-full flex-center flex-col gap-4">
-        <div className="size-24 rounded-full bg-primary-light flex-center relative">
+        <div className="size-24 rounded-full bg-primary-light flex-center">
           <p className="text-4xl font-bold text-primary">{user?.name[0]}</p>
         </div>
         <div className="w-full flex-center flex-col gap-1">
-          <h2 className="text-2xl font-semibold flex">
+          <h2 className="text-lg lg:text-2xl font-semibold flex">
             {user?.name}
             {user?.emailVerification && (
               <HiCheckBadge size={20} className="text-primary ml-2" />
             )}
           </h2>
-          <p className="text-lg text-gray-500 font-medium">{user?.email}</p>
+          <p className="text-base text-gray-500">{user?.email}</p>
         </div>
 
-        <ul className="block lg:hidden w-full space-y-6 mt-10  mb-24 overflow-y-scroll">
+        <ul className="w-full space-y-6  pb-10 h-[calc(100vh-270px)] no-scrollbar overflow-y-scroll">
           <li className="w-full p-1" onClick={toggleUserDropdown}>
             <NavLink
               label="My profile"

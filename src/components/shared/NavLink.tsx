@@ -24,15 +24,23 @@ const NavLink = ({
     return linkIcon ? pathname.includes(path) : pathname.endsWith(path);
   };
 
+  const activeProfile = () => {
+    return linkIcon
+      ? "text-primary border-b border-primary font-bold"
+      : "text-light border-b border-light font-bold";
+  };
+
   return (
     <Link
       href={path}
       className={cn(
-        `text-sm leading-7 font-normal font-inter text-light space-y-1 py-1 px-4  transition-all ${
-          linkIcon ? "text-left flex items-center gap-2" : "text-center"
+        `text-sm leading-7 font-normal font-inter space-y-1 py-1 px-4  transition-all ${
+          linkIcon
+            ? "text-left flex items-center text-primary gap-2"
+            : "text-light text-center"
         } gap-2`,
         {
-          "text-light border-b border-light font-semibold": isActive(path),
+          [activeProfile()]: isActive(path),
         }
       )}
     >
