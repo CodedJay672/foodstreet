@@ -20,19 +20,19 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
 
   return (
     <div className="w-full max-w-6xl mx-auto bg-white min-h-screen">
-      <div className="w-full h-60 lg:44 bg-gray-200 relative">
+      <div className="w-full h-32 lg:h-44 bg-gray-200 relative">
         <ShopBanner id={vendor.$id} bannerUrl={vendor.bannerUrl} />
       </div>
 
-      <div className="flex justify-center lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
-        <div className="size-20 lg:size-40 rounded-full flex-center flex-shrink-0 border-2 border-white bg-raw-primary-light backdrop-blur-3xl -mt-40 relative">
+      <div className="flex justify-center flex-col lg:flex-row lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
+        <div className="size-28 lg:size-40 rounded-full flex-center flex-shrink-0 border-2 border-white bg-raw-primary-light backdrop-blur-3xl -mt-10 overflow-hidden lg:-mt-40 relative">
           <ShopImage
             vendorID={vendor.$id}
             name={vendor.name}
             imageUrl={vendor.imageUrl}
           />
         </div>
-        <div className="w-full pt-24 lg:py-6 ">
+        <div className="w-full lg:py-6 ">
           <h1 className="text-xl lg:text-2xl font-bold text-center lg:text-left">
             {vendor.name}
           </h1>

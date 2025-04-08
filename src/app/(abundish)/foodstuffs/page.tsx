@@ -15,20 +15,20 @@ const FoodStuffs = async ({
 
   return (
     <section className="w-full min-h-screen p-1">
-      <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-24 px-1 lg:px-2 py-3 my-4 ">
+      <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-24 px-2 lg:px-2 py-3 my-4 ">
         <h1 className="text-lg lg:text-xl font-semibold">
           Fresh Farm Products
         </h1>
-        <div className="flex-1 border border-raw-primary rounded-full">
+        <div className="w-full lg:flex-1 border border-raw-primary rounded-full">
           <Searchbar />
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto px-4 lg:px-24 flex-between bg-raw-accent gap-5">
-        <div className="space-y-3 flex-1 py-16 lg:py-24">
-          <h2 className="text-raw-primary font-bold text-2xl lg:text-4xl">
+      <div className="w-full max-w-6xl mx-auto px-4 lg:px-24 flex-between flex-col lg:flex-row bg-raw-accent lg:gap-5">
+        <div className="space-y-6 lg:space-y-3 flex-1 py-16 px-6 lg:py-24 ">
+          <h2 className="text-raw-primary font-bold text-3xl lg:text-4xl">
             Fresh Farm Products, Delivered to your Doorstep
           </h2>
-          <p className="text-base text-raw-primary font-normal">
+          <p className="text-base text-raw-primary font-normal my-3">
             We ensure to deliver your fresh farm products everyday
           </p>
 
@@ -44,7 +44,7 @@ const FoodStuffs = async ({
           alt="delivery"
           height={200}
           width={400}
-          className="place-items-baseline pt-16"
+          className="place-items-baseline lg:pt-16"
         />
       </div>
 

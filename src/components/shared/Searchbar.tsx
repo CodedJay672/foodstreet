@@ -32,9 +32,10 @@ const Searchbar = () => {
           type="search"
           onChange={(e) => handleChange(e.target.value)}
           defaultValue={param.get("q") || ""}
-          className="w-full h-6 lg:h-10 border-none outline-none pl-13 pr-10"
+          placeholder="Search for products..."
+          className="w-full h-10 border-none outline-none pl-13 pr-10"
         />
-        <HiMagnifyingGlass className="size-4 lg:size-6 text-raw-primary absolute top-2.5 left-3" />
+        <HiMagnifyingGlass className="size-5 lg:size-6 text-raw-primary absolute top-2.5 left-3" />
       </Suspense>
     </div>
   );
