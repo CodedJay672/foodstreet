@@ -10,7 +10,7 @@ const Topbar = async () => {
   const user = await getLoggedInUser();
 
   return (
-    <header className="w-full px-3 py-1 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-primary">
+    <header className="w-full px-3 py-4 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-primary">
       <Link href="/" className="hidden lg:block flex-center">
         <Image src="/Logo.png" alt="foodstreet" width={100} height={50} />
       </Link>

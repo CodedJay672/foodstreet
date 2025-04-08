@@ -1,9 +1,12 @@
+import { getCurrentUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IoMail } from "react-icons/io5";
 
-const Footer = () => {
+const Footer = async () => {
+  const user = await getCurrentUser();
+
   return (
     <section className="w-full bg-black py-24 px-10">
       <div className="w-full max-w-screen-md flex justify-between flex-col lg:flex-row mx-auto space-y-10 lg:space-y-0 text-white">
@@ -57,20 +60,23 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-4">
           <h1 className="text-base font-bold">Support</h1>
-          <Link href="#" className="text-sm text-gray-300">
+          <Link
+            href={user ? `/user/${user.$id}` : "/sign-in"}
+            className="text-sm text-gray-300"
+          >
             Account
           </Link>
           <Link href="#" className="text-sm text-gray-300">
             Support center
           </Link>
           <Link href="#" className="text-sm text-gray-300">
-            Feedback
+            Become an agent
+          </Link>
+          <Link href="/create-business" className="text-sm text-gray-300">
+            Become a vendor
           </Link>
           <Link href="#" className="text-sm text-gray-300">
             Contact us
-          </Link>
-          <Link href="#" className="text-sm text-gray-300">
-            Accessibility
           </Link>
         </div>
         <div className="flex flex-col gap-4 mb-10">

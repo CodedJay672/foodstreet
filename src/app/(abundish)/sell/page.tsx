@@ -6,7 +6,7 @@ import React from "react";
 const Sell = async () => {
   const user = await getCurrentUser();
 
-  if (!user || !user?.documents?.[0].shops) redirect("/create-business");
+  if (!user || !user?.shops) redirect("/create-business");
 
   return (
     <section className="w-full min-h-screen px-6 lg:px-10 py-10 lg:py-16">
