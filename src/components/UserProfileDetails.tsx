@@ -121,7 +121,7 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
           </div>
         </div>
 
-        <div className="flex-between flex-col lg:flex-row gap-10">
+        <div className="flex-between flex-col lg:flex-row gap-2 lg:gap-10">
           <label
             htmlFor="firstName"
             className="space-y-4 flex flex-col w-full font-thin text-gray-500"
@@ -179,7 +179,7 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
 
         <p className="text-base font-thin text=gray-400">Delivery Address</p>
 
-        <div className="flex-between gap-10">
+        <div className="flex-between gap-2 lg:gap-10">
           <label
             htmlFor="state"
             className="space-y-4 flex flex-col w-full font-thin text-gray-500"
