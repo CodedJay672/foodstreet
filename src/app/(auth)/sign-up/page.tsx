@@ -9,7 +9,7 @@ const SignUp = async () => {
   if (user) redirect("/");
 
   return (
-    <section className="w-full flex-center flex-col gap-4 p-10">
+    <section className="w-full flex-center flex-col gap-4 px-4 py-10 lg:px-12">
       <div className="w-full flex-center flex-col gap-2">
         <h1 className="text-xl lg:text-2xl font-bold text-raw-300 text-center">
           Sign Up

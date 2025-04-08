@@ -194,7 +194,7 @@ const AuthForm = ({ type }: { type: string }) => {
             )}
             {type === "SIGN_IN" ? "Sign in" : "Register"}
           </Button>
-          <div className="flex-center gap-2">
+          <div className="flex-center gap-0.5">
             <p className="text-center">
               {type === "SIGN_IN"
                 ? "Don't have an account? "
