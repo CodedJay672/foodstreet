@@ -72,7 +72,7 @@ const Footer = async () => {
           <Link href="#" className="text-sm text-gray-300">
             Support center
           </Link>
-          <Link href="#" className="text-sm text-gray-300">
+          <Link href="/learn-more" className="text-sm text-gray-300">
             Become an agent
           </Link>
           <Link href="/create-business" className="text-sm text-gray-300">
