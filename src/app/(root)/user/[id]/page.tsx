@@ -35,7 +35,7 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
         <li className="w-full p-1">
           <NavLink
             label="My Orders"
-            path={`#`}
+            path="/user/orders"
             linkIcon={
               <HiOutlineShoppingBag size={24} className="text-primary" />
             }
@@ -60,7 +60,7 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
         <li className="flex items-center gap-6">
           <NavLink
             label="Change password"
-            path={`#`}
+            path="/user/reset-password"
             linkIcon={
               <HiOutlineShieldCheck size={24} className="text-primary" />
             }

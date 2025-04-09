@@ -214,3 +214,42 @@ export const updateUserInfo = async (
     throw new Error(error.message);
   }
 };
+
+export const recoverPassword = async (email: string) => {
+  try {
+    const { account } = await createSessionClient();
+
+    const response = await account.createRecovery(
+      email,
+      "http://localhost:3000/recovery"
+    );
+
+    if (!response) {
+      throw new Error("Email not found");
+    }
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const setNewPassword = async (
+  userId: string,
+  secret: string,
+  password: string
+) => {
+  try {
+    const { account } = await createSessionClient();
+
+    const response = await account.updateRecovery(userId, secret, password);
+
+    if (!response) {
+      throw new Error("Password update failed.");
+    }
+
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
