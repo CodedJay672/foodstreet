@@ -87,7 +87,7 @@ const DropdownMenu = ({ user }: { user: Models.User<Models.Preferences> }) => {
           <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
             <NavLink
               label="Change password"
-              path={`#`}
+              path="/users/reset-password"
               linkIcon={
                 <HiOutlineShieldCheck size={24} className="text-primary" />
               }

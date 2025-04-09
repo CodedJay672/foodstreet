@@ -173,6 +173,12 @@ const AuthForm = ({ type }: { type: string }) => {
                     className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                   />
                 </FormControl>
+                <Link
+                  href="/user/reset-password"
+                  className="place-self-start text-primary font-thin text-sm"
+                >
+                  Reset password
+                </Link>
                 <FormMessage />
               </FormItem>
             )}
