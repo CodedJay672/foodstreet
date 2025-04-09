@@ -18,7 +18,7 @@ const Sell = async () => {
       </p>
 
       <div className="w-full max-w-screen-md flex-center mx-auto mt-6 lg:mt-10 p-1 lg:p-10">
-        <ProductForm shop={user?.documents?.[0]?.shops?.[0].$id} />
+        <ProductForm shop={user?.shops?.[0].$id} />
       </div>
     </section>
   );

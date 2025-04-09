@@ -30,7 +30,7 @@ const CreateBusiness = async () => {
           <p className="text-base font-medium text-center">
             Please fill out form below.
           </p>
-          <BusinessForm creator={user?.documents?.[0].$id} />
+          <BusinessForm creator={user?.$id} />
         </div>
       </div>
     </section>
