@@ -116,15 +116,6 @@ const DropdownMenu = ({ user }: { user: Models.User<Models.Preferences> }) => {
           </li>
           <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
             <NavLink
-              label="My Subscriptions"
-              path={`#`}
-              linkIcon={
-                <HiOutlineDocument size={24} className="text-primary" />
-              }
-            />
-          </li>
-          <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
-            <NavLink
               label="About us"
               path={`#`}
               linkIcon={

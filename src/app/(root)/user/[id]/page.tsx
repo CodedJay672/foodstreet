@@ -84,13 +84,6 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
         </li>
         <li className="flex items-center gap-6">
           <NavLink
-            label="My Subscriptions"
-            path={`#`}
-            linkIcon={<HiOutlineDocument size={24} className="text-primary" />}
-          />
-        </li>
-        <li className="flex items-center gap-6">
-          <NavLink
             label="About us"
             path={`#`}
             linkIcon={
