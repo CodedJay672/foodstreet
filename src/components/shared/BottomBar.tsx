@@ -20,8 +20,7 @@ const BottomBar = () => {
           href={link.path}
           key={idx}
           className={`text-xs flex-center flex-col gap-3 ${
-            isActive(link.path) &&
-            "text-raw-primary bg-raw-primary-light p-2 rounded-lg font-thin"
+            isActive(link.path) && "text-raw-primary p-2 rounded-lg font-thin"
           }`}
         >
           <Image
