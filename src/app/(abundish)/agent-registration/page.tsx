@@ -28,7 +28,8 @@ const AgentReg = async () => {
           <CopyToClipboard text={newAgent?.refCode} />
         </div>
       </div>
-      <div className="w-full  flex-center flex-col mt-10 lg:mt-0 space-y-1">
+
+      <div className="w-full  flex-center flex-col mt-10 lg:mt-0 space-y-1 relative">
         <p className="text-base text-gray-400">
           Name: <span className="font-medium">{newAgent?.details?.name}</span>
         </p>
@@ -38,11 +39,16 @@ const AgentReg = async () => {
         <p className="text-base text-gray-400">
           Phone: <span className="font-medium">{newAgent?.details?.phone}</span>
         </p>
-        <p className="text-base bg-gray-100 py-1 px-6 truncate flex-center rounded-full text-gray-400 space-x-3">
+
+        <p className="w-full text-base bg-gray-100 py-1 px-6 truncate rounded-full text-gray-400 space-x-3">
           Ref link: <span className="font-medium">{newAgent?.refLink}</span>
-          <CopyToClipboard text={newAgent?.refLink} />
         </p>
+
+        <div className="absolute bottom-3 right-3">
+          <CopyToClipboard text={newAgent?.refLink} />
+        </div>
       </div>
+
       <div className="flex-1 flex flex-col lg:flex-row justify-between">
         <div className="w-full p-6 order-2 lg:order-1">
           <h1 className="text-base lg:text-lg text-raw-primary font-medium">
