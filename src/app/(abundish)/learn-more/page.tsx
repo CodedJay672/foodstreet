@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiCheckCircle } from "react-icons/hi2";
@@ -7,17 +8,31 @@ import { MdBusiness, MdShop2, MdWallet } from "react-icons/md";
 const LearnMore = () => {
   return (
     <section className="min-h-screen bg-raw-100 py-10">
-      <div className="w-full max-w-screen-md mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-raw-primary text-center px-6">
-          Unlock Financial Freedom with Our Agency Model
-        </h1>
+      <div className="w-full max-w-6xl mx-auto p-6">
+        <div className="flex-between flex-col lg:flex-row gap-6 lg:gap-10">
+          <div className="w-full space-y-4 lg:space-y-2">
+            <h1 className="text-3xl lg:text-4xl font-bold text-raw-primary text-center lg:text-left">
+              Unlock Financial Freedom with Our Agency Model
+            </h1>
 
-        <p className="text-base lg:text-lg my-4 text-center px-10">
-          Join our financial empowerment project and be part of a movement
-          creating sustainable livelihoods for 100,000 Nigerians. With Nigeria's
-          booming food industry, this is your opportunity to build a profitable
-          business and secure your future.
-        </p>
+            <p className="text-base lg:text-lg my-4 text-center lg:text-left">
+              Join our financial empowerment project and be part of a movement
+              creating sustainable livelihoods for 100,000 Nigerians. With
+              Nigeria's booming food industry, this is your opportunity to build
+              a profitable business and secure your future.
+            </p>
+
+            <Link
+              href="/agent-registration"
+              className="bg-raw-300 text-light bg-raw-primary px-4 py-2 rounded-full flex justify-center items-center lg:flex-none lg:w-max"
+            >
+              Register now
+            </Link>
+          </div>
+          <div className="w-full flex-center mt-6 lg:mt-0">
+            <Image src="/agent.jpg" alt="agent" width={400} height={100} />
+          </div>
+        </div>
 
         <h2 className="text-base lg:text-lg px-3 py-1 bg-raw-primary-light text-raw-primary text-center w-max rounded-full mx-auto mt-24 mb-1">
           Why join
