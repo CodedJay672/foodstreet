@@ -13,7 +13,7 @@ const MyShop = async () => {
     redirect("/sign-in");
   }
 
-  const businesses = await getShops(currentUser?.documents?.[0].$id);
+  const businesses = await getShops(currentUser?.$id);
 
   return (
     <section className="m-full min-h-screen pb-10">

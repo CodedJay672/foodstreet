@@ -12,14 +12,14 @@ export const NavLinks = [
     icon: "/foodstuff.svg",
   },
   {
-    path: "/my-shop",
-    label: "myShop",
-    icon: "/online-shop.svg",
-  },
-  {
     path: "/sell",
     label: "Sell",
     icon: "/cart-sell.svg",
+  },
+  {
+    path: "/my-shop",
+    label: "myShop",
+    icon: "/online-shop.svg",
   },
   {
     path: "/abundish",

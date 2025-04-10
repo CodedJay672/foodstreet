@@ -22,12 +22,11 @@ const AbundishHero = () => {
           </Link>
         </div>
 
-        <div className="w-max">
+        <div className="w-full h-96 lg:w-1/2 relative">
           <Image
             src="/hero-abundish.png"
             alt="foodstreet"
-            height={700}
-            width={400}
+            fill
             className="object-contain grow-0 shink-0"
           />
         </div>
