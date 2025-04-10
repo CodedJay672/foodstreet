@@ -3,27 +3,27 @@ import { TabContent } from "../../types";
 export const NavLinks = [
   {
     path: "/",
-    label: "Restraunts",
+    label: "restraunts",
     icon: "/break-eggs.svg",
   },
   {
     path: "/foodstuffs",
-    label: "Foodstuffs",
+    label: "foodstuffs",
     icon: "/foodstuff.svg",
   },
   {
     path: "/sell",
-    label: "Sell",
+    label: "sell",
     icon: "/cart-sell.svg",
   },
   {
     path: "/my-shop",
-    label: "myShop",
+    label: "e-shop",
     icon: "/online-shop.svg",
   },
   {
     path: "/abundish",
-    label: "Abundish",
+    label: "abundish",
     icon: "/plant-leaf.svg",
   },
 ];
