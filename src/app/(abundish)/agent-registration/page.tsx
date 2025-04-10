@@ -29,7 +29,7 @@ const AgentReg = async () => {
         </div>
       </div>
 
-      <div className="w-full  flex-center flex-col mt-10 lg:mt-0 space-y-1 relative">
+      <div className="w-full max-w-sm flex-center flex-col mt-10 lg:mt-0 space-y-1 relative">
         <p className="text-base text-gray-400">
           Name: <span className="font-medium">{newAgent?.details?.name}</span>
         </p>
