@@ -1,5 +1,6 @@
 import CopyToClipboard from "@/components/shared/CopyToClipboard";
 import { getCurrentUser } from "@/lib/actions/user.actions";
+import Link from "next/link";
 
 import { redirect } from "next/navigation";
 import React from "react";
@@ -51,36 +52,68 @@ const AgentReg = async () => {
             </p>
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full my-10">
           <h1 className="text-xl lg:text-2xl">Invited</h1>
 
           {/** visitors table show here */}
         </div>
       </div>
 
-      <div className="w-full lg:w-2xs p-6">
+      <div className="w-full lg:w-md p-6">
         <h1 className="text-xl lg:text-2xl text-center lg:text-left">
           Earnings
         </h1>
-        <div className="w-full space-y-2 flex flex-col justify-center lg:justify-start my-10 lg:my-0">
-          <p>
-            Daily earning: <span></span>
-          </p>
-          <p>
-            Monthly earning: <span></span>
-          </p>
-          <p>
-            Total commission: <span></span>
-          </p>
-          <p>
-            Total withdrawals: <span></span>
-          </p>
-          <p>
-            Balance: <span></span>
-          </p>
-          <p>
-            Profit: <span></span>
-          </p>
+        <div className="w-full space-y-2 flex flex-col justify-center lg:justify-start my-10">
+          <div className="w-full flex-between">
+            <p className="text-base lg:texw-full">Daily earning: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-between">
+            <p className="text-base lg:text-lg w-full">Monthly earning: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold w-full text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-between">
+            <p className="text-base lg:text-lg w-full">Total commission: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold w-full text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-between">
+            <p className="text-base lg:text-lg w-full">Total withdrawals: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold w-full text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-between">
+            <p className="text-base lg:text- w-full">Balance: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold w-full text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-between">
+            <p className="text-base lg:text- w-full">Profit: </p>
+            <span className="w-fulltext-lg lg:text-xl font-semibold w-full text-right">
+              0.00
+            </span>
+          </div>
+
+          <div className="w-full flex-center mt-3">
+            <Link
+              href="#"
+              className="w-full lg:w-2/3 bg-raw-accent rounded-full p-2 text-light text-center"
+            >
+              withdraw
+            </Link>
+          </div>
         </div>
       </div>
     </section>
