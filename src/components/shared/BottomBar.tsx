@@ -19,7 +19,7 @@ const BottomBar = () => {
         <Link
           href={link.path}
           key={idx}
-          className={`text-xs flex-center flex-col gap-1 ${
+          className={`text-xs flex-center flex-col gap-3 ${
             isActive(link.path) &&
             "text-raw-primary bg-raw-primary-light p-2 rounded-lg font-thin"
           }`}
@@ -27,9 +27,9 @@ const BottomBar = () => {
           <Image
             src={link.icon}
             alt={link.label}
-            height={20}
-            width={20}
-            className={`size-6 brightness-0 ${
+            height={18}
+            width={18}
+            className={`brightness-0 ${
               isActive(link.path)
                 ? "stroke-raw-primary"
                 : "stroke-raw-primary-light"
