@@ -23,7 +23,7 @@ const CreateBusiness = async () => {
             className="object-center"
           />
         </div>
-        <div className="w-full flex-center flex-col px-6 lg:px-16">
+        <div className="w-full flex-center flex-col">
           <h1 className="text-3xl lg:text-5xl font-bold text-raw-300">
             Create Business
           </h1>

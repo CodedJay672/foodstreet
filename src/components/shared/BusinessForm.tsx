@@ -74,7 +74,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Business name</FormLabel>
+              <FormLabel className="text-base font-thin text-gray-500">
+                Business name
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -86,13 +88,15 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           )}
         />
 
-        <div className="w-full flex items-center gap-5 lg:gap-10">
+        <div className="w-full flex items-center gap-1 lg:gap-3">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Business email</FormLabel>
+                <FormLabel className="text-base font-thin text-gray-500">
+                  Business email
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -109,7 +113,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
             name="location"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Business location</FormLabel>
+                <FormLabel className="text-base font-thin text-gray-500">
+                  Business location
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -122,13 +128,15 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           />
         </div>
 
-        <div className="w-full flex items-center gap-5 lg:gap-10">
+        <div className="w-full flex items-center gap-1 lg:gap-3">
           <FormField
             control={form.control}
             name="referrer"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Referrer code (if available)</FormLabel>
+                <FormLabel className="text-base font-thin text-gray-500">
+                  Referrer code (if available)
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -145,7 +153,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
             name="occupation"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Occupation</FormLabel>
+                <FormLabel className="text-base font-thin text-gray-500">
+                  Occupation
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -163,7 +173,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           name="phone"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Business phone</FormLabel>
+              <FormLabel className="text-base font-thin text-gray-500">
+                Business phone
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -180,7 +192,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           name="work-address"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Work address</FormLabel>
+              <FormLabel className="text-base font-thin text-gray-500">
+                Work address
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -197,7 +211,9 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Business description</FormLabel>
+              <FormLabel className="text-base font-thin text-gray-500">
+                Business description
+              </FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
@@ -211,7 +227,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
 
         <Button
           type="submit"
-          className="text-light text-base lg:text-lg font-medium w-full rounded-full bg-raw-primary hover:bg-raw-primary mt-6 cursor-pointer"
+          className="text-light text-base lg:text-lg font-medium w-full h-12 rounded-full bg-raw-primary hover:bg-raw-primary mt-6 cursor-pointer"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting && (

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { use, useContext } from "react";
 import {
   HiCheckBadge,
   HiOutlineChatBubbleOvalLeftEllipsis,
@@ -130,9 +130,9 @@ const DropdownMenu = () => {
               }
             />
           </li>
-          {/* <li className="flex items-center gap-6">
-          <SignOut />
-        </li> */}
+          <li className="flex items-center gap-6 px-5">
+            <SignOut />
+          </li>
         </ul>
       </div>
     </div>
