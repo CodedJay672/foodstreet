@@ -18,14 +18,28 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { createShop } from "@/lib/actions/shop.actions";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FaSpinner } from "react-icons/fa6";
 
 const BusinessForm = ({ creator }: { creator: string }) => {
   const router = useRouter();
+  const param = useSearchParams();
+
+  const referrer = param.get("ref");
 
   const form = useForm<z.infer<typeof shopSchema>>({
     resolver: zodResolver(shopSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      location: "",
+      description: "",
+      phone: "",
+      occupation: "",
+      "work-address": "",
+      referrer: referrer || "",
+    },
+    mode: "onBlur",
   });
 
   async function onSubmit(values: z.infer<typeof shopSchema>) {
@@ -111,10 +125,10 @@ const BusinessForm = ({ creator }: { creator: string }) => {
         <div className="w-full flex items-center gap-5 lg:gap-10">
           <FormField
             control={form.control}
-            name="phone"
+            name="referrer"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Business phone</FormLabel>
+                <FormLabel>Referrer code (if available)</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -143,6 +157,23 @@ const BusinessForm = ({ creator }: { creator: string }) => {
             )}
           />
         </div>
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Business phone</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  className="w-full h-10 text-base border-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}

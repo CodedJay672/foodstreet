@@ -38,8 +38,7 @@ export const shopSchema = z.object({
   phone: z.string(),
   occupation: z.string(),
   "work-address": z.string(),
-  imageUrl: z.string().optional(),
-  bannerUrl: z.string().optional(),
+  referrer: z.string(),
 });
 
 export const productSchema = z.object({

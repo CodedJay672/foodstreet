@@ -38,7 +38,7 @@ const AgentReg = async () => {
         <p className="text-base text-gray-400">
           Phone: <span className="font-medium">{newAgent?.details?.phone}</span>
         </p>
-        <p className="text-base bg-gray-100 p-1 flex-center rounded-full text-gray-400 space-x-3">
+        <p className="text-base bg-gray-100 py-1 px-6 truncate flex-center rounded-full text-gray-400 space-x-3">
           Ref link: <span className="font-medium">{newAgent?.refLink}</span>
           <CopyToClipboard text={newAgent?.refLink} />
         </p>

@@ -37,7 +37,7 @@ export const agentReferralCode = () => {
 };
 
 export const generateReferralLink = async (code: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-  return `${baseUrl}/join?ref=${code}`;
+  return `${baseUrl}/create-business?ref=${code}`;
 };

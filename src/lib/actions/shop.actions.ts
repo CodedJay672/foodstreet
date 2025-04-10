@@ -43,11 +43,21 @@ export const createShop = async (values: ShopType) => {
   try {
     const { database } = await createAdminClient();
 
+    //get the referrer
+    const ref = await database.listDocuments(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_AGENTS_COLLECTION_ID!,
+      [Query.equal("refCode", values.referrer)]
+    );
+
     const response = await database.createDocument(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_SHOPS_COLLECTION_ID!,
       ID.unique(),
-      values
+      {
+        ...values,
+        referrer: ref?.documents[0]?.$id || null,
+      }
     );
 
     if (!response) {
