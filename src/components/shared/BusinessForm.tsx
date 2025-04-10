@@ -143,7 +143,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
                     className="w-full h-10 text-base border-gray-300"
                   />
                 </FormControl>
-                <p className="text-xs text-gray-400 font-thin">If available</p>
+
                 <FormMessage />
               </FormItem>
             )}
