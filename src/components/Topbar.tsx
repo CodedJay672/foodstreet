@@ -4,7 +4,8 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
-import UserDropdown from "./shared/UserDropdown";
+
+import HamburgerMenu from "./shared/HamburgerMenu";
 
 const Topbar = async () => {
   const user = await getLoggedInUser();
@@ -27,29 +28,7 @@ const Topbar = async () => {
           ))}
         </nav>
 
-        {user ? (
-          <>
-            <UserDropdown user={user} />
-            <Link
-              href={`/user/${user.$id}`}
-              className="hidden rounded-full p-2 b lg:flex items-center gap-2"
-            >
-              <div className="size-10 rounded-full bg-primary-light text-primary p-1 flex-center">
-                {user?.name[0].toUpperCase()}
-              </div>
-              <span className="text-sm text-light font-light">
-                {user?.name}
-              </span>
-            </Link>
-          </>
-        ) : (
-          <Link
-            href="/sign-in"
-            className="text-light font-inter text-base leading-7 px-4 py-2 rounded-full bg-primary"
-          >
-            Sign in
-          </Link>
-        )}
+        <HamburgerMenu />
       </header>
     </>
   );

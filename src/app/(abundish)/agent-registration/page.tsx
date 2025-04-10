@@ -27,25 +27,25 @@ const AgentReg = async () => {
           </div>
           <div className="w-rull lg:w-80 mt-10 lg:mt-0 flex flex-col gap-1">
             <p className="text-base lg:text-lg">
-              Agent name:{" "}
+              Name:{" "}
               <span className="text-lg lg:text-xl font-semibold">
                 name goes here
               </span>
             </p>
             <p className="text-base lg:text-lg">
-              Agent email:{" "}
+              Email:{" "}
               <span className="text-lg lg:text-xl font-semibold">
                 name goes here
               </span>
             </p>
             <p className="text-base lg:text-lg">
-              Agent phone:{" "}
+              Phone:{" "}
               <span className="text-lg lg:text-xl font-semibold">
                 name goes here
               </span>
             </p>
             <p className="text-base lg:text-lg">
-              Referral link:{" "}
+              Ref link:{" "}
               <span className="text-lg lg:text-xl font-semibold">
                 name goes here
               </span>
