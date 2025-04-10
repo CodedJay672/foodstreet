@@ -61,8 +61,8 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
             </p>
           </div>
           <div className="flex items-center gap-2 justify-center lg:justify-start">
-            <p className="text-base font-thin flex-center gap-1">
-              Agent: {vendor.agent?.name}
+            <p className="text-sm font-thin text-gray-400 flex-center gap-1">
+              AgentId: {vendor.agent?.refCode}
             </p>
           </div>
         </div>
