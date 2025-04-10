@@ -10,7 +10,7 @@ const HamburgerMenu = () => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
   return (
     <>
-      <div className="p-1" onClick={toggleUserDropdown}>
+      <div className="p-1 lg:hidden" onClick={toggleUserDropdown}>
         <IoMenuOutline size={30} className="text-light" />
       </div>
       {showUserDropdown && <DropdownMenu />}

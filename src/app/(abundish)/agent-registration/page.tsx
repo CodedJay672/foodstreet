@@ -4,6 +4,7 @@ import { getCurrentUser } from "@/lib/actions/user.actions";
 import Link from "next/link";
 
 import { redirect } from "next/navigation";
+import { Models } from "node-appwrite";
 
 import React from "react";
 
@@ -29,7 +30,7 @@ const AgentReg = async () => {
         </div>
       </div>
 
-      <div className="w-full max-w-sm flex-center flex-col mt-10 lg:mt-0 space-y-1 relative">
+      <div className="w-full max-w-md flex-center flex-col mt-10 lg:mt-0 space-y-1 mx-auto relative">
         <p className="text-base text-gray-400">
           Name: <span className="font-medium">{newAgent?.details?.name}</span>
         </p>
@@ -49,14 +50,34 @@ const AgentReg = async () => {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col lg:flex-row justify-between">
+      <div className="flex-1 flex flex-col lg:flex-row justify-between mt-10">
         <div className="w-full p-6 order-2 lg:order-1">
           <h1 className="text-base lg:text-lg text-raw-primary font-medium">
             Invites
           </h1>
+          <ul className="w-full mt-5 space-y-4">
+            {newAgent?.referrals.length > 0 ? (
+              newAgent.referrals.map((ref: Models.Document) => (
+                <li
+                  key={ref.$id}
+                  className="w-full bg-raw-primary-light p-3 rounded-lg shadow-sm flex flex-col lg:flex-row justify-between"
+                >
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm text-gray-400">Name: {ref.name}</p>
+                    <p className="text-sm text-gray-400">Email: {ref.email}</p>
+                    <p className="text-sm text-gray-400">Phone: {ref.phone}</p>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <li className="w-full p-3 text-center">
+                <p className="text-sm text-gray-400">No invites yet</p>
+              </li>
+            )}
+          </ul>
         </div>
 
-        <div className="w-full lg-w-md p-6 order-1 lg:order-2">
+        <div className="w-full lg:max-w-sm p-6 order-1 lg:order-2">
           <h1 className="text-base lg:text-lg text-raw-primary font-medium">
             Earnings
           </h1>

@@ -29,11 +29,12 @@ const AbundishTopbar = async () => {
 
       <div className="flex-center gap-1">
         {user ? (
-          <div className="size-10 flex-center bg-primary-light rounded-full">
-            <h1 className="text-primary text-2xl font-semibold">
-              {user.name[0]}
-            </h1>
-          </div>
+          <Link
+            href={`/user/${user.$id}`}
+            className="size-10 flex-center bg-primary-light text-primary rounded-full"
+          >
+            {user.name[0]}
+          </Link>
         ) : (
           <Link
             href="/sign-in"

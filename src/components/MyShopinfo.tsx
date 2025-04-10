@@ -62,7 +62,7 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
           </div>
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <p className="text-base font-thin flex-center gap-1">
-              Agent: {vendor.referrer.name}
+              Agent: {vendor.agent?.name}
             </p>
           </div>
         </div>

@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 
 import HamburgerMenu from "./shared/HamburgerMenu";
 
 const Topbar = async () => {
-  const user = await getLoggedInUser();
+  const user = await getCurrentUser();
 
   return (
     <>
@@ -30,11 +30,12 @@ const Topbar = async () => {
 
         <div className="flex-center gap-1">
           {user ? (
-            <div className="size-10 flex-center bg-primary-light rounded-full">
-              <h1 className="text-primary text-2xl font-semibold">
-                {user.name[0]}
-              </h1>
-            </div>
+            <Link
+              href={`/user/${user.$id}`}
+              className="size-10 flex-center bg-primary-light text-primary rounded-full"
+            >
+              {user.name[0]}
+            </Link>
           ) : (
             <Link
               href="/sign-in"
