@@ -4,27 +4,27 @@ export const NavLinks = [
   {
     path: "/",
     label: "Restraunts",
-    icon: "/assets/shop.png",
+    icon: "/break-eggs.svg",
   },
   {
     path: "/foodstuffs",
     label: "Foodstuffs",
-    icon: "/assets/foodstuff-fill.png",
+    icon: "/foodstuff.svg",
   },
   {
     path: "/my-shop",
     label: "myShop",
-    icon: "/assets/shop.png",
+    icon: "/online-shop.svg",
   },
   {
     path: "/sell",
     label: "Sell",
-    icon: "/assets/sell.png",
+    icon: "/cart-sell.svg",
   },
   {
     path: "/abundish",
     label: "Abundish",
-    icon: "/assets/partnership.png",
+    icon: "/plant-leaf.svg",
   },
 ];
 
