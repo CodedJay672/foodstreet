@@ -18,12 +18,16 @@ export const createAgent = async (userId: string) => {
     const code = generateUniqueCode(6);
     const referralLink = await generateReferralLink(code);
 
+    // get all agents from the database
+    const allAgents = await getAgent();
+
     const agent = await database.createDocument(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_AGENTS_COLLECTION_ID!,
       ID.unique(),
       {
         details: userId,
+        agentNumber: allAgents?.total + 1,
         refCode: code,
         refLink: referralLink,
       }
@@ -39,14 +43,14 @@ export const createAgent = async (userId: string) => {
   }
 };
 
-export const getAgent = async (userId: string) => {
+export const getAgent = async (userId?: string) => {
   try {
     const { database } = await createAdminClient();
 
     const agent = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_AGENTS_COLLECTION_ID!,
-      [Query.equal("details", userId)]
+      [Query.equal("details", userId ?? "")]
     );
 
     if (!agent) {

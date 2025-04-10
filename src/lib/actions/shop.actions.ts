@@ -48,7 +48,7 @@ export const createShop = async (values: ShopType) => {
     const ref = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_AGENTS_COLLECTION_ID!,
-      [Query.equal("refCode", referrer ?? "")]
+      [Query.equal("refCode", referrer?.trim() ?? "")]
     );
 
     const response = await database.createDocument(
