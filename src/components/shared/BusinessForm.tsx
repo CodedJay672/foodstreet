@@ -135,7 +135,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="text-base font-thin text-gray-500">
-                  Referrer code (if available)
+                  Referrer code
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -143,6 +143,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
                     className="w-full h-10 text-base border-gray-300"
                   />
                 </FormControl>
+                <p className="text-xs text-gray-400 font-thin">If available</p>
                 <FormMessage />
               </FormItem>
             )}
