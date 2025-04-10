@@ -28,7 +28,23 @@ const Topbar = async () => {
           ))}
         </nav>
 
-        <HamburgerMenu />
+        <div className="flex-center gap-1">
+          {user ? (
+            <div className="size-10 flex-center bg-primary-light rounded-full">
+              <h1 className="text-primary text-2xl font-semibold">
+                {user.name[0]}
+              </h1>
+            </div>
+          ) : (
+            <Link
+              href="/sign-in"
+              className="py-1 px-3 rounded-full text-light border border-light"
+            >
+              Sign In
+            </Link>
+          )}
+          <HamburgerMenu />
+        </div>
       </header>
     </>
   );
