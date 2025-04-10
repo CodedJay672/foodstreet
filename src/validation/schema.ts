@@ -38,7 +38,12 @@ export const shopSchema = z.object({
   phone: z.string(),
   occupation: z.string(),
   "work-address": z.string(),
-  referrer: z.string(),
+  referrer: z
+    .string()
+    .max(8, {
+      message: "Referrer code must be 8 characters long",
+    })
+    .optional(),
 });
 
 export const productSchema = z.object({

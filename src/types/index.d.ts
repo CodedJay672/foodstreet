@@ -7,7 +7,7 @@ type ShopType = {
   phone: string;
   occupation: string;
   "work-address": string;
-  referrer: string;
+  referrer?: string;
 };
 
 type ProductType = {

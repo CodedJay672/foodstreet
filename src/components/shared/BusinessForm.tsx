@@ -37,7 +37,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
       phone: "",
       occupation: "",
       "work-address": "",
-      referrer: referrer || "",
+      referrer: referrer ?? "",
     },
     mode: "onBlur",
   });

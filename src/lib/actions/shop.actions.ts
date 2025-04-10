@@ -42,12 +42,13 @@ export const getShops = cache(async (creator: string | undefined) => {
 export const createShop = async (values: ShopType) => {
   try {
     const { database } = await createAdminClient();
+    const { referrer, ...rest } = values;
 
     //get the referrer
     const ref = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_AGENTS_COLLECTION_ID!,
-      [Query.equal("refCode", values.referrer)]
+      referrer ? [Query.equal("refCode", referrer)] : []
     );
 
     const response = await database.createDocument(
@@ -55,8 +56,8 @@ export const createShop = async (values: ShopType) => {
       process.env.APPWRITE_SHOPS_COLLECTION_ID!,
       ID.unique(),
       {
-        ...values,
-        referrer: ref?.documents[0]?.$id || null,
+        ...rest,
+        agent: ref?.documents[0]?.$id || null,
       }
     );
 
