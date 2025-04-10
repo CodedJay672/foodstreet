@@ -44,13 +44,13 @@ const AgentReg = async () => {
         </p>
       </div>
       <div className="flex-1 flex flex-col lg:flex-row justify-between">
-        <div className="w-full p-6">
+        <div className="w-full p-6 order-2 lg:order-1">
           <h1 className="text-base lg:text-lg text-raw-primary font-medium">
             Invites
           </h1>
         </div>
 
-        <div className="w-full max-w-sm p-6">
+        <div className="w-full lg-w-md p-6 order-1 lg:order-2">
           <h1 className="text-base lg:text-lg text-raw-primary font-medium">
             Earnings
           </h1>
