@@ -221,7 +221,7 @@ export const recoverPassword = async (email: string) => {
 
     const response = await account.createRecovery(
       email,
-      "http://localhost:3000/recovery"
+      process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000/recovery"
     );
 
     if (!response) {
