@@ -91,10 +91,11 @@ const saveToDB = async (values: {
 };
 
 export const verifyUserEmail = async () => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
   try {
     const { account } = await createSessionClient();
 
-    await account.createVerification("http://localhost:3000/verify-email");
+    await account.createVerification(`${baseUrl}/verify-email`);
   } catch (error: any) {
     throw new Error(error.message);
   }
