@@ -2,7 +2,7 @@
 
 import { cache } from "react";
 import { createAdminClient } from "../appwrite";
-import { ID, Query } from "node-appwrite";
+import { ID, Models, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
 import { revalidatePath } from "next/cache";
 
@@ -70,6 +70,17 @@ export const uploadFile = async (file: File) => {
   } catch (error: any) {
     throw new Error(error.message);
   }
+};
+
+export const getFilePreview = (file: Models.File) => {
+  const imgUrl = `${process.env
+    .NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!}/storage/buckets/${
+    file.bucketId
+  }/files/${file?.$id}/preview?project=${[
+    process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
+  ]}`;
+
+  return imgUrl;
 };
 
 export const deleteFile = async (fileId: string) => {

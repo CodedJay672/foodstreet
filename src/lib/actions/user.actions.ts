@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { ID, Query } from "node-appwrite";
-import { uploadFile } from "./product.actions";
+import { deleteFile, getFilePreview, uploadFile } from "./product.actions";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -176,19 +176,19 @@ export const updateUserInfo = async (
     const { database } = await createAdminClient();
 
     //first upload the image and get the imageUrl
-
     const uploadImg = await uploadFile(file);
 
     if (!uploadImg) {
       throw new Error();
     }
 
-    const imgUrl = `${process.env
-      .NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!}/storage/buckets/${
-      uploadImg.bucketId
-    }/files/${uploadImg?.$id}/preview?project=${[
-      process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
-    ]}`;
+    //get image preview url
+    const imgUrl = getFilePreview(uploadImg);
+
+    if (!imgUrl) {
+      await deleteFile(uploadImg.$id);
+      throw new Error("Image upload failed.");
+    }
 
     // update the user information with the new data
     const response = await database.updateDocument(
