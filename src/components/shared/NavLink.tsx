@@ -34,7 +34,7 @@ const NavLink = ({
     <Link
       href={path}
       className={cn(
-        `text-sm leading-7 font-normal font-inter space-y-1 py-1 px-4  transition-all ${
+        `text-sm leading-7 font-normal font-inter space-y-1 py-1 px-4  transition-all capitalize ${
           linkIcon
             ? "text-left flex items-center text-primary gap-2"
             : "text-light text-center"
