@@ -11,7 +11,9 @@ const ShopBanner = ({
   userId,
   bannerUrl,
   id,
+  creatorId,
 }: {
+  creatorId: string;
   userId: string | undefined;
   bannerUrl: string;
   id: string;
@@ -52,7 +54,7 @@ const ShopBanner = ({
       {bannerPath ? (
         <Image src={bannerPath} alt="profile" fill className="object-cover" />
       ) : (
-        userId === id && (
+        userId === creatorId && (
           <>
             <div
               className="size-10 rounded-full absolute top-5 right-5 p-1 bg-raw-primary-light flex-center"

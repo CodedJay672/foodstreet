@@ -26,15 +26,17 @@ const MyShop = async ({ params }: { params: Promise<{ id: string }> }) => {
           userId={user?.$id}
           id={myBusiness?.documents[0].$id}
           bannerUrl={myBusiness.documents?.[0].bannerUrl}
+          creatorId={myBusiness.documents?.[0].creator.$id}
         />
       </div>
 
       <div className="flex justify-center flex-col lg:flex-row lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
         <div className="space-y-2 flex-center flex-col lg:flex-row -mt-10 lg:-mt-20">
           <ShopImage
-            vendorID={myBusiness?.documents[0].$id}
+            id={myBusiness?.documents[0].$id}
             name={myBusiness?.documents[0].name}
             imageUrl={myBusiness?.documents[0].imageUrl}
+            creatorId={myBusiness.documents?.[0].creator.$id}
             userId={user?.$id}
           />
         </div>

@@ -10,13 +10,15 @@ import { Button } from "../ui/button";
 const ShopImage = ({
   name,
   imageUrl,
-  vendorID,
+  id,
   userId,
+  creatorId,
 }: {
   name: string;
   imageUrl: string;
-  vendorID: string;
+  id: string;
   userId: string | undefined;
+  creatorId: string;
 }) => {
   const [imagePath, setImagePath] = useState(imageUrl || "");
   const [file, setFile] = useState<File[] | null>(null);
@@ -31,7 +33,7 @@ const ShopImage = ({
       setImagePath(imageUrl);
 
       // upload the image to appwrite
-      const res = await updateProfileImage(vendorID, file[0]);
+      const res = await updateProfileImage(id, file[0]);
 
       if (!res) {
         return toast.error("Error oploading image");
@@ -54,7 +56,7 @@ const ShopImage = ({
           </h1>
         )}
       </div>
-      {vendorID === userId && (
+      {creatorId === userId && (
         <>
           <Button
             type="button"
