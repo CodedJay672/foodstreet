@@ -98,7 +98,7 @@ const Footer = async () => {
         </div>
       </div>
 
-      <div className="w-full border-t border-gray-300 flex-center p-5 mt-24 mb-20 lg:mb-0">
+      <div className="w-full border-t border-gray-300 flex-center p-5 mt-24 mb-10 lg:mb-0">
         <span className="text-gray-300 text-xs text-center">
           Created by Wakocoding &copy; {new Date().getFullYear()}. All rights
           reserved
