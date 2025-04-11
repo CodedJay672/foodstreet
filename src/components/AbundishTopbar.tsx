@@ -3,12 +3,12 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
 import { NavLinks } from "@/constants";
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 
 import HamburgerMenu from "./shared/HamburgerMenu";
 
 const AbundishTopbar = async () => {
-  const user = await getLoggedInUser();
+  const user = await getCurrentUser();
 
   return (
     <header className="w-full px-3 py-4 lg:px-10 flex-between sticky top-0 left-0 z-50 bg-raw-primary">
