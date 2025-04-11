@@ -8,7 +8,6 @@ import {
   HiOutlineChatBubbleOvalLeftEllipsis,
   HiOutlineCheckCircle,
   HiOutlineDevicePhoneMobile,
-  HiOutlineDocument,
   HiOutlineQuestionMarkCircle,
   HiOutlineQueueList,
   HiOutlineShieldCheck,

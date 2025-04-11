@@ -221,7 +221,7 @@ export const updateUserInfo = async (
 
 export const recoverPassword = async (email: string) => {
   try {
-    const { account } = await createSessionClient();
+    const { account } = await createAdminClient();
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
     const response = await account.createRecovery(email, `${baseUrl}/recovery`);
@@ -242,7 +242,7 @@ export const setNewPassword = async (
   password: string
 ) => {
   try {
-    const { account } = await createSessionClient();
+    const { account } = await createAdminClient();
 
     const response = await account.updateRecovery(userId, secret, password);
 
