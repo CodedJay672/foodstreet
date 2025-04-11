@@ -14,27 +14,26 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="fixed left-0 bottom-0 w-full bg-white flex justify-between items-center z-10 px-3 py-2 lg:hidden">
+    <div className="fixed left-0 bottom-0 w-full bg-white flex justify-between items-center z-10 p-3 lg:hidden">
       {NavLinks.map((link, idx) => (
         <Link
           href={link.path}
           key={idx}
-          className={`w-20 text-xs flex-center text-gray-400 flex-col gap-3 ${
-            isActive(link.path) && "text-raw-primary rounded-lg font-thin"
+          className={`text-xs p-3 flex-center text-gray-400 flex-col ${
+            isActive(link.path) && "border-b border-raw-primary"
           }`}
         >
           <Image
             src={link.icon}
             alt={link.label}
-            height={18}
-            width={18}
+            height={24}
+            width={24}
             className={`brightness-0 ${
               isActive(link.path)
                 ? "stroke-raw-primary"
                 : "stroke-raw-primary-light"
             }`}
           />
-          {link.label}
         </Link>
       ))}
     </div>
