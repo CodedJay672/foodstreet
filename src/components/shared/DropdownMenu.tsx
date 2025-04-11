@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useContext } from "react";
+import React, { useContext } from "react";
 import {
   HiCheckBadge,
   HiOutlineChatBubbleOvalLeftEllipsis,
@@ -23,14 +23,8 @@ const DropdownMenu = () => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
-    <div
-      className={`w-full  bg-black/70 absolute top-0 right-0 z-50 lg:hidden  transition-all duration-300 backdrop-blur-3xl flex justify-end ${
-        showUserDropdown
-          ? "translate-x-0 opacity-100"
-          : "-translate-x-full opacity-0"
-      }`}
-    >
-      <div className="w-4/5 h-screen px-4 py-6 bg-white space-y-4">
+    <div className="w-full bg-black/70 absolute top-0 right-0 backdrop-blur-md flex justify-end">
+      <div className="w-4/5 h-screen px-4 py-6 bg-white space-y-4 transition">
         <div className="min-h-10 w-full flex-between sticky top-0 left-0">
           <p className="text-base font-thin">Menu</p>
           <HiXMark

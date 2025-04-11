@@ -7,6 +7,7 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [foodType, setFoodType] = useState("");
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [editProfile, setEditProfile] = useState(false);
+  const [seeMore, setSeeMore] = useState(false);
 
   useEffect(() => {
     const storedType = localStorage.getItem("foodType")
@@ -29,6 +30,10 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
     setEditProfile((prev) => !prev);
   };
 
+  const handleSeeMore = () => {
+    setSeeMore((prev) => !prev);
+  };
+
   return (
     <FoodContext.Provider
       value={{
@@ -38,6 +43,8 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
         toggleUserDropdown: handleDropdownToggle,
         editProfile,
         toggleEditProfile: handleEditProfileToggle,
+        seeMore,
+        handleSeeMore,
       }}
     >
       {children}

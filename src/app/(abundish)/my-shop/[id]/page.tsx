@@ -1,107 +1,89 @@
-"use client";
-
-import React, { useState } from "react";
+import AboutSection from "@/components/shared/AboutSection";
+import ProductCard from "@/components/shared/ProductCard";
+import ShopBanner from "@/components/shared/ShopBanner";
+import ShopImage from "@/components/shared/ShopImage";
+import { getShopsById } from "@/lib/actions/shop.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 import { Models } from "node-appwrite";
-import { Button } from "@/components/ui/button";
+import React from "react";
 import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
 
-import { cn } from "@/lib/utils";
-import ProductCard from "./shared/ProductCard";
-import ShopImage from "./shared/ShopImage";
-import ShopBanner from "./shared/ShopBanner";
+const MyShop = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const user = await getCurrentUser();
 
-const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
-  const [vendor] = shopInfo;
-  const [seeMore, setSeeMore] = useState(false);
-
-  const handleSeeMe = () => {
-    setSeeMore((prev) => !prev);
-  };
+  const myBusiness = await getShopsById(id);
 
   return (
-    <div className="w-full max-w-6xl mx-auto bg-white min-h-screen">
+    <section className="w-full max-w-4xl mx-auto bg-white min-h-screen">
       <div className="w-full h-32 lg:h-44 bg-gray-200 relative">
-        <ShopBanner id={vendor.$id} bannerUrl={vendor.bannerUrl} />
+        <ShopBanner
+          userId={user?.$id}
+          id={myBusiness?.documents[0].$id}
+          bannerUrl={myBusiness.documents?.[0].bannerUrl}
+        />
       </div>
 
       <div className="flex justify-center flex-col lg:flex-row lg:justify-start items-center gap-10 px-6 lg:px-10 relative w-full">
         <div className="space-y-2 flex-center flex-col lg:flex-row -mt-10 lg:-mt-20">
           <ShopImage
-            vendorID={vendor.$id}
-            name={vendor.name}
-            imageUrl={vendor.imageUrl}
+            vendorID={myBusiness?.documents[0].$id}
+            name={myBusiness?.documents[0].name}
+            imageUrl={myBusiness?.documents[0].imageUrl}
+            userId={user?.$id}
           />
         </div>
         <div className="w-full lg:py-6 ">
           <h1 className="text-xl lg:text-2xl font-bold text-center lg:text-left">
-            {vendor.name}
+            {myBusiness?.documents[0].name}
           </h1>
           <div className="flex items-center justify-center lg:justify-start gap-2">
             <p className="text-base font-thin flex-center">
               <MdLocationPin size={20} className="text-gray-400" />
-              {vendor.location} |
+              {myBusiness?.documents[0].location} |
             </p>
             <p className="text-base font-thin flex-center">
-              {vendor.occupation} |
+              {myBusiness?.documents[0].occupation} |
             </p>
             <p className="text-base font-thin flex-center">
-              {vendor["work-address"]}
+              {myBusiness?.documents[0]["work-address"]}
             </p>
           </div>
           <div className="flex items-center justify-center lg:justify-start">
             <p className="text-base font-thin flex-center gap-1">
               <MdMailOutline size={20} className="text-gray-400" />
-              {vendor.email}
+              {myBusiness?.documents[0].email}
             </p>
           </div>
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <p className="text-base font-thin flex-center gap-1">
               <MdPhone size={20} className="text-gray-400" />
-              {vendor.phone}
+              {myBusiness?.documents[0].phone}
             </p>
           </div>
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <p className="text-sm font-thin text-gray-400 flex-center gap-1">
-              AgentId: {vendor.agent?.refCode}
+              AgentId: {myBusiness?.documents[0].agent?.refCode}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mt-6 lg:mt-10 border-t border-gray-300 p-6 lg:p-10">
-        <h2 className="text-xl lg:text-2xl font-semibold">About</h2>
-        <div
-          className={cn(`mt-4 h-24 overflow-hidden transition-[height]`, {
-            "h-auto": seeMore,
-          })}
-        >
-          {vendor.description.split("\n").map((item: string, idx: number) => (
-            <p
-              key={idx}
-              className="text-base text-pretty font-light text-gay-400"
-            >
-              {item}
-            </p>
-          ))}
-        </div>
-        <div className="w-full flex-center mt-2">
-          <Button
-            variant="outline"
-            onClick={handleSeeMe}
-            className="border-0 text-raw-300 cursor-pointer"
-          >
-            see {seeMore ? "less" : "more"}
-          </Button>
-        </div>
+      <div className="w-full my-10 p-6">
+        <h1 className="text-lg font-bold text-raw-primary">About</h1>
+        <AboutSection text={myBusiness.documents?.[0].description} />
       </div>
 
       <div className="mt-4 lg:mt-10 p-6 lg:p-10 flex flex-col gap-4 min-h-60px w-full">
-        <h2 className="text-xl lg:text-2xl font-semibold">All Products</h2>
+        <h2 className="text-lg font-bold text-raw-primary">All Products</h2>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 lg:gap-2">
-          {vendor.products && vendor.products?.length > 0 ? (
-            vendor.products?.map((product: Models.Document) => (
-              <ProductCard key={product.$id} {...product} />
-            ))
+          {myBusiness.documents?.[0].products &&
+          myBusiness.documents?.[0].products?.length > 0 ? (
+            myBusiness.documents?.[0].products?.map(
+              (product: Models.Document) => (
+                <ProductCard key={product.$id} {...product} />
+              )
+            )
           ) : (
             <div className="col-span-4 flex-center flex-col p-4">
               <p className="text-sm text-gray-300 text-center">
@@ -111,8 +93,8 @@ const MyShopinfo = ({ shopInfo }: { shopInfo: Models.Document[] }) => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default MyShopinfo;
+export default MyShop;

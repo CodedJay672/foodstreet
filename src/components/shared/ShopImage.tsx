@@ -11,10 +11,12 @@ const ShopImage = ({
   name,
   imageUrl,
   vendorID,
+  userId,
 }: {
   name: string;
   imageUrl: string;
   vendorID: string;
+  userId: string | undefined;
 }) => {
   const [imagePath, setImagePath] = useState(imageUrl || "");
   const [file, setFile] = useState<File[] | null>(null);
@@ -52,18 +54,22 @@ const ShopImage = ({
           </h1>
         )}
       </div>
-      <Button
-        type="button"
-        variant="outline"
-        onClick={() => uploadRef.current?.click()}
-        className="w-full border-raw-primary lg:border-none hover:bg-light cursor-pointer text-sm"
-      >
-        Change Image
-      </Button>
+      {vendorID === userId && (
+        <>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => uploadRef.current?.click()}
+            className="w-full border-raw-primary lg:border-none hover:bg-light cursor-pointer text-sm"
+          >
+            Change Image
+          </Button>
 
-      <div className="hidden">
-        <FileUploader onChange={setFile} ref={uploadRef} />
-      </div>
+          <div className="hidden">
+            <FileUploader onChange={setFile} ref={uploadRef} />
+          </div>
+        </>
+      )}
     </div>
   );
 };

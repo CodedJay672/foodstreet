@@ -1,14 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FileUploader from "./FileUploader";
 import Image from "next/image";
 import { toast } from "sonner";
 import { updateBannerImage } from "@/lib/actions/shop.actions";
+import { FaUpload } from "react-icons/fa6";
 
-const ShopBanner = ({ bannerUrl, id }: { bannerUrl: string; id: string }) => {
+const ShopBanner = ({
+  userId,
+  bannerUrl,
+  id,
+}: {
+  userId: string | undefined;
+  bannerUrl: string;
+  id: string;
+}) => {
   const [bannerPath, setBannerUrl] = useState(bannerUrl || "");
   const [file, setFile] = useState<File[] | null>(null);
+  const uploadRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const handleImageupload = async () => {
@@ -31,14 +41,31 @@ const ShopBanner = ({ bannerUrl, id }: { bannerUrl: string; id: string }) => {
     handleImageupload();
   }, [file]);
 
+  const uploadFiles = () => {
+    if (!uploadRef.current) return;
+
+    uploadRef.current.click();
+  };
+
   return (
     <>
-      {bannerPath && (
+      {bannerPath ? (
         <Image src={bannerPath} alt="profile" fill className="object-cover" />
+      ) : (
+        userId === id && (
+          <>
+            <div
+              className="size-10 rounded-full absolute top-5 right-5 p-1 bg-raw-primary-light flex-center"
+              onClick={uploadFiles}
+            >
+              <FaUpload size={16} className="text-raw-primary" />
+            </div>
+            <div className="hidden">
+              <FileUploader onChange={setFile} ref={uploadRef} />
+            </div>
+          </>
+        )
       )}
-      <div className="size-10 rounded-full absolute top-5 right-5 p-1 bg-raw-primary-light overflow-hidden">
-        <FileUploader onChange={setFile} />
-      </div>
     </>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import SeeMore from "@/components/shared/SeeMore";
 import { createContext } from "react";
 
 const FoodContext = createContext({
@@ -9,6 +10,8 @@ const FoodContext = createContext({
   toggleUserDropdown: () => {},
   editProfile: false,
   toggleEditProfile: () => {},
+  seeMore: false,
+  handleSeeMore: () => {},
 });
 
 export default FoodContext;
