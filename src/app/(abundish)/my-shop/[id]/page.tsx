@@ -4,6 +4,7 @@ import ShopBanner from "@/components/shared/ShopBanner";
 import ShopImage from "@/components/shared/ShopImage";
 import { getShopsById } from "@/lib/actions/shop.actions";
 import { getCurrentUser } from "@/lib/actions/user.actions";
+import { redirect } from "next/navigation";
 import { Models } from "node-appwrite";
 import React from "react";
 import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
@@ -13,6 +14,10 @@ const MyShop = async ({ params }: { params: Promise<{ id: string }> }) => {
   const user = await getCurrentUser();
 
   const myBusiness = await getShopsById(id);
+
+  if (!myBusiness.total) {
+    redirect("/create-business");
+  }
 
   return (
     <section className="w-full max-w-4xl mx-auto bg-white min-h-screen">
