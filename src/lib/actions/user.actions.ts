@@ -218,11 +218,9 @@ export const updateUserInfo = async (
 export const recoverPassword = async (email: string) => {
   try {
     const { account } = await createSessionClient();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-    const response = await account.createRecovery(
-      email,
-      process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000/recovery"
-    );
+    const response = await account.createRecovery(email, `${baseUrl}/recovery`);
 
     if (!response) {
       throw new Error("Email not found");
