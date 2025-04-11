@@ -147,7 +147,9 @@ export const getCurrentUser = async (userId?: string | "") => {
     const currentUser = await database.listDocuments(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_USERS_COLLECTION_ID!,
-      [Query.equal("accountId", userId ? userId : signedInUser.$id)]
+      userId
+        ? [Query.equal("$id", userId)]
+        : [Query.equal("accountId", signedInUser.$id)]
     );
 
     if (!currentUser) {
