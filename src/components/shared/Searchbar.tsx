@@ -32,7 +32,7 @@ const Searchbar = () => {
           type="search"
           onChange={(e) => handleChange(e.target.value)}
           defaultValue={param.get("q") || ""}
-          placeholder="Search for products..."
+          placeholder="Search..."
           className="w-full h-10 border-none outline-none pl-13 pr-10"
         />
         <HiMagnifyingGlass className="size-5 lg:size-6 text-raw-primary absolute top-2.5 left-3" />
