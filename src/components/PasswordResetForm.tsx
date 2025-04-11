@@ -51,7 +51,7 @@ const PasswordResetForm = ({
 
   return (
     <form onSubmit={handleSubmit} className="w-full flex-center flex-col gap-4">
-      <label htmlFor="password" className="text-base font-medium w-full">
+      <label htmlFor="password" className="text-sm font-light w-full">
         Enter new password
         <input
           type="password"
@@ -65,7 +65,7 @@ const PasswordResetForm = ({
         />
       </label>
 
-      <label htmlFor="confirmPassword" className="text-base font-medium w-full">
+      <label htmlFor="confirmPassword" className="text-sm font-light w-full">
         Enter new password
         <input
           type="password"

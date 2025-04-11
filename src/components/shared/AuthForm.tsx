@@ -175,7 +175,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 </FormControl>
                 {type === "SIGN_IN" && (
                   <Link
-                    href="/user/reset-password"
+                    href="/reset-password"
                     className="place-self-start text-primary font-thin text-sm"
                   >
                     Reset password

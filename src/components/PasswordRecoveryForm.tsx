@@ -39,7 +39,7 @@ const PasswordRecoveryForm = () => {
       onSubmit={handleSubmit}
       className="flex flex-col lg:flex-row items-end gap-4"
     >
-      <label htmlFor="email" className="text-base font-medium w-full">
+      <label htmlFor="email" className="text-sm font-light w-full">
         Email address
         <input
           type="email"
