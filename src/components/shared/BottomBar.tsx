@@ -14,13 +14,13 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="fixed left-0 bottom-0 w-full bg-white flex justify-between items-center z-10 p-3 lg:hidden">
+    <div className="fixed left-0 bottom-0 w-full bg-white flex justify-between items-center z-10 lg:hidden">
       {NavLinks.map((link, idx) => (
         <Link
           href={link.path}
           key={idx}
-          className={`text-xs p-3 flex-center text-gray-400 flex-col ${
-            isActive(link.path) && "border-b border-raw-primary"
+          className={`text-xs py-3 px-6 flex-center flex-col ${
+            isActive(link.path) && "border-t-2 border-raw-primary"
           }`}
         >
           <Image
