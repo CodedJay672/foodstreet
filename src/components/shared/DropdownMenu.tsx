@@ -23,8 +23,15 @@ const DropdownMenu = () => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
-    <div className="w-full bg-black/70 absolute top-0 right-0 backdrop-blur-md flex justify-end">
-      <div className="w-4/5 h-screen px-4 py-6 bg-white space-y-4 transition">
+    <div
+      className={`w-full bg-black/70 fixed top-0 right-0 backdrop-blur-md  transition-transform duration-200 ease-in-out transform-gpu ${
+        showUserDropdown ? "flex justify-end" : "hidden"
+      }`}
+      style={{
+        transform: showUserDropdown ? "translateX(0px)" : "translateX(-100px)",
+      }}
+    >
+      <div className="w-4/5 h-screen px-4 py-6 bg-white space-y-4">
         <div className="min-h-10 w-full flex-between sticky top-0 left-0">
           <p className="text-base font-thin">Menu</p>
           <HiXMark

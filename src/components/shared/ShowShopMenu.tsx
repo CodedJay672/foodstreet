@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-const ShowShopMenu = ({ id }: { id: string | undefined }) => {
+const ShowShopMenu = ({ id }: { id: string | null }) => {
   const [showMenu, setShowMenu] = React.useState(false);
 
   const toggleMenu = () => {
@@ -26,6 +26,7 @@ const ShowShopMenu = ({ id }: { id: string | undefined }) => {
         <Link href={`/my-shop/${id}`} className="text-raw-primary text-base">
           My Shop
         </Link>
+
         <Link href="/create-business" className="text-raw-primary text-base">
           Create business
         </Link>

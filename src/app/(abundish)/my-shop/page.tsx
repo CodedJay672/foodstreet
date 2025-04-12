@@ -2,9 +2,8 @@ import Searchbar from "@/components/shared/Searchbar";
 import ShopView from "@/components/shared/ShopView";
 import ShowShopMenu from "@/components/shared/ShowShopMenu";
 import { getShops } from "@/lib/actions/shop.actions";
-import { getCurrentUser, getLoggedInUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/actions/user.actions";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import React from "react";
 
 const MyShop = async ({
@@ -12,13 +11,8 @@ const MyShop = async ({
 }: {
   searchParams: Promise<{ q: string }>;
 }) => {
-  const user = await getLoggedInUser();
   const currentUser = await getCurrentUser();
   const { q } = await searchParams;
-
-  if (!user || !user.emailVerification) {
-    redirect("/sign-in");
-  }
 
   const businesses = await getShops(q);
 
@@ -30,14 +24,23 @@ const MyShop = async ({
           <div className="flex-1 border border-raw-primary rounded-full">
             <Searchbar />
           </div>
-          <ShowShopMenu id={currentUser?.$id} />
+          <ShowShopMenu
+            id={
+              currentUser?.shops?.length > 0
+                ? currentUser?.shops?.[0].$id
+                : null
+            }
+          />
           <div className="hidden lg:flex gap-2">
             <Link
-              href={`/my-shop/${currentUser?.$id}`}
+              href={`/my-shop/${
+                currentUser?.shops?.length ? currentUser?.shops?.[0].$id : null
+              }`}
               className="text-raw-primary border border-raw-primary px-6 py-2 rounded-full"
             >
               My Shop
             </Link>
+
             <Link
               href="/create-business"
               className="text-light bg-raw-primary px-6 py-2 rounded-full"

@@ -135,7 +135,7 @@ export const getLoggedInUser = async () => {
   }
 };
 
-export const getCurrentUser = async (userId?: string | "") => {
+export const getCurrentUser = async (userId?: string) => {
   try {
     const signedInUser = await getLoggedInUser();
     const { database } = await createAdminClient();
