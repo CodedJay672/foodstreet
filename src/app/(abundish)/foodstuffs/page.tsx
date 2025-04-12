@@ -16,7 +16,7 @@ const FoodStuffs = async ({
   return (
     <section className="w-full min-h-screen p-1">
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-24 px-2 lg:px-2 py-3 my-4 ">
-        <h1 className="text-lg lg:text-xl font-semibold">
+        <h1 className="hidden lg:block text-lg lg:text-xl font-semibold">
           Fresh Farm Products
         </h1>
         <div className="w-full lg:flex-1 border border-raw-primary rounded-full">
