@@ -14,7 +14,7 @@ const AbundishPremiumCards = () => {
       </div>
 
       <div className="w-full flex justify-around flex-col lg:flex-row items-center mt-10 gap-10">
-        <div className="w-64 lg:h-60 p-6 bg-raw-200 rounded-xl bg-raw-accent-light">
+        <div className="w-64 p-6 bg-raw-200 rounded-xl bg-raw-accent-light">
           <div className="w-full  rounded-lg flex-center">
             <h1 className="text-lg lg:text-xl font-bold text-center">Silver</h1>
           </div>
@@ -38,7 +38,7 @@ const AbundishPremiumCards = () => {
           </div>
         </div>
 
-        <div className="w-64 lg:h-60 p-6 bg-raw-accent-light rounded-xl">
+        <div className="w-64 p-6 bg-raw-accent-light rounded-xl">
           <div className="w-full rounded-lg flex-center">
             <h1 className="text-lg lg:text-xl font-bold text-center">Gold</h1>
           </div>
@@ -60,7 +60,7 @@ const AbundishPremiumCards = () => {
           </div>
         </div>
 
-        <div className="w-64 lg:h-60 p-6 rounded-xl bg-raw-accent-light">
+        <div className="w-64 p-6 rounded-xl bg-raw-accent-light">
           <div className="w-full rounded-lg flex-center">
             <h1 className="text-lg lg:text-xl font-bold text-center">
               Platnum

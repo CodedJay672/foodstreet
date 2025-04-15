@@ -5,8 +5,8 @@ import Link from "next/link";
 const AbundishHero = () => {
   return (
     <section className={`w-full flex-center`}>
-      <div className="w-full max-w-6xl mx-auto flex justify-between items-center lg:items-start gap-6 flex-col lg:flex-row">
-        <div className="flex justify-center flex-1 flex-col gap-4 px-6 py-10 lg:p-24">
+      <div className="w-full max-w-6xl mx-auto flex-center gap-6 lg:gap-1 flex-col lg:flex-row">
+        <div className="flex justify-center flex-1 flex-col gap-4 px-6 py-10 lg:p-16 ">
           <h1 className="text-4xl lg:text-5xl font-bold text-raw-primary capitalize">
             Become Abundish Agent and earn money from your home
           </h1>
@@ -27,12 +27,12 @@ const AbundishHero = () => {
           </Link>
         </div>
 
-        <div className="w-full h-96 lg:w-1/2 relative mt-10">
+        <div className="w-full h-96 lg:h-130 lg:w-120 relative mt-10 p-1 lg:p-0 lg:mt-0 rounded-b-3xl">
           <Image
             src="/hero-abundish.png"
             alt="foodstreet"
             fill
-            className="object-contain grow-0 shink-0"
+            className="object-cover"
           />
         </div>
       </div>
