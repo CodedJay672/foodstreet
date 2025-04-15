@@ -10,16 +10,16 @@ const TestimonialCarousel = ({ children }: { children: React.ReactNode }) => {
     if (!carouselRef.current) return;
 
     if (direction === "right") {
-      carouselRef.current.scrollLeft += 743;
+      carouselRef.current.scrollLeft += carouselRef.current.clientWidth - 36;
     } else {
-      carouselRef.current.scrollLeft -= 700;
+      carouselRef.current.scrollLeft -= carouselRef.current.clientWidth - 36;
     }
   };
 
   return (
     <>
       <section
-        className="flex overflow-x-scroll scroll-smooth"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth relative w-full"
         ref={carouselRef}
       >
         {children}

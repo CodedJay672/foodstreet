@@ -5,7 +5,7 @@ import Testimony from "./shared/Testimony";
 
 const Testimonials = () => {
   return (
-    <section className="wrapper relative overflow-hidden space-y-6 custom-scrollbar">
+    <section className="wrapper overflow-hidden space-y-6">
       <h2 className="text-xl lg:text-3xl font-semibold text-center">
         Our Clients Feedback
       </h2>

@@ -4,7 +4,7 @@ import LocationForm from "./shared/LocationForm";
 
 const HeroSection = () => {
   return (
-    <section className="w-full max-w-screen-lg mx-auto p-6 flex-between flex-col lg:flex-row lg:gap-32">
+    <section className="w-full max-w-6xl mx-auto p-4 lg:p-6 flex-between flex-col lg:flex-row lg:gap-32">
       <div className="w-full lg:w-1/2 pt-10 lg:pt-0">
         <h1 className="text-4xl lg:text-6xl font-inter font-semibold text-pretty">
           Your Best Plug For Your Local Food
