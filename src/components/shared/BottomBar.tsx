@@ -19,7 +19,7 @@ const BottomBar = () => {
         <Link
           href={link.path}
           key={idx}
-          className={`text-xs py-3 px-6 flex-center flex-col ${
+          className={`py-3 px-6 flex-center flex-col ${
             isActive(link.path) && "border-t-2 border-raw-primary"
           }`}
         >
@@ -34,6 +34,14 @@ const BottomBar = () => {
                 : "stroke-raw-primary-light"
             }`}
           />
+
+          <span
+            className={`text-[10px] text-gray-400 mt-2 capitalize ${
+              isActive(link.path) && "text-raw-primary font-bold"
+            }`}
+          >
+            {link.label}
+          </span>
         </Link>
       ))}
     </div>

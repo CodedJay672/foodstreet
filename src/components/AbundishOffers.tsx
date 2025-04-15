@@ -11,13 +11,14 @@ const AbundishOffers = () => {
       <div className="w-full max-w-screen-md mx-auto px-6 py-24">
         <div className="w-full flex items-center flex-col gap-2">
           <h1 className="text-center text-3xl lg:text-4xl text-raw-primary flex-bold font-inter">
-            Offers
+            Best Offers
           </h1>
           <p className="text-xl lg:text-2xl text-center text-pretty font-semibold px-4">
-            Monthly subscription plans
+            Become a Vendor & Own the Biggest Online Food Store
           </p>
-          <p className="text-lg lg:text-xl text-pretty px-6 text-center">
-            Check out our amazing offers on Abundish
+          <p className="text-base lg:text-xl text-pretty px-6 text-center mt-4">
+            Unlock exclusive benefits—from setting up a shop to earning from
+            food transactions across the country. Explore what awaits below.
           </p>
         </div>
 

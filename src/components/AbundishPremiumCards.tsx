@@ -27,6 +27,15 @@ const AbundishPremiumCards = () => {
               Get Discounts on every purchase you make
             </p>
           </div>
+
+          <div className="w-full flex-center mt-10">
+            <Link
+              href="/abundish/subscription-page"
+              className="border border-subtle-light text-subtle-light font-bold px-6 py-2 rounded-lg"
+            >
+              Subscribe Now
+            </Link>
+          </div>
         </div>
 
         <div className="w-64 lg:h-60 p-6 bg-raw-accent-light rounded-xl">
@@ -39,6 +48,15 @@ const AbundishPremiumCards = () => {
             <p className="text-sm font medium text-center mt-4">
               Earn 10% on every purchase made through your unique referral link
             </p>
+          </div>
+
+          <div className="w-full flex-center mt-10">
+            <Link
+              href="/abundish/subscription-page"
+              className="border border-subtle-light text-subtle-light font-bold px-6 py-2 rounded-lg"
+            >
+              Subscribe Now
+            </Link>
           </div>
         </div>
 
@@ -57,16 +75,16 @@ const AbundishPremiumCards = () => {
               Become an e-shop owner and manage your business from your phone
             </p>
           </div>
-        </div>
-      </div>
 
-      <div className="w-full flex-center mt-10">
-        <Link
-          href="/abundish/subscription-page"
-          className="bg-raw-accent-light px-6 py-2 rounded-lg"
-        >
-          Subscribe Now
-        </Link>
+          <div className="w-full flex-center mt-10">
+            <Link
+              href="/abundish/subscription-page"
+              className="border border-subtle-light text-subtle-light font-bold px-6 py-2 rounded-lg"
+            >
+              Subscribe Now
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

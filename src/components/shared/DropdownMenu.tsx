@@ -18,65 +18,33 @@ import {
 import NavLink from "./NavLink";
 import SignOut from "./SignOut";
 import FoodContext from "@/context/GlobalContext";
+import Image from "next/image";
 
 const DropdownMenu = () => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
     <div
-      className={`w-full bg-black/70 fixed top-0 right-0 backdrop-blur-md  transition-transform duration-200 ease-in-out transform-gpu ${
-        showUserDropdown ? "flex justify-end" : "hidden"
+      className={`w-full bg-black/70 fixed top-0 right-0 backdrop-blur-md transition-transform duration-300 ease-in-out transform-gpu ${
+        showUserDropdown ? "translate-x-0" : "translate-x-full"
       }`}
-      style={{
-        transform: showUserDropdown ? "translateX(0px)" : "translateX(-100px)",
-      }}
     >
-      <div className="w-4/5 h-screen px-4 py-6 bg-white space-y-4">
-        <div className="min-h-10 w-full flex-between sticky top-0 left-0">
-          <p className="text-base font-thin">Menu</p>
-          <HiXMark
-            size={24}
-            className="text-primary"
-            onClick={toggleUserDropdown}
-          />
+      <div className="w-4/5 h-screen bg-white space-y-4 place-self-end">
+        <div className="h-1/4 p-6 pb-0 w-full bg-primary flex flex-col">
+          <div className="flex-between w-full">
+            <Image src="/Logo.png" alt="foodstreet" width={120} height={60} />
+            <HiXMark
+              size={24}
+              className="text-light"
+              onClick={toggleUserDropdown}
+            />
+          </div>
+          <div className="flex-1 flex flex-col place-content-end">
+            <p className="text-light text-xl font-bold text-left">Menu</p>
+          </div>
         </div>
 
-        <ul className="w-full space-y-6 pb-10 h-[calc(100vh-270px)] no-scrollbar overflow-y-scroll">
-          {/* <li className="w-full p-1" onClick={toggleUserDropdown}>
-          <NavLink
-            label="My Orders"
-            path={`#`}
-            linkIcon={
-              <HiOutlineShoppingBag size={24} className="text-primary" />
-            }
-          />
-        </li>
-        <li className="w-full p-1" onClick={toggleUserDropdown}>
-          <NavLink
-            label="My Subscriptions"
-            path={`#`}
-            linkIcon={
-              <HiOutlineCheckCircle size={24} className="text-primary" />
-            }
-          />
-        </li>
-        <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
-          <NavLink
-            label="My Watchlist"
-            path={`#`}
-            linkIcon={<HiOutlineQueueList size={24} className="text-primary" />}
-          />
-        </li>
-        <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
-          <NavLink
-            label="Change password"
-            path="/users/reset-password"
-            linkIcon={
-              <HiOutlineShieldCheck size={24} className="text-primary" />
-            }
-          />
-        </li> */}
-
+        <ul className="w-full space-y-6 pb-10 px-6 h-[calc(100vh-270px)] no-scrollbar overflow-y-scroll">
           <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
             <NavLink
               label="Become an agent"

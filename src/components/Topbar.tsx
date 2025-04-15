@@ -37,7 +37,10 @@ const Topbar = async () => {
               {user.name[0]}
             </Link>
           ) : (
-            <Link href="/sign-in" className="py-1 px-3 rounded-full text-light">
+            <Link
+              href="/sign-in"
+              className="py-1 px-3 rounded-full bg-light text-primary font-semibold"
+            >
               Sign In
             </Link>
           )}
