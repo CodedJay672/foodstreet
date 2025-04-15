@@ -19,7 +19,7 @@ const BottomBar = () => {
         <Link
           href={link.path}
           key={idx}
-          className={`py-3 px-6 flex-center flex-col ${
+          className={`py-3 w-16 flex-center flex-col ${
             isActive(link.path) && "border-t-2 border-raw-primary"
           }`}
         >
