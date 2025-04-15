@@ -36,7 +36,7 @@ const BottomBar = () => {
           />
 
           <span
-            className={`text-[10px] text-gray-400 mt-2 capitalize ${
+            className={`text-[10px] text-gray-600 mt-2 capitalize ${
               isActive(link.path) && "text-raw-primary font-bold"
             }`}
           >
