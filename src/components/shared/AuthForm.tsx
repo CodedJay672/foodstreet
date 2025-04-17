@@ -149,14 +149,11 @@ const AuthForm = ({ type }: { type: string }) => {
                 name="referrer"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-base font-thin text-gray-500">
+                    <FormLabel className="text-base font-thin">
                       Referrer code
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        className="w-full h-10 text-base border-gray-300"
-                      />
+                      <Input {...field} className="w-full h-10 text-base" />
                     </FormControl>
 
                     <FormMessage />
