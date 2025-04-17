@@ -18,16 +18,22 @@ import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
 import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "../ui/input";
 import SelectDate from "./SelectDate";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
+  const param = useSearchParams();
   const router = useRouter();
+
+  const referrer = param.get("ref");
 
   const form = useForm<z.infer<typeof authFormSchema>>({
     resolver: zodResolver(authFormSchema),
+    defaultValues: {
+      referrer: referrer ?? "",
+    },
   });
 
   async function onSubmit(values: z.infer<typeof authFormSchema>) {
@@ -158,6 +164,27 @@ const AuthForm = ({ type }: { type: string }) => {
               </FormItem>
             )}
           />
+
+          <FormField
+            control={form.control}
+            name="referrer"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-base font-thin text-gray-500">
+                  Referrer code
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="w-full h-10 text-base border-gray-300"
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="password"

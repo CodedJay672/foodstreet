@@ -14,6 +14,12 @@ export const authSchema = (type: string) =>
             required_error: "Date of birth is required",
           }),
     occupation: type === "SIGN_IN" ? z.string().optional() : z.string(),
+    referrer: z
+      .string()
+      .max(8, {
+        message: "Referrer code must be 8 characters long",
+      })
+      .optional(),
     email: z.string().email(),
     password: z.string().min(8, {
       message: "Password should be at least 8 characters long.",
@@ -38,12 +44,6 @@ export const shopSchema = z.object({
   phone: z.string(),
   occupation: z.string(),
   "work-address": z.string(),
-  referrer: z
-    .string()
-    .max(8, {
-      message: "Referrer code must be 8 characters long",
-    })
-    .optional(),
 });
 
 export const productSchema = z.object({

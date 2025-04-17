@@ -23,9 +23,6 @@ import { FaSpinner } from "react-icons/fa6";
 
 const BusinessForm = ({ creator }: { creator: string }) => {
   const router = useRouter();
-  const param = useSearchParams();
-
-  const referrer = param.get("ref");
 
   const form = useForm<z.infer<typeof shopSchema>>({
     resolver: zodResolver(shopSchema),
@@ -37,7 +34,6 @@ const BusinessForm = ({ creator }: { creator: string }) => {
       phone: "",
       occupation: "",
       "work-address": "",
-      referrer: referrer ?? "",
     },
     mode: "onBlur",
   });
@@ -128,46 +124,24 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           />
         </div>
 
-        <div className="w-full flex items-center gap-1 lg:gap-3">
-          <FormField
-            control={form.control}
-            name="referrer"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className="text-base font-thin text-gray-500">
-                  Referrer code
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    className="w-full h-10 text-base border-gray-300"
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="occupation"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className="text-base font-thin text-gray-500">
-                  Occupation
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    className="w-full h-10 text-base border-gray-300"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="occupation"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel className="text-base font-thin text-gray-500">
+                Occupation
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  className="w-full h-10 text-base border-gray-300"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}

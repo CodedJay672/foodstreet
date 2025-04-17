@@ -40,7 +40,7 @@ export const agentReferralCode = () => {
 export const generateReferralLink = async (code: string) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-  return `${baseUrl}/create-business?ref=${code}`;
+  return `${baseUrl}/sign-up?ref=${code}`;
 };
 
 export const getFilePreview = (file: Models.File) => {
