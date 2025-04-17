@@ -143,6 +143,26 @@ const AuthForm = ({ type }: { type: string }) => {
                   </FormItem>
                 )}
               />
+
+              <FormField
+                control={form.control}
+                name="referrer"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel className="text-base font-thin text-gray-500">
+                      Referrer code
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="w-full h-10 text-base border-gray-300"
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </>
           )}
 
@@ -160,26 +180,6 @@ const AuthForm = ({ type }: { type: string }) => {
                     className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                   />
                 </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="referrer"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className="text-base font-thin text-gray-500">
-                  Referrer code
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    className="w-full h-10 text-base border-gray-300"
-                  />
-                </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
