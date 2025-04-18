@@ -29,10 +29,10 @@ const VerifyEmail = async ({
         <p className="text-center">You can close this window.</p>
 
         <Link
-          href="/my-shop"
-          className="text-raw-300 font-medium text-base lg:text-lg mt-10 py-1 px-10 border border-raw-300 rounded-full hover:bg-raw-300 hover:text-white transition-all"
+          href="/"
+          className="bg-raw-primary-light text-raw-primary px-4 py-1 rounded-lg"
         >
-          Create e-Shop
+          Go Home
         </Link>
       </div>
     </section>
