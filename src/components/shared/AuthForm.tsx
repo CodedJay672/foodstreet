@@ -99,7 +99,6 @@ const AuthForm = ({ type }: { type: string }) => {
                       <Input
                         type="text"
                         {...field}
-                        placeholder="Enter fullname"
                         className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                       />
                     </FormControl>
@@ -136,7 +135,6 @@ const AuthForm = ({ type }: { type: string }) => {
                       <Input
                         type="text"
                         {...field}
-                        placeholder="Enter fullname"
                         className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                       />
                     </FormControl>
@@ -174,7 +172,6 @@ const AuthForm = ({ type }: { type: string }) => {
                   <Input
                     type="email"
                     {...field}
-                    placeholder="Enter a valid email address"
                     className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                   />
                 </FormControl>
