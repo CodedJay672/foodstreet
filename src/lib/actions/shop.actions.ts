@@ -57,7 +57,7 @@ export const createShop = async (values: ShopType) => {
       process.env.APPWRITE_SHOPS_COLLECTION_ID!,
       ID.unique(),
       {
-        values,
+        ...values,
       }
     );
 

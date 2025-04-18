@@ -84,7 +84,7 @@ const BusinessForm = ({ creator }: { creator: string }) => {
           )}
         />
 
-        <div className="w-full flex items-center gap-1 lg:gap-3">
+        <div className="w-full flex items-center flex-col lg:flex-row gap-1 lg:gap-3">
           <FormField
             control={form.control}
             name="email"
