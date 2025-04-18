@@ -43,8 +43,9 @@ export const createProduct = async (data: ProductType) => {
 
     revalidatePath("/foodstuffs");
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -67,8 +68,9 @@ export const uploadFile = async (file: File) => {
     revalidatePath("/my-shop");
     revalidatePath("/foodstuffs");
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -86,8 +88,9 @@ export const deleteFile = async (fileId: string) => {
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -116,7 +119,8 @@ export const getAllProducts = cache(async (shopId?: string, query?: string) => {
     if (!response) throw new Error("Fetch failed.");
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 });

@@ -38,8 +38,8 @@ export const createAgent = async (userId: string) => {
     }
 
     return agent;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -58,7 +58,29 @@ export const getAgent = async (userId?: string) => {
     }
 
     return agent;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const getAgentByRefCode = async (refCode: string) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const agent = await database.listDocuments(
+      process.env.APPWRITE_DATABASE_ID!,
+      process.env.APPWRITE_AGENTS_COLLECTION_ID!,
+      [Query.equal("refCode", refCode)]
+    );
+
+    if (!agent) {
+      throw new Error("You are not an agent yet");
+    }
+
+    return agent.documents[0];
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };

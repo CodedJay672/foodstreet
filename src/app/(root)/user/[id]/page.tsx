@@ -68,7 +68,7 @@ const UserProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
         <li className="flex items-center gap-6">
           <NavLink
             label="Become an agent"
-            path={`#`}
+            path="/agent-registration"
             linkIcon={<HiOutlineUserGroup size={24} className="text-primary" />}
           />
         </li>

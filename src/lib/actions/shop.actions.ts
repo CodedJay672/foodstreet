@@ -1,6 +1,6 @@
 "use server";
 
-import { ID, Query } from "node-appwrite";
+import { AppwriteException, ID, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { InputFile } from "node-appwrite/file";
 
@@ -21,7 +21,8 @@ export const getShopsById = async (id: string) => {
 
     return shops;
   } catch (error) {
-    throw new Error("Error: Fetch failed.");
+    console.log(error);
+    throw error;
   }
 };
 
@@ -42,29 +43,21 @@ export const getShops = async (query?: string) => {
 
     return shops;
   } catch (error) {
-    throw new Error("Error: Fetch failed.");
+    console.log(error);
+    throw error;
   }
 };
 
 export const createShop = async (values: ShopType) => {
   try {
     const { database } = await createAdminClient();
-    const { referrer, ...rest } = values;
-
-    //get the referrer
-    const ref = await database.listDocuments(
-      process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_AGENTS_COLLECTION_ID!,
-      [Query.equal("refCode", referrer?.trim() ?? "")]
-    );
 
     const response = await database.createDocument(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_SHOPS_COLLECTION_ID!,
       ID.unique(),
       {
-        ...rest,
-        agent: ref.documents[0]?.$id,
+        values,
       }
     );
 
@@ -73,8 +66,9 @@ export const createShop = async (values: ShopType) => {
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -98,8 +92,9 @@ export const uploadShopImage = async (file: File) => {
     }
 
     return res;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -136,8 +131,9 @@ export const updateProfileImage = async (id: string, file: File) => {
       throw new Error("Failed to update shop image.");
     }
     return result;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -174,7 +170,8 @@ export const updateBannerImage = async (id: string, file: File) => {
       throw new Error("Failed to update shop image.");
     }
     return result;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };

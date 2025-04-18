@@ -2,9 +2,10 @@
 
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
-import { ID, Query } from "node-appwrite";
+import { ID, Models, Query } from "node-appwrite";
 import { deleteFile, uploadFile } from "./product.actions";
 import { getFilePreview } from "../utils";
+import { getAgentByRefCode } from "./agents.actions";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -27,8 +28,9 @@ export const SignIn = async (values: { email: string; password: string }) => {
     });
 
     return session;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -38,10 +40,13 @@ export const SignUp = async (values: {
   name: string;
   occupation: string;
   dob: Date;
+  referrer?: string;
 }) => {
-  const { email, password, name, occupation, dob } = values;
   try {
+    const { email, password, name, occupation, dob, referrer } = values;
+
     const { account } = await createAdminClient();
+    let agent: Models.Document | null = null;
 
     const newUserAccount = await account.create(
       ID.unique(),
@@ -54,13 +59,27 @@ export const SignUp = async (values: {
       throw new Error("User already exists. Please login to continue");
     }
 
-    const session = await SignIn(values);
+    // get the referrer if available
+    if (referrer) {
+      agent = await getAgentByRefCode(referrer);
+    }
 
     // save the new user info to the Database
-    await saveToDB({ name, email, occupation, dob });
+    await saveToDB({
+      name,
+      email,
+      occupation,
+      dob,
+      agent: agent?.$id,
+      accountId: newUserAccount?.$id,
+    });
+
+    // sign user in and return the session
+    const session = await SignIn(values);
     return session;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -69,16 +88,17 @@ const saveToDB = async (values: {
   email: string;
   occupation: string;
   dob: Date;
+  agent?: string;
+  accountId?: string;
 }) => {
   const { database } = await createAdminClient();
-  const user = await getLoggedInUser();
 
   try {
     const newUser = await database.createDocument(
       process.env.APPWRITE_DATABASE_ID!,
       process.env.APPWRITE_USERS_COLLECTION_ID!,
       ID.unique(),
-      { ...values, accountId: user?.$id }
+      { ...values }
     );
 
     if (!newUser) {
@@ -88,6 +108,7 @@ const saveToDB = async (values: {
     return newUser;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -97,8 +118,9 @@ export const verifyUserEmail = async () => {
     const { account } = await createSessionClient();
 
     await account.createVerification(`${baseUrl}/verify-email`);
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -114,8 +136,9 @@ export const userEmailVerified = async (userId: string, secret: string) => {
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -214,8 +237,8 @@ export const updateUserInfo = async (
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -231,8 +254,8 @@ export const recoverPassword = async (email: string) => {
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -251,7 +274,7 @@ export const setNewPassword = async (
     }
 
     return response;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw error;
   }
 };

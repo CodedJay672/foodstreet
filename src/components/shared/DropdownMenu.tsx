@@ -25,7 +25,7 @@ const DropdownMenu = () => {
 
   return (
     <div
-      className={`w-full bg-black/70 fixed top-0 right-0 backdrop-blur-md transition-transform duration-300 ease-in-out transform-gpu ${
+      className={`w-full lg:hidden bg-black/70 fixed top-0 right-0 backdrop-blur-md transition-transform duration-300 ease-in-out transform-gpu ${
         showUserDropdown ? "translate-x-0" : "translate-x-full"
       }`}
     >

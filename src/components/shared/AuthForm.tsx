@@ -21,6 +21,7 @@ import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "../ui/input";
 import SelectDate from "./SelectDate";
+import { AppwriteException } from "node-appwrite";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -55,6 +56,7 @@ const AuthForm = ({ type }: { type: string }) => {
           name: values.fullname || "",
           occupation: values.occupation || "",
           dob: new Date(values.dob!),
+          referrer: values.referrer || "",
         });
 
         if (!response) {
@@ -68,7 +70,6 @@ const AuthForm = ({ type }: { type: string }) => {
         await verifyUserEmail();
 
         //redirect to email sent page
-
         router.push("/verify");
       }
     } catch (error: any) {
