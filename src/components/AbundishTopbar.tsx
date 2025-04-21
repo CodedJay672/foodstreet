@@ -43,7 +43,7 @@ const AbundishTopbar = async () => {
             Sign In
           </Link>
         )}
-        <HamburgerMenu />
+        <HamburgerMenu user={user} />
       </div>
     </header>
   );
