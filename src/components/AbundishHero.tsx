@@ -30,21 +30,19 @@ const AbundishHero = () => {
             <div className="w-full flex justify-between flex-col">
               <h3 className="text-sm font-medium mb-1">Agents</h3>
               <p className="text-xs text-gray-600">
-                Earn up to 2 million in mtching bonus
+                Earn up to ₦2M in bonuses!
               </p>
             </div>
             <div className="w-full flex justify-between flex-col">
               <h3 className="text-sm font-medium mb-1">Vendors</h3>
               <p className="text-xs text-gray-600">
-                Own a shop. Earn fom all food deals in millions
+                Own a shop. Cash in on food deals!
               </p>
             </div>
             <div className="w-full flex justify-between flex-col">
-              <h3 className="text-sm font-medium mb-1">
-                Abundish premium card.
-              </h3>
+              <h3 className="text-sm font-medium mb-1">Abundish card.</h3>
               <p className="text-xs text-gray-600">
-                Abundish premium card. Activate your online store
+                Launch your onlin store—fast.
               </p>
             </div>
           </div>
