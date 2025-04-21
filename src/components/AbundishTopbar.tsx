@@ -27,7 +27,7 @@ const AbundishTopbar = async () => {
         ))}
       </nav>
 
-      <div className="flex-center gap-1">
+      <div className="hidden lg:flex justify-center items-center gap-1">
         {user ? (
           <Link
             href={`/user/${user.$id}`}
@@ -43,8 +43,8 @@ const AbundishTopbar = async () => {
             Sign In
           </Link>
         )}
-        <HamburgerMenu user={user} />
       </div>
+      <HamburgerMenu user={user} />
     </header>
   );
 };
