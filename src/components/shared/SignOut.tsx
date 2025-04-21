@@ -5,7 +5,6 @@ import { signOut } from "@/lib/actions/user.actions";
 import { LogOutIcon } from "lucide-react";
 
 import { useRouter } from "next/navigation";
-import { Models } from "node-appwrite";
 import React, { useContext } from "react";
 import { toast } from "sonner";
 
