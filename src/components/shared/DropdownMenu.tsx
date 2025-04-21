@@ -19,8 +19,10 @@ import NavLink from "./NavLink";
 import SignOut from "./SignOut";
 import FoodContext from "@/context/GlobalContext";
 import Image from "next/image";
+import { Models } from "node-appwrite";
+import Link from "next/link";
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ user }: { user: Models.Document | null }) => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
@@ -100,7 +102,16 @@ const DropdownMenu = () => {
             />
           </li>
           <li className="flex items-center gap-6 px-5">
-            <SignOut />
+            {user ? (
+              <SignOut />
+            ) : (
+              <Link
+                href="/sign-in"
+                className="py-1 px-3 rounded-full text-light bg-primary font-semibold"
+              >
+                Sign In
+              </Link>
+            )}
           </li>
         </ul>
       </div>

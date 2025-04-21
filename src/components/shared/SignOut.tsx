@@ -14,18 +14,6 @@ const SignOut = () => {
   const { toggleUserDropdown } = useContext(FoodContext);
   const [user, setUser] = React.useState<Models.Document | null>(null);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await getCurrentUser();
-
-      if (user) {
-        setUser(user);
-      }
-    };
-
-    getUser();
-  }, []);
-
   const signUserOut = async () => {
     try {
       await signOut();

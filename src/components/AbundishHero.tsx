@@ -10,7 +10,7 @@ const AbundishHero = () => {
           <h1 className="text-4xl lg:text-5xl font-bold text-raw-primary capitalize">
             Become Abundish Agent and earn money from your home
           </h1>
-          <p className="text-base lg:text-lg font-normal text-pretty">
+          <p className="text-base lg:text-lg font-normal text-pretty text-gray-600">
             Foodstreet Empowers{" "}
             <span className="text-xl font-bold text-raw-primary">
               1,000,000 Youths
@@ -18,6 +18,29 @@ const AbundishHero = () => {
             with jobs. Join our transformative initiative in the nation's
             largest food economy and start earning income today.
           </p>
+
+          <div className="w-full flex justify-between bg-raw-primary-light gap-6 p-6 my-6 rounded-lg">
+            <div className="w-full flex justify-between flex-col">
+              <h3 className="text-sm font-medium mb-1">Agents</h3>
+              <p className="text-xs text-gray-600">
+                Earn up to 2 million in mtching bonus
+              </p>
+            </div>
+            <div className="w-full flex justify-between flex-col">
+              <h3 className="text-sm font-medium mb-1">Vendors</h3>
+              <p className="text-xs text-gray-600">
+                Own a shop. Earn fom all food deals in millions
+              </p>
+            </div>
+            <div className="w-full flex justify-between flex-col">
+              <h3 className="text-sm font-medium mb-1">
+                Abundish premium card.
+              </h3>
+              <p className="text-xs text-gray-600">
+                Abundish premium card. Activate your online store
+              </p>
+            </div>
+          </div>
 
           <Link
             href="/learn-more"

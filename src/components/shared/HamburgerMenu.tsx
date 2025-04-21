@@ -4,19 +4,18 @@ import FoodContext from "@/context/GlobalContext";
 import React, { useContext } from "react";
 import { IoMenuOutline } from "react-icons/io5";
 import DropdownMenu from "./DropdownMenu";
+import { RiMenu3Line } from "react-icons/ri";
+import { Models } from "node-appwrite";
 
-const HamburgerMenu = () => {
+const HamburgerMenu = ({ user }: { user: Models.Document | null }) => {
   const { showUserDropdown, toggleUserDropdown } = useContext(FoodContext);
 
   return (
     <>
-      <div
-        className="p-1 lg:hidden border border-light rounded-md ml-2"
-        onClick={toggleUserDropdown}
-      >
-        <IoMenuOutline size={24} className="text-light" />
+      <div className="p-1 lg:hidden ml-2" onClick={toggleUserDropdown}>
+        <RiMenu3Line size={24} className="text-light" />
       </div>
-      {showUserDropdown && <DropdownMenu />}
+      {showUserDropdown && <DropdownMenu user={user} />}
     </>
   );
 };

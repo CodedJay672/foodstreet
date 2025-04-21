@@ -28,7 +28,7 @@ const Topbar = async () => {
           ))}
         </nav>
 
-        <div className="flex-center gap-1">
+        <div className="hidden lg:flex justify-center items-center gap-1">
           {user ? (
             <Link
               href={`/user/${user.$id}`}
@@ -44,8 +44,8 @@ const Topbar = async () => {
               Sign In
             </Link>
           )}
-          <HamburgerMenu />
         </div>
+        <HamburgerMenu user={user} />
       </header>
     </>
   );
