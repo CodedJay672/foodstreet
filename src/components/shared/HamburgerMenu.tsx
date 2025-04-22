@@ -13,7 +13,7 @@ const HamburgerMenu = ({ user }: { user: Models.Document | null }) => {
   return (
     <>
       <div className="p-1 lg:hidden ml-2" onClick={toggleUserDropdown}>
-        <RiMenu3Line size={24} className="text-light" />
+        <RiMenu3Line size={44} className="text-light" />
       </div>
       {showUserDropdown && <DropdownMenu user={user} />}
     </>
