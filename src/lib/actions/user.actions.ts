@@ -33,7 +33,7 @@ export const SignIn = async (values: { email: string; password: string }) => {
     });
 
     return {
-      status: false,
+      status: true,
       message: "Signed up successfully!",
       data: session,
     };
