@@ -6,6 +6,8 @@ import { ID, Models, Query } from "node-appwrite";
 import { deleteFile, uploadFile } from "./product.actions";
 import { getFilePreview } from "../utils";
 import { getAgentByRefCode } from "./agents.actions";
+import { redirect } from "next/navigation";
+import { authSchema } from "@/validation/schema";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -17,20 +19,30 @@ export const SignIn = async (values: { email: string; password: string }) => {
     );
 
     if (!session) {
-      throw new Error("Sign in failed.");
+      return {
+        status: false,
+        message: "Failed to sign user in.",
+      };
     }
 
-    (await cookies()).set("appwrite-session", session.secret, {
+    (await cookies()).set("foodstreet-session", session.secret, {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
       secure: true,
     });
 
-    return session;
-  } catch (error) {
+    return {
+      status: false,
+      message: "Signed up successfully!",
+      data: session,
+    };
+  } catch (error: any) {
     console.log(error);
-    throw error;
+    return {
+      status: false,
+      message: error.message,
+    };
   }
 };
 
@@ -44,9 +56,29 @@ export const SignUp = async (values: {
 }) => {
   try {
     const { email, password, name, occupation, dob, referrer } = values;
+    const schema = authSchema("SIGN_up");
 
     const { account } = await createAdminClient();
     let agent: Models.Document | null = null;
+
+    const parsedData = schema.safeParse({
+      fullname: name,
+      email,
+      password,
+      occupation,
+      dob,
+      referrer,
+    });
+
+    if (!parsedData.success) {
+      console.log(parsedData.error.flatten().fieldErrors);
+
+      return {
+        status: false,
+        message: "Something went wrong.",
+        data: parsedData.error.flatten().fieldErrors,
+      };
+    }
 
     const newUserAccount = await account.create(
       ID.unique(),
@@ -56,7 +88,10 @@ export const SignUp = async (values: {
     );
 
     if (!newUserAccount) {
-      throw new Error("User already exists. Please login to continue");
+      return {
+        status: false,
+        message: "User already exists. Please login to continue",
+      };
     }
 
     // get the referrer if available
@@ -75,11 +110,16 @@ export const SignUp = async (values: {
     });
 
     // sign user in and return the session
-    const session = await SignIn(values);
-    return session;
-  } catch (error) {
+    await SignIn(values);
+
+    // send verification email
+    await verifyUserEmail();
+  } catch (error: any) {
     console.log(error);
-    throw error;
+    return {
+      status: false,
+      message: error.message,
+    };
   }
 };
 
@@ -102,20 +142,26 @@ const saveToDB = async (values: {
     );
 
     if (!newUser) {
-      throw new Error();
+      return {
+        status: false,
+        message: "Failed to save user.",
+      };
     }
 
     return newUser;
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    throw error;
+    return {
+      status: false,
+      message: error.message,
+    };
   }
 };
 
 export const verifyUserEmail = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  const baseUrl = "http://localhost:3000";
   try {
-    const { account } = await createSessionClient();
+    const { account } = await createAdminClient();
 
     await account.createVerification(`${baseUrl}/verify-email`);
   } catch (error) {
@@ -272,7 +318,7 @@ export const setNewPassword = async (
     if (!response) {
       throw new Error("Password update failed.");
     }
-
+    redirect("/sign-in");
     return response;
   } catch (error) {
     throw error;

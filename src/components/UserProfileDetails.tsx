@@ -254,14 +254,24 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
         </label>
 
         {editProfile && (
-          <Button
-            type="submit"
-            disabled={isUpdating}
-            className="w-full lg:w-max text-light cursor-pointer flex-center gap-4"
-          >
-            {isUpdating && <FaSpinner size={24} className="animate-spin" />}
-            Update profile
-          </Button>
+          <div className="flex items-center place-self-start gap-3">
+            <Button
+              type="submit"
+              disabled={isUpdating}
+              className="w-full lg:w-max bg-raw-primary hover:bg-raw-primary text-light cursor-pointer flex-center gap-4"
+            >
+              {isUpdating && <FaSpinner size={24} className="animate-spin" />}
+              Update profile
+            </Button>
+            <Button
+              type="submit"
+              onClick={toggleEditProfile}
+              className="w-full lg:w-max text-light cursor-pointer flex-center gap-4"
+            >
+              {isUpdating && <FaSpinner size={24} className="animate-spin" />}
+              Cancel
+            </Button>
+          </div>
         )}
       </form>
     </section>

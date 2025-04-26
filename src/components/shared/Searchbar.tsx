@@ -31,7 +31,7 @@ const Searchbar = () => {
         <input
           type="search"
           onChange={(e) => handleChange(e.target.value)}
-          defaultValue={param.get("q") || ""}
+          defaultValue={param.get("q")?.toString()}
           placeholder="Search..."
           className="w-full h-10 border-none outline-none pl-13 pr-10"
         />

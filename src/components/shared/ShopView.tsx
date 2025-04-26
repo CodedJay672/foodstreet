@@ -27,11 +27,15 @@ const ShopView = ({
         )}
       </div>
       <div className="p-2">
+        <h1 className="text-base font-semibold truncate line-clamp-1">
+          {name}
+        </h1>
         <div className="flex-between">
-          <h1 className="text-base font-semibold">{name}</h1>
-          <p className="text-sm font-thin text-gray-400">{location}</p>
+          <p className="text-sm text-gray-400">{location}</p>
+          <p className="text-sm text-gray-400 truncate line-clamp-1">
+            {occupation}
+          </p>
         </div>
-        <p className="text-sm font-thin">{occupation}</p>
         <Link
           href={`my-shop/${id}`}
           className="flex-center p-1 text-light text-sm bg-raw-primary rounded-full mt-4"

@@ -15,7 +15,7 @@ export async function createSessionClient() {
     .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!)
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
 
-  const session = (await cookies()).get("appwrite-session");
+  const session = (await cookies()).get("foodstreet-session");
 
   //check if session already exists
   if (!session || !session.value) {

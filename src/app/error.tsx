@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Error from "next/error";
 import Image from "next/image";
 import React from "react";
 
@@ -22,7 +21,8 @@ const ErrorPage = ({
           height={200}
         />
         <h2 className="text-lg font-semibold">Something went wrong</h2>
-        <p className="text-base font-light text-center">{error.digest}</p>
+        <p className="text-base font-medium text-center">{error.digest}</p>
+        <p className="text-sm font-light text-center">{error.message}</p>
 
         <Button
           variant="outline"

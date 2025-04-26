@@ -1,3 +1,4 @@
+import { Loader2Icon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -10,7 +11,12 @@ const Loading = () => {
           alt="logo image"
           width={200}
           height={30}
-          className="animate-pulse"
+          className="animate-pulse hidden lg:block"
+        />
+
+        <Loader2Icon
+          size={24}
+          className="text-primary lg:hidden animate-spin"
         />
 
         <p className="text-center font-inter font-medium">Loading...</p>

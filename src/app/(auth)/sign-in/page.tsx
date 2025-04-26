@@ -1,5 +1,6 @@
 import AuthForm from "@/components/shared/AuthForm";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const SignIn = async () => {
@@ -8,7 +9,9 @@ const SignIn = async () => {
   if (user) redirect("/");
 
   return (
-    <section className="w-full flex-center flex-col gap-4 px-4 py-10 lg:px-12">
+    <section className="w-full flex-center flex-col gap-4">
+      <Image src="/Logo.png" alt="foodstreet" width={120} height={60} />
+
       <div className="w-full flex-center flex-col gap-2">
         <h1 className="text-xl lg:text-2xl font-bold text-raw-300 text-center">
           Sign In
@@ -16,9 +19,7 @@ const SignIn = async () => {
         <p className="text-base font-normal text-center">Enter details below</p>
       </div>
 
-      <div className="w-full max-w-sm flex-center mt-10">
-        <AuthForm type="SIGN_IN" />
-      </div>
+      <AuthForm type="SIGN_IN" />
     </section>
   );
 };

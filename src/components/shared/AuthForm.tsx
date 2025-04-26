@@ -17,11 +17,9 @@ import { Button } from "@/components/ui/button";
 import { authSchema } from "@/validation/schema";
 import { FaSpinner } from "react-icons/fa6";
 import { toast } from "sonner";
-import { SignIn, SignUp, verifyUserEmail } from "@/lib/actions/user.actions";
+import { SignIn, SignUp } from "@/lib/actions/user.actions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "../ui/input";
-import SelectDate from "./SelectDate";
-import { AppwriteException } from "node-appwrite";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -42,8 +40,8 @@ const AuthForm = ({ type }: { type: string }) => {
       if (type === "SIGN_IN") {
         const response = await SignIn(values);
 
-        if (!response) {
-          return toast.error("SignIn failed");
+        if (!response.status) {
+          return toast.error(response.message);
         }
 
         toast.success("Signed in successfully!");
@@ -59,18 +57,14 @@ const AuthForm = ({ type }: { type: string }) => {
           referrer: values.referrer || "",
         });
 
-        if (!response) {
-          toast.error("Sign up failed");
-          return false;
+        if (!response?.status) {
+          return toast.error(response?.message);
         }
 
-        toast.success("Signed Up Successful!");
-
-        // verify user email
-        await verifyUserEmail();
+        toast.success(response?.message);
 
         //redirect to email sent page
-        router.push("/verify");
+        router.push("/");
       }
     } catch (error: any) {
       toast.error(error.message);
@@ -83,82 +77,89 @@ const AuthForm = ({ type }: { type: string }) => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           id="external-form"
-          className="space-y-8 w-full"
+          className="w-full space-y-4 lg:space-y-6"
         >
           {type === "SIGN_UP" && (
             <>
-              <FormField
-                control={form.control}
-                name="fullname"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                      Fullname
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        {...field}
-                        className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <fieldset className="flex-between flex-col lg:flex-row gap-3 lg:gap-4 space-y-4">
+                <FormField
+                  control={form.control}
+                  name="fullname"
+                  render={({ field }) => (
+                    <FormItem className="w-full mb-0">
+                      <FormLabel className="text-base">Fullname</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="dob"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                      Birth date
-                    </FormLabel>
-                    <FormControl>
-                      {/* @ts-ignore */}
-                      <Input type="date" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="occupation"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
-                      Occupation
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        {...field}
-                        className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="dob"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel className="text-base lg:text-lg font-medium ">
+                        Birth date
+                      </FormLabel>
+                      <FormControl>
+                        {/* @ts-ignore */}
+                        <Input
+                          type="date"
+                          {...field}
+                          className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </fieldset>
 
-              <FormField
-                control={form.control}
-                name="referrer"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel className="text-base font-thin">
-                      Referrer code (if available)
-                    </FormLabel>
-                    <FormControl>
-                      <Input {...field} className="w-full h-10 text-base" />
-                    </FormControl>
+              <fieldset className="w-full flex-between flex-col lg:flex-row gap-3 lg:gap-4 space-y-4">
+                <FormField
+                  control={form.control}
+                  name="occupation"
+                  render={({ field }) => (
+                    <FormItem className="w-full mb-0">
+                      <FormLabel className="text-base lg:text-lg font-medium ">
+                        Occupation
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="referrer"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel className="text-base font-thin">
+                        Referrer code (if available)
+                      </FormLabel>
+                      <FormControl>
+                        <Input {...field} className="w-full h-10 text-base" />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </fieldset>
             </>
           )}
 
@@ -166,7 +167,7 @@ const AuthForm = ({ type }: { type: string }) => {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input
@@ -184,7 +185,7 @@ const AuthForm = ({ type }: { type: string }) => {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel className="text-base lg:text-lg mb-1 font-medium ">
                   Password
                 </FormLabel>
@@ -195,30 +196,34 @@ const AuthForm = ({ type }: { type: string }) => {
                     className="w-full h-10 bg-gray-50 p-2 text-base placeholder:text-gray-300"
                   />
                 </FormControl>
-                {type === "SIGN_IN" && (
-                  <Link
-                    href="/reset-password"
-                    className="place-self-start text-primary font-thin text-sm"
-                  >
-                    Reset password
-                  </Link>
-                )}
-                <FormMessage />
+                <div className="flex-between">
+                  <FormMessage />
+                  {type === "SIGN_IN" && (
+                    <Link
+                      href="/reset-password"
+                      className="place-self-end text-primary font-thin text-sm"
+                    >
+                      Reset password
+                    </Link>
+                  )}
+                </div>
               </FormItem>
             )}
           />
+          <fieldset className="w-full mt-6">
+            <Button
+              type="submit"
+              className="w-full text-white rounded-full mt-3 cursor-pointer flex-center"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting && (
+                <FaSpinner size={24} className="animate-spin" />
+              )}
+              {type === "SIGN_IN" ? "Sign in" : "Register"}
+            </Button>
+          </fieldset>
 
-          <Button
-            type="submit"
-            className="w-full text-white rounded-full mt-3 cursor-pointer flex-center"
-            disabled={form.formState.isSubmitting}
-          >
-            {form.formState.isSubmitting && (
-              <FaSpinner size={24} className="animate-spin" />
-            )}
-            {type === "SIGN_IN" ? "Sign in" : "Register"}
-          </Button>
-          <div className="flex-center gap-0.5">
+          <div className="flex-center gap-0.5 border-t border-gray-300 p-6">
             <p className="text-center">
               {type === "SIGN_IN"
                 ? "Don't have an account? "
