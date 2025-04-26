@@ -159,7 +159,7 @@ const saveToDB = async (values: {
 };
 
 export const verifyUserEmail = async () => {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
   try {
     const { account } = await createAdminClient();
 
