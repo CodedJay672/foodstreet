@@ -44,7 +44,7 @@ const AuthForm = ({ type }: { type: string }) => {
           return toast.error(response.message);
         }
 
-        toast.success("Signed in successfully!");
+        toast.success(response.message);
 
         //redirect to home on signin
         router.push("/");
