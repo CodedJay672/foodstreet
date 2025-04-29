@@ -80,7 +80,7 @@ const DropdownMenu = ({ user }: { user: Models.Document | null }) => {
           <li className="flex items-center gap-6" onClick={toggleUserDropdown}>
             <NavLink
               label="About us"
-              path={`#`}
+              path="/about-us"
               linkIcon={
                 <HiOutlineChatBubbleOvalLeftEllipsis
                   size={24}
