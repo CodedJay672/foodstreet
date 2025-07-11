@@ -1,7 +1,7 @@
 "use client";
 
 import FoodContext from "@/context/GlobalContext";
-import { Models } from "node-appwrite";
+import { AppwriteException, Models } from "node-appwrite";
 import React, { useContext, useEffect, useRef } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { Button } from "./ui/button";
@@ -49,8 +49,8 @@ const UserProfileDetails = ({ user }: { user: Models.Document }) => {
 
       toggleEditProfile();
       return toast.success("Profile updated successfully!");
-    } catch (error: any) {
-      throw new Error(error.message);
+    } catch (error) {
+      if (error instanceof AppwriteException) toast.error(error?.message);
     } finally {
       setIsUpdating(false);
     }

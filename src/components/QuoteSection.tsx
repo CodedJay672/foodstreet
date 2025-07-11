@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { FaQuoteRight } from "react-icons/fa6";
 import IconCard from "./shared/IconCard";

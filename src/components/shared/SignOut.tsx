@@ -5,6 +5,7 @@ import { signOut } from "@/lib/actions/user.actions";
 import { LogOutIcon } from "lucide-react";
 
 import { useRouter } from "next/navigation";
+import { AppwriteException } from "node-appwrite";
 import React, { useContext } from "react";
 import { toast } from "sonner";
 
@@ -17,8 +18,8 @@ const SignOut = () => {
       await signOut();
       router.push("/");
       return toast.success("User signed out.");
-    } catch (error: any) {
-      throw new Error("Error signing out user", error.message);
+    } catch (error) {
+      if (error instanceof AppwriteException) toast.error(error.message);
     }
   };
 

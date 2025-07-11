@@ -21,6 +21,7 @@ import { createProduct } from "@/lib/actions/product.actions";
 import { FaSpinner } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import FileUploader from "./shared/FileUploader";
+import { AppwriteException } from "node-appwrite";
 
 const ProductForm = ({ shop }: { shop: string }) => {
   const router = useRouter();
@@ -44,8 +45,9 @@ const ProductForm = ({ shop }: { shop: string }) => {
 
       toast.success("Product created.");
       router.push("/foodstuffs");
-    } catch (error: any) {
-      toast.error(error.message as string);
+    } catch (error) {
+      if (error instanceof AppwriteException)
+        toast.error(error.message as string);
     }
   };
 

@@ -12,7 +12,7 @@ const CopyToClipboard = ({ text }: { text: string }) => {
 
       toast.success("Copied to clipboard");
     } catch (error) {
-      toast.error("Failed to copy to clipboard");
+      throw error;
     }
   };
 

@@ -1,5 +1,4 @@
 import PasswordResetForm from "@/components/PasswordResetForm";
-import Back from "@/components/shared/Back";
 import React from "react";
 import { toast } from "sonner";
 

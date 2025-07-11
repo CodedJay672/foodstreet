@@ -1,5 +1,4 @@
 import React from "react";
-import { TbFlagDiscount } from "react-icons/tb";
 import { MdPercent } from "react-icons/md";
 import { RiHandCoinFill } from "react-icons/ri";
 import { BsShop } from "react-icons/bs";

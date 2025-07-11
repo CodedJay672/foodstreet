@@ -1,55 +1,17 @@
 "use server";
 
-import { AppwriteException, ID, Query } from "node-appwrite";
+import { ID } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { InputFile } from "node-appwrite/file";
-
-export const getShopsById = async (id: string) => {
-  try {
-    //initialize the database
-    const { database } = await createAdminClient();
-
-    const shops = await database.listDocuments(
-      process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_SHOPS_COLLECTION_ID!,
-      [Query.equal("$id", id)]
-    );
-
-    if (!shops) {
-      throw new Error("Failed to fetch shops.");
-    }
-
-    return shops;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
-
-export const getShops = async (query?: string) => {
-  try {
-    //initialize the database
-    const { database } = await createAdminClient();
-
-    const shops = await database.listDocuments(
-      process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_SHOPS_COLLECTION_ID!,
-      query ? [Query.equal("name", query)] : []
-    );
-
-    if (!shops) {
-      throw new Error("Failed to fetch shops.");
-    }
-
-    return shops;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
+import { getLoggedInUser } from "../data/user.data";
+import { redirect } from "next/navigation";
 
 export const createShop = async (values: ShopType) => {
   try {
+    //verify logged in user
+    const user = await getLoggedInUser();
+    if (!user) redirect("/sign-in");
+
     const { database } = await createAdminClient();
 
     const response = await database.createDocument(

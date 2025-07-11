@@ -19,7 +19,7 @@ export async function createSessionClient() {
 
   //check if session already exists
   if (!session || !session.value) {
-    throw new Error("No session. Please login");
+    return null;
   }
 
   client.setSession(session.value);

@@ -2,16 +2,9 @@
 
 import React, { useContext } from "react";
 import {
-  HiCheckBadge,
   HiOutlineChatBubbleOvalLeftEllipsis,
-  HiOutlineCheckCircle,
   HiOutlineDevicePhoneMobile,
-  HiOutlineDocument,
   HiOutlineQuestionMarkCircle,
-  HiOutlineQueueList,
-  HiOutlineShieldCheck,
-  HiOutlineShoppingBag,
-  HiOutlineUser,
   HiOutlineUserGroup,
   HiXMark,
 } from "react-icons/hi2";

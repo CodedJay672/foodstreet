@@ -2,7 +2,6 @@
 
 import FoodContext from "@/context/GlobalContext";
 import React, { useContext } from "react";
-import { IoMenuOutline } from "react-icons/io5";
 import DropdownMenu from "./DropdownMenu";
 import { RiMenu3Line } from "react-icons/ri";
 import { Models } from "node-appwrite";

@@ -2,12 +2,12 @@
 
 import { cookies } from "next/headers";
 import { createAdminClient, createSessionClient } from "../appwrite";
-import { ID, Models, Query } from "node-appwrite";
+import { AppwriteException, ID, Models } from "node-appwrite";
 import { deleteFile, uploadFile } from "./product.actions";
 import { getFilePreview } from "../utils";
-import { getAgentByRefCode } from "./agents.actions";
 import { redirect } from "next/navigation";
 import { authSchema } from "@/validation/schema";
+import { getAgentByRefCode } from "../data/agent.data";
 
 export const SignIn = async (values: { email: string; password: string }) => {
   try {
@@ -37,12 +37,12 @@ export const SignIn = async (values: { email: string; password: string }) => {
       message: "Signed up successfully!",
       data: session,
     };
-  } catch (error: any) {
-    console.log(error);
-    return {
-      status: false,
-      message: error.message,
-    };
+  } catch (error) {
+    if (error instanceof AppwriteException)
+      return {
+        status: false,
+        message: error.message,
+      };
   }
 };
 
@@ -114,12 +114,12 @@ export const SignUp = async (values: {
 
     // send verification email
     await verifyUserEmail();
-  } catch (error: any) {
-    console.log(error);
-    return {
-      status: false,
-      message: error.message,
-    };
+  } catch (error) {
+    if (error instanceof AppwriteException)
+      return {
+        status: false,
+        message: error.message,
+      };
   }
 };
 
@@ -149,12 +149,12 @@ const saveToDB = async (values: {
     }
 
     return newUser;
-  } catch (error: any) {
-    console.log(error);
-    return {
-      status: false,
-      message: error.message,
-    };
+  } catch (error) {
+    if (error instanceof AppwriteException)
+      return {
+        status: false,
+        message: error.message,
+      };
   }
 };
 
@@ -165,7 +165,6 @@ export const verifyUserEmail = async () => {
 
     await account.createVerification(`${baseUrl}/verify-email`);
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
@@ -193,42 +192,6 @@ export const signOut = async () => {
 
   (await cookies()).delete("appwrite-session");
   await account.deleteSession("current");
-};
-
-export const getLoggedInUser = async () => {
-  try {
-    const { account } = await createSessionClient();
-    return await account.get();
-  } catch (error) {
-    return null;
-  }
-};
-
-export const getCurrentUser = async (userId?: string) => {
-  try {
-    const signedInUser = await getLoggedInUser();
-    const { database } = await createAdminClient();
-
-    if (!signedInUser) {
-      throw new Error("No session found");
-    }
-
-    const currentUser = await database.listDocuments(
-      process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_USERS_COLLECTION_ID!,
-      userId
-        ? [Query.equal("$id", userId)]
-        : [Query.equal("accountId", signedInUser.$id)]
-    );
-
-    if (!currentUser) {
-      throw Error;
-    }
-
-    return currentUser.documents[0];
-  } catch (error) {
-    return null;
-  }
 };
 
 export const updateUserInfo = async (

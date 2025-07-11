@@ -1,8 +1,8 @@
 import Searchbar from "@/components/shared/Searchbar";
 import ShopView from "@/components/shared/ShopView";
 import ShowShopMenu from "@/components/shared/ShowShopMenu";
-import { getShops } from "@/lib/actions/shop.actions";
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import { getShops } from "@/lib/data/shop.data";
+import { getCurrentUser } from "@/lib/data/user.data";
 import Link from "next/link";
 import React from "react";
 
@@ -11,10 +11,19 @@ const MyShop = async ({
 }: {
   searchParams: Promise<{ q: string }>;
 }) => {
-  const currentUser = await getCurrentUser();
   const { q } = await searchParams;
 
-  const businesses = await getShops(q);
+  const getUser = getCurrentUser();
+  const getBusinesses = getShops(q);
+
+  const [userData, businessData] = await Promise.allSettled([
+    getUser,
+    getBusinesses,
+  ]);
+
+  const currentUser = userData.status === "fulfilled" ? userData.value : null;
+  const businesses =
+    businessData.status === "fulfilled" ? businessData.value : null;
 
   return (
     <section className="m-full min-h-screen pb-10">
@@ -65,7 +74,7 @@ const MyShop = async ({
               All Shops
             </h1>
             <div className="w-full grid grid-cols-2 lg:grid-cols-5">
-              {businesses.total ? (
+              {businesses !== null && businesses.total ? (
                 businesses?.documents.map((shop) => (
                   <ShopView
                     key={shop.$id}

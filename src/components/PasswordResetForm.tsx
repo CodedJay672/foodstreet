@@ -4,7 +4,7 @@ import { setNewPassword } from "@/lib/actions/user.actions";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
+import { AppwriteException } from "node-appwrite";
 
 const PasswordResetForm = ({
   userId,
@@ -36,12 +36,9 @@ const PasswordResetForm = ({
       }
 
       return toast.success("Password updated successfully.");
-    } catch (error: any) {
-      if (error.message) {
+    } catch (error) {
+      if (error instanceof AppwriteException) {
         setError(error.message);
-        return toast.error(error.message);
-      } else {
-        setError("An error occurred. Please try again.");
         return toast.error(error.message);
       }
     } finally {

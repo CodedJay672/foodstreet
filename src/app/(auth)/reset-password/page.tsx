@@ -1,5 +1,4 @@
 import PasswordRecoveryForm from "@/components/PasswordRecoveryForm";
-import Back from "@/components/shared/Back";
 import React from "react";
 
 const RecsetPassword = () => {

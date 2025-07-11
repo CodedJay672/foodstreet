@@ -1,5 +1,5 @@
 import ProductForm from "@/components/ProductForm";
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/data/user.data";
 import { redirect } from "next/navigation";
 import React from "react";
 

@@ -1,11 +1,10 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { LinkIcon } from "lucide-react";
 
 const NavLink = ({
   label,

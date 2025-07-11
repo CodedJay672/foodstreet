@@ -8,7 +8,7 @@ const Abundish = () => {
     <>
       <AbundishHero />
       <AbundishOffers />
-
+      <div className="my-6 w-full"></div>
       <CTA />
     </>
   );

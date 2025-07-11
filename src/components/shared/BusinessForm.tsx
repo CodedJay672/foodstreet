@@ -18,8 +18,9 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { createShop } from "@/lib/actions/shop.actions";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FaSpinner } from "react-icons/fa6";
+import { AppwriteException } from "node-appwrite";
 
 const BusinessForm = ({ creator }: { creator: string }) => {
   const router = useRouter();
@@ -54,8 +55,8 @@ const BusinessForm = ({ creator }: { creator: string }) => {
 
       toast.success("Shop created!!");
       router.push("/my-shop");
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error) {
+      if (error instanceof AppwriteException) toast.error(error.message);
     }
   }
 

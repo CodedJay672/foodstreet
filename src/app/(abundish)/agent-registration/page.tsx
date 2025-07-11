@@ -1,12 +1,10 @@
-import CopyToClipboard from "@/components/shared/CopyToClipboard";
-import { createAgent, getAgent } from "@/lib/actions/agents.actions";
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import React from "react";
 import Link from "next/link";
-
+import CopyToClipboard from "@/components/shared/CopyToClipboard";
+import { createAgent } from "@/lib/actions/agents.actions";
+import { getCurrentUser } from "@/lib/data/user.data";
 import { redirect } from "next/navigation";
 import { Models } from "node-appwrite";
-
-import React from "react";
 
 const AgentReg = async () => {
   const user = await getCurrentUser();

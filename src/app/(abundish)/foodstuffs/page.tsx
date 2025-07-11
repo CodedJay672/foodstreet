@@ -1,18 +1,14 @@
-import Products from "@/components/Products";
-import Searchbar from "@/components/shared/Searchbar";
-import { getAllProducts } from "@/lib/actions/product.actions";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import Products from "@/components/Products";
+import Searchbar from "@/components/shared/Searchbar";
 
 const FoodStuffs = async ({
   searchParams,
 }: {
   searchParams: Promise<{ q: string }>;
 }) => {
-  const { q } = await searchParams;
-  const allProducts = await getAllProducts(undefined, q);
-
   return (
     <section className="w-full min-h-screen p-1">
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-24 px-2 lg:px-2 py-3 my-4 ">

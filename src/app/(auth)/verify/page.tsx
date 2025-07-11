@@ -1,10 +1,7 @@
-import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import React from "react";
 
 const Verify = () => {
-  const user = getLoggedInUser();
-
   return (
     <section className="w-full flex-1 flex-center flex-col gap-6">
       <Image

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { RefObject, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FileUploader from "./FileUploader";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -43,7 +43,7 @@ const ShopImage = ({
     };
 
     handleImageupload();
-  }, [file]);
+  }, [file, id]);
 
   return (
     <div className="w-full flex-between flex-col gap-2">

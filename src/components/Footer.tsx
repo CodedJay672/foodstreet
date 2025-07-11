@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/data/user.data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { recoverPassword } from "@/lib/actions/user.actions";
 import { RiLoader2Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
+import { AppwriteException } from "node-appwrite";
 
 const PasswordRecoveryForm = () => {
   const [email, setEmail] = useState("");
@@ -27,8 +28,8 @@ const PasswordRecoveryForm = () => {
       toast.success("Password recovery link sent to your email address.");
 
       router.back();
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error) {
+      if (error instanceof AppwriteException) toast.error(error.message);
     } finally {
       setLoading(false);
     }

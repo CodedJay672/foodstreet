@@ -1,5 +1,5 @@
 import AuthForm from "@/components/shared/AuthForm";
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import { getCurrentUser } from "@/lib/data/user.data";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";

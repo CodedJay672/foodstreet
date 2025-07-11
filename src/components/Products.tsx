@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./shared/ProductCard";
-import { getAllProducts } from "@/lib/actions/product.actions";
+import { getAllProducts } from "@/lib/data/products.data";
 
 const Products = async () => {
   const allProducts = await getAllProducts();

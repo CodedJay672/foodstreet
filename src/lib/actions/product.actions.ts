@@ -1,8 +1,7 @@
 "use server";
 
-import { cache } from "react";
 import { createAdminClient } from "../appwrite";
-import { ID, Query } from "node-appwrite";
+import { ID } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
 import { revalidatePath } from "next/cache";
 
@@ -24,10 +23,8 @@ export const createProduct = async (data: ProductType) => {
       {
         name: data.name,
         shop: data.shop,
-        measure: data.measure,
         initPrice: data.initPrice,
         discPrice: data.discPrice,
-        description: data.description,
         imageUrl: `${process.env
           .NEXT_PUBLIC_APPWRITE_URL_ENDPOINT!}/storage/buckets/${
           uploadedFile.bucketId
@@ -93,34 +90,3 @@ export const deleteFile = async (fileId: string) => {
     throw error;
   }
 };
-
-export const getAllProducts = cache(async (shopId?: string, query?: string) => {
-  try {
-    const { database } = await createAdminClient();
-
-    if (shopId) {
-      const response = await database.listDocuments(
-        process.env.APPWRITE_DATABASE_ID!,
-        process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
-        [Query.equal("shops", shopId), Query.search("name", query || "")]
-      );
-
-      if (!response) throw new Error("Cannot fetch products");
-
-      return response;
-    }
-
-    const response = await database.listDocuments(
-      process.env.APPWRITE_DATABASE_ID!,
-      process.env.APPWRITE_PRODUCTS_COLLECTION_ID!,
-      [Query.search("name", query || "")]
-    );
-
-    if (!response) throw new Error("Fetch failed.");
-
-    return response;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-});

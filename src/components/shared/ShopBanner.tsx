@@ -41,7 +41,7 @@ const ShopBanner = ({
     };
 
     handleImageupload();
-  }, [file]);
+  }, [file, id]);
 
   const uploadFiles = () => {
     if (!uploadRef.current) return;

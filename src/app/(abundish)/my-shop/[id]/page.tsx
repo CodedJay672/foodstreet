@@ -2,8 +2,8 @@ import AboutSection from "@/components/shared/AboutSection";
 import ProductCard from "@/components/shared/ProductCard";
 import ShopBanner from "@/components/shared/ShopBanner";
 import ShopImage from "@/components/shared/ShopImage";
-import { getShopsById } from "@/lib/actions/shop.actions";
-import { getCurrentUser } from "@/lib/actions/user.actions";
+import { getShopsById } from "@/lib/data/shop.data";
+import { getCurrentUser } from "@/lib/data/user.data";
 import { redirect } from "next/navigation";
 import { Models } from "node-appwrite";
 import React from "react";
@@ -11,9 +11,12 @@ import { MdLocationPin, MdMailOutline, MdPhone } from "react-icons/md";
 
 const MyShop = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const user = await getCurrentUser();
 
-  const myBusiness = await getShopsById(id);
+  const currentUser = getCurrentUser();
+  const businessData = getShopsById(id);
+
+  //fetch user and businesses in parallel
+  const [user, myBusiness] = await Promise.all([currentUser, businessData]);
 
   if (!myBusiness.total) {
     redirect("/create-business");

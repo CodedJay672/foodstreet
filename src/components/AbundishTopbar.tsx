@@ -3,9 +3,8 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
 import { NavLinks } from "@/constants";
-import { getCurrentUser } from "@/lib/actions/user.actions";
-
 import HamburgerMenu from "./shared/HamburgerMenu";
+import { getCurrentUser } from "@/lib/data/user.data";
 
 const AbundishTopbar = async () => {
   const user = await getCurrentUser();

@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavLink from "./shared/NavLink";
-import { getCurrentUser } from "@/lib/actions/user.actions";
 
 import HamburgerMenu from "./shared/HamburgerMenu";
+import { getCurrentUser } from "@/lib/data/user.data";
 
 const Topbar = async () => {
   const user = await getCurrentUser();

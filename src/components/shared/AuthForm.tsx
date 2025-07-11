@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import { SignIn, SignUp } from "@/lib/actions/user.actions";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "../ui/input";
+import { AppwriteException } from "node-appwrite";
 
 const AuthForm = ({ type }: { type: string }) => {
   const authFormSchema = authSchema(type);
@@ -66,8 +67,8 @@ const AuthForm = ({ type }: { type: string }) => {
         //redirect to email sent page
         router.push("/");
       }
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error) {
+      if (error instanceof AppwriteException) toast.error(error.message);
     }
   }
 
