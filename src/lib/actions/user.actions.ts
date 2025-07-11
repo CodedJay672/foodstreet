@@ -171,7 +171,11 @@ export const verifyUserEmail = async () => {
 
 export const userEmailVerified = async (userId: string, secret: string) => {
   try {
-    const { account } = await createSessionClient();
+    const session = await createSessionClient();
+
+    if (!session) return null;
+
+    const { account } = session;
 
     // verify user from Appwrite
     const response = await account.updateVerification(userId, secret);
@@ -188,7 +192,10 @@ export const userEmailVerified = async (userId: string, secret: string) => {
 };
 
 export const signOut = async () => {
-  const { account } = await createSessionClient();
+  const session = await createSessionClient();
+  if (!session) return null;
+
+  const { account } = session;
 
   (await cookies()).delete("appwrite-session");
   await account.deleteSession("current");
