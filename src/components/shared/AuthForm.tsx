@@ -41,8 +41,8 @@ const AuthForm = ({ type }: { type: string }) => {
       if (type === "SIGN_IN") {
         const response = await SignIn(values);
 
-        if (!response.status) {
-          return toast.error(response.message);
+        if (!response?.status) {
+          return toast.error(response?.message);
         }
 
         toast.success(response.message);
